@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Networking Quiz Bank — Modules 4–10</title>
+<title>Networking Quiz Bank</title>
 <style>
   :root {
     --bg: #f6f5f1;
@@ -150,14 +150,18 @@
   .hidden { display: none; }
   .kbd { color: var(--muted); font-size: .82rem; margin-top: 14px; }
   @media (max-width: 520px) { .big { font-size: 2rem; } }
+  .modlist { border: 1px solid var(--line); border-radius: 8px; max-height: 270px; overflow: auto; padding: 6px 10px; background: var(--card); }
+  .modlist label { display: flex; gap: 8px; align-items: flex-start; padding: 4px 0; cursor: pointer; font-size: .95rem; }
+  .modlist input { margin-top: 4px; flex: none; }
+  .modtools { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; margin: 0 0 6px; font-size: .9rem; color: var(--muted); }
 </style>
 </head>
 <body>
 <div class="wrap">
   <header>
     <div>
-      <h1>Networking Quiz Bank</h1>
-      <p>Modules 4–10 · Multiple choice + typed conversions · Scrap paper only, no calculator</p>
+      <h1 id="courseTitle"></h1>
+      <p id="courseSub"></p>
     </div>
     <button class="theme-btn" id="themeBtn" aria-label="Toggle light or dark mode"></button>
   </header>
@@ -165,8 +169,13 @@
   <!-- SETUP -->
   <section id="setup" class="card">
     <div class="row">
-      <label class="field" for="moduleSel">Module</label>
-      <select id="moduleSel"></select>
+      <label class="field">Modules</label>
+      <div id="moduleSel"></div>
+    </div>
+    <div class="row" id="doneRow">
+      <strong id="doneTally"></strong>
+      <button class="linkbtn" id="resetDone" style="margin-left:10px">Reset completed questions</button>
+      <div class="hint-text">Questions you have already answered are left out of new quizzes in this browser, along with any you flagged as bad.</div>
     </div>
     <div class="row">
       <label class="field" for="countInput">Multiple-choice questions</label>
@@ -174,15 +183,21 @@
       <div class="hint-text" id="countHelp"></div>
     </div>
     <div class="row" id="genRow">
-      <label class="field" for="genInput">Conversion questions (typed answers)</label>
+      <label class="field" for="genInput" id="genLabel">Typed-answer questions</label>
       <input type="number" id="genInput" min="0" max="200" value="5">
-      <div class="hint-text">Total number of binary / decimal / hex conversions. You type the answer, with no choices to pick from. Freshly generated every time (Module 5).</div>
+      <div class="hint-text" id="genHelp"></div>
     </div>
     <div class="row">
       <div class="check"><input type="checkbox" id="shuffleOpts" checked><label for="shuffleOpts">Shuffle answer choices</label></div>
       <div class="check"><input type="checkbox" id="hideModule" checked><label for="hideModule">Hide each question's module until it's answered</label></div>
     </div>
     <button id="startBtn">Start quiz</button>
+    <details id="removedBox" style="margin-top:14px;display:none">
+      <summary id="removedSummary"></summary>
+      <p class="hint-text">These questions were flagged as bad and will not be asked again in this browser. Copy the list below if you want them deleted from the question bank for good.</p>
+      <textarea id="removedText" readonly rows="5" style="width:100%;box-sizing:border-box"></textarea>
+      <button class="secondary" id="restoreBtn" style="margin-top:8px">Restore all removed questions</button>
+    </details>
   </section>
 
   <!-- QUIZ -->
@@ -199,7 +214,7 @@
       <div class="hintbox" id="hintBox"></div>
       <div class="feedback" id="feedback"></div>
       <div class="actions">
-        <button class="linkbtn" id="hintBtn">Show hint</button>
+        <span style="display:flex;gap:14px;flex-wrap:wrap"><button class="linkbtn" id="hintBtn">Show hint</button><button class="linkbtn" id="badBtn">Bad question</button></span>
         <span style="display:flex;gap:10px">
           <button class="secondary" id="quitBtn">End quiz</button>
           <button id="nextBtn" disabled>Next</button>
@@ -238,17 +253,28 @@
    To grow the bank, add more objects to this array. The module menu and
    question counts update automatically.
    ===================================================================== */
-const MODULE_NAMES = {
-  0: "General Networking",
-  4: "Module 4 – Physical Layer",
-  5: "Module 5 – Number Systems",
-  6: "Module 6 – Data Link Layer",
-  7: "Module 7 – Ethernet Switching",
-  8: "Module 8 – Network Layer",
-  9: "Module 9 – Address Resolution",
-  10: "Module 10 – Basic Router Configuration"
+const COURSE = {
+"title": "Networking Quiz Bank",
+"subtitle": "Modules 4–10 · Multiple choice + typed conversions · Scrap paper only, no calculator",
+"modules": {
+"0": "General Networking",
+"4": "Module 4 – Physical Layer",
+"5": "Module 5 – Number Systems",
+"6": "Module 6 – Data Link Layer",
+"7": "Module 7 – Ethernet Switching",
+"8": "Module 8 – Network Layer",
+"9": "Module 9 – Address Resolution",
+"10": "Module 10 – Basic Router Configuration"
+},
+"generator": {
+"module": 5,
+"label": "Conversion questions (typed answers)",
+"help": "Total number of binary / decimal / hex conversions. You type the answer, with no choices to pick from. Freshly generated every time (Module 5).",
+"default_all": 5,
+"default_module": 15
+}
 };
-
+const MODULE_NAMES = COURSE.modules;
 const BANK = [
 {
 "m": 4,
@@ -3738,7 +3764,7 @@ const BANK = [
 "e": "A layer 2 switch needs a gateway, just like a PC."
 }
 ];
-const JOKES = [
+const EGG = [
 {
 "m": 0,
 "q": "Finish the joke: 'I'd tell you a UDP joke, but...'",
@@ -3750,7 +3776,7 @@ const JOKES = [
 ],
 "a": 2,
 "e": "UDP is best effort: no guarantee the joke (or the packet) ever arrives.",
-"joke": true
+"egg": true
 },
 {
 "m": 0,
@@ -3763,7 +3789,7 @@ const JOKES = [
 ],
 "a": 3,
 "e": "Learn from the source, forward on the destination, age out after 300 seconds.",
-"joke": true
+"egg": true
 },
 {
 "m": 0,
@@ -3776,7 +3802,7 @@ const JOKES = [
 ],
 "a": 1,
 "e": "IPv4 address depletion vs IPv6's 128-bit address space.",
-"joke": true
+"egg": true
 },
 {
 "m": 0,
@@ -3789,7 +3815,7 @@ const JOKES = [
 ],
 "a": 2,
 "e": "Twisted pairs use cancellation to reduce crosstalk and EMI.",
-"joke": true
+"egg": true
 },
 {
 "m": 0,
@@ -3802,9 +3828,30 @@ const JOKES = [
 ],
 "a": 3,
 "e": "Unresolved, like an ARP request that never got a reply.",
-"joke": true
+"egg": true
 }
 ];
+
+/* ---------- "Bad question" removals (remembered in this browser, survives closing and reopening the file) ---------- */
+const REMOVED_KEY = "quiz-removed:" + (COURSE.title || "quiz");
+const ALL_SRC = new Set(BANK.concat(EGG));
+const ALL_TEXT = BANK.concat(EGG).map(q => q.q);
+let removed = [];
+try { removed = JSON.parse(localStorage.getItem(REMOVED_KEY) || "[]"); if (!Array.isArray(removed)) removed = []; } catch (e) { removed = []; }
+const COUNT_KEY = "quiz-count:" + (COURSE.title || "quiz");
+function lastCount() { try { const v = parseInt(localStorage.getItem(COUNT_KEY), 10); if (v > 0) return v; } catch (e) {} return 50; }
+function saveCount(v) { try { localStorage.setItem(COUNT_KEY, String(v)); } catch (e) {} }
+function saveRemoved() { try { localStorage.setItem(REMOVED_KEY, JSON.stringify(removed)); } catch (e) {} }
+function dropRemoved(list) { for (let i = list.length - 1; i >= 0; i--) if (removed.includes(list[i].q)) list.splice(i, 1); }
+dropRemoved(BANK); dropRemoved(EGG);
+
+/* ---------- "Completed" memory: questions already answered in this browser are left out of new quizzes ---------- */
+const DONE_KEY = "quiz-done:" + (COURSE.title || "quiz");
+let done = new Set();
+try { const d = JSON.parse(localStorage.getItem(DONE_KEY) || "[]"); if (Array.isArray(d)) done = new Set(d); } catch (e) {}
+function saveDone() { try { localStorage.setItem(DONE_KEY, JSON.stringify([...done])); } catch (e) {} }
+function markDone(key) { if (!done.has(key)) { done.add(key); saveDone(); } }
+const isFresh = q => !done.has(q.q);
 
 /* ===================================================================== */
 
@@ -3820,44 +3867,112 @@ function shuffle(arr) {
   return a;
 }
 
-// Multiple-choice pool = bank questions that are NOT typed conversions.
-function poolFor(mod) {
-  return (mod === "all" ? BANK : BANK.filter(q => String(q.m) === mod)).filter(q => !q.k);
+// Multiple-choice pool = bank questions that are NOT typed-answer questions.
+// "mod" is "all" or a comma-separated list of module numbers, e.g. "4,5,6,7,8" (empty string = nothing selected)
+const modSet = mod => new Set(String(mod).split(",").filter(Boolean));
+const inScope = (mod) => { if (mod === "all") return BANK; const s = modSet(mod); return BANK.filter(q => s.has(String(q.m))); };
+
+/* Module picker: checkboxes; click to toggle, Shift+click to select a range (e.g. 4 through 8) */
+function modPicker(box, items, selSet, onChange) {
+  box.innerHTML = "";
+  const tools = document.createElement("div"); tools.className = "modtools";
+  const info = document.createElement("span");
+  const mk = (txt, fn) => { const b = document.createElement("button"); b.type = "button"; b.className = "linkbtn"; b.textContent = txt; b.onclick = fn; return b; };
+  const list = document.createElement("div"); list.className = "modlist";
+  const boxes = [];
+  let last = -1;
+  const sync = () => { items.forEach((it, i) => { boxes[i].checked = selSet.has(it.value); }); info.textContent = `${selSet.size} of ${items.length} selected · Shift+click selects a range`; onChange(); };
+  tools.appendChild(mk("Select all", () => { items.forEach(it => selSet.add(it.value)); sync(); }));
+  tools.appendChild(mk("Clear", () => { selSet.clear(); sync(); }));
+  tools.appendChild(info);
+  items.forEach((it, i) => {
+    const lab = document.createElement("label");
+    const cb = document.createElement("input"); cb.type = "checkbox"; boxes.push(cb);
+    cb.onclick = e => {
+      if (e.shiftKey && last >= 0) {
+        const [a, b] = [Math.min(last, i), Math.max(last, i)];
+        for (let k = a; k <= b; k++) { if (cb.checked) selSet.add(items[k].value); else selSet.delete(items[k].value); }
+      } else { if (cb.checked) selSet.add(it.value); else selSet.delete(it.value); }
+      last = i; sync();
+    };
+    lab.appendChild(cb); lab.appendChild(document.createTextNode(it.label));
+    list.appendChild(lab);
+  });
+  box.appendChild(tools); box.appendChild(list);
+  sync();
 }
-// Typed conversion questions stored in the bank (they're mixed in with freshly generated ones).
-function bankConversions() {
-  return BANK.filter(q => q.k);
+let mcSel = null;                    // Set of selected module values (as strings); null until first setup
+function selMod(items) {            // -> "all" or "4,5,6"
+  const vals = items.map(i => i.value);
+  if (mcSel.size === vals.length && vals.every(v => mcSel.has(v))) return "all";
+  return vals.filter(v => mcSel.has(v)).join(",");
 }
+let mcItems = [];
+const curMod = () => selMod(mcItems);
+function poolFor(mod) { return inScope(mod).filter(q => !q.k && isFresh(q)); }
+function poolTotal(mod) { return inScope(mod).filter(q => !q.k).length; }
+// Typed-answer questions stored in the bank (mixed in with generated ones when the course has a generator).
+function bankConversions(mod) { return inScope(mod || "all").filter(q => q.k && isFresh(q)); }
+// Does this scope get freshly generated typed questions? (course.generator = {module, ...} or null)
+const GEN = COURSE.generator || null;
+const genApplies = mod => !!GEN && (mod === "all" || modSet(mod).has(String(GEN.module)));
 
 function initSetup() {
-  const sel = $("moduleSel");
-  sel.innerHTML = "";
-  const all = document.createElement("option");
-  all.value = "all";
-  all.textContent = `All modules (${poolFor("all").length} + typed conversions)`;
-  sel.appendChild(all);
+  document.title = COURSE.title; $("courseTitle").textContent = COURSE.title; $("courseSub").textContent = COURSE.subtitle || "";
+  $("genLabel").textContent = (GEN && GEN.label) || "Typed-answer questions";
   const mods = [...new Set(BANK.map(q => q.m))].sort((a, b) => a - b);
-  mods.forEach(m => {
-    const o = document.createElement("option");
-    o.value = String(m);
-    const n = poolFor(String(m)).length;
-    o.textContent = `${MODULE_NAMES[m] || "Module " + m} (${n}${m === 5 ? " + typed" : ""})`;
-    sel.appendChild(o);
+  mcItems = mods.map(m => {
+    const n = poolFor(String(m)).length, tot = poolTotal(String(m));
+    return { value: String(m), label: `${MODULE_NAMES[m] || "Module " + m} (${n === tot ? n : n + " left of " + tot}${(genApplies(String(m)) || bankConversions(String(m)).length) ? " + typed" : ""})` };
   });
-  sel.onchange = updateCountHelp;
-  updateCountHelp();
+  if (mcSel === null) mcSel = new Set(mcItems.map(i => i.value));
+  else mcSel = new Set([...mcSel].filter(v => mcItems.some(i => i.value === v)));
+  modPicker($("moduleSel"), mcItems, mcSel, updateCountHelp);
 }
 
+function renderRemoved() {
+  const box = $("removedBox");
+  box.style.display = removed.length ? "" : "none";
+  $("removedSummary").textContent = `${removed.length} removed question${removed.length === 1 ? "" : "s"} (this browser)`;
+  $("removedText").value = removed.join("\n");
+}
+function refreshSetup() {
+  initSetup();
+  renderRemoved();
+}
+$("restoreBtn").onclick = () => { removed = []; saveRemoved(); try { localStorage.removeItem(REMOVED_KEY); } catch (e) {} location.reload(); };
+
+function updTally() {
+  const total = BANK.length, n = BANK.filter(q => done.has(q.q)).length;
+  $("doneTally").textContent = `${n}/${total} questions completed`;
+  $("resetDone").disabled = n === 0;
+}
+let resetArm = null;
+function armReset(btn, label, action) {
+  btn.onclick = () => {
+    if (btn.dataset.armed) { clearTimeout(resetArm); btn.dataset.armed = ""; btn.textContent = label; action(); return; }
+    btn.dataset.armed = "1"; btn.textContent = "Click again to confirm";
+    resetArm = setTimeout(() => { btn.dataset.armed = ""; btn.textContent = label; }, 4000);
+  };
+}
+armReset($("resetDone"), "Reset completed questions", () => { done = new Set(); saveDone(); refreshSetup(); });
+
 function updateCountHelp() {
-  const mod = $("moduleSel").value;
+  updTally();
+  const mod = curMod();
   const n = poolFor(mod).length;
   const input = $("countInput");
   input.max = n;
-  input.value = mod === "all" ? Math.min(45, n) : n;
-  $("countHelp").textContent = `Up to ${n} available. Questions are picked at random each time.`;
-  const showGen = mod === "all" || mod === "5";
+  input.value = Math.min(n, lastCount());   // sticky: last used count (default 50), clamped to what this scope has
+  $("countHelp").textContent = n ? `Up to ${n} available. Questions are picked at random each time.` : (mod === "" ? "Pick at least one module." : "You have completed every question in this selection. Reset completed questions to see them again.");
+  const nBank = bankConversions(mod).length;
+  const showGen = genApplies(mod) || nBank > 0;
   $("genRow").style.display = showGen ? "" : "none";
-  $("genInput").value = mod === "5" ? 15 : mod === "all" ? 5 : 0;
+  $("genInput").value = genApplies(mod) ? (mod === "all" || modSet(mod).size > 1 ? (GEN.default_all ?? 5) : (GEN.default_module ?? 15)) : nBank;
+  $("genInput").max = genApplies(mod) ? 200 : nBank;
+  $("genHelp").textContent = genApplies(mod)
+    ? ((GEN.help || "Total number of typed-answer questions.") )
+    : `Up to ${nBank} available. You type the answer instead of choosing.`;
 }
 
 /* ---------- Conversion questions (Module 5), answered by typing ---------- */
@@ -3906,9 +4021,10 @@ function genConversion() {
 }
 
 // Total conversions = count: a random mix of the bank's conversion questions and fresh generated ones.
-function pickConversions(count) {
+function pickConversions(count, mod) {
   if (count <= 0) return [];
   const fresh = [], seen = new Set();
+  if (!genApplies(mod)) return shuffle(bankConversions(mod)).slice(0, count);
   let guard = 0;
   while (fresh.length < count && guard++ < count * 20) {
     const q = genConversion();
@@ -3916,7 +4032,7 @@ function pickConversions(count) {
     seen.add(q.q);
     fresh.push(q);
   }
-  return shuffle(bankConversions().concat(fresh)).slice(0, count);
+  return shuffle(bankConversions(mod).concat(fresh)).slice(0, count);
 }
 
 const PLACEHOLDER = {
@@ -3930,6 +4046,8 @@ const PLACEHOLDER = {
 function checkTyped(kind, typed, ans) {
   const s = String(typed).trim().replace(/\s+/g, "");
   if (!s) return false;
+  // "text" kind: free-text, case/punctuation-insensitive; ans may be "a|b|c" to accept alternatives
+  if (kind === "text") return String(ans).split("|").some(alt => alt.toLowerCase().replace(/[^a-z0-9]+/g, "") === String(typed).toLowerCase().replace(/[^a-z0-9]+/g, ""));
   if (kind === "dec") return /^\d+$/.test(s) && parseInt(s, 10) === parseInt(ans, 10);
   if (kind === "bin") return /^[01]{1,8}$/.test(s) && parseInt(s, 2) === parseInt(ans, 2);
   if (kind === "hex") {
@@ -4025,11 +4143,14 @@ function renderQuestion() {
   fb.innerHTML = "";
   $("hintBox").style.display = "none";
   $("hintBtn").style.visibility = cur.src.h ? "visible" : "hidden";
+  $("badBtn").style.display = ALL_SRC.has(cur.src) ? "" : "none";
+  $("badBtn").disabled = false; $("badBtn").textContent = "Bad question";
   $("nextBtn").disabled = true;
   $("nextBtn").textContent = state.i === total - 1 ? "See results" : "Next";
 }
 
 function showFeedback(cur, ok, rightText) {
+  if (ALL_SRC.has(cur.src) && !cur.src.egg && !cur.src.gen) markDone(cur.src.q);
   const fb = $("feedback");
   fb.className = "feedback " + (ok ? "good" : "bad");
   const head = document.createElement("strong");
@@ -4143,18 +4264,36 @@ function showResults() {
 }
 
 $("startBtn").onclick = () => {
-  const mod = $("moduleSel").value;
+  const mod = curMod();
   const pool = poolFor(mod);
   const raw = parseInt($("countInput").value, 10);
   const count = Math.max(0, Math.min(pool.length, isNaN(raw) ? pool.length : raw));
-  const convCount = (mod === "all" || mod === "5") ? Math.max(0, Math.min(200, parseInt($("genInput").value, 10) || 0)) : 0;
-  const conversions = pickConversions(convCount);
+  if (!isNaN(raw) && raw > 0) saveCount(raw);
+  const typedMax = genApplies(mod) ? 200 : bankConversions(mod).length;
+  const convCount = Math.max(0, Math.min(typedMax, parseInt($("genInput").value, 10) || 0));
+  const conversions = pickConversions(convCount, mod);
   let combined = buildQuestions(pool, count).concat(buildQuestions(conversions, conversions.length));
-  if (combined.length && JOKES.length) combined = combined.concat(buildQuestions(JOKES, 1)); // never more than 1 per quiz
-  if (!combined.length) { $("countHelp").textContent = "Pick at least one question."; return; }
+  // Easter egg: each question has a 1% chance of being REPLACED by a joke question (so n requested = n shown); at most 2 jokes per quiz.
+  if (EGG.length) {
+    const jokes = shuffle(EGG); let used = 0;
+    combined = combined.map(q => (used < 2 && used < jokes.length && Math.random() < 0.01) ? buildQuestions([jokes[used++]], 1)[0] : q);
+  }
+  if (!combined.length) { $("countHelp").textContent = mod === "" ? "Pick at least one module." : "Pick at least one question."; return; }
   startQuiz(shuffle(combined));
 };
 $("nextBtn").onclick = next;
+$("badBtn").onclick = () => {
+  const cur = state.questions[state.i];
+  if (!cur || !ALL_SRC.has(cur.src)) return;
+  if (!removed.includes(cur.src.q)) removed.push(cur.src.q);
+  saveRemoved();
+  dropRemoved(BANK); dropRemoved(EGG);
+  if (state.answered) { $("badBtn").textContent = "Removed \u2713"; $("badBtn").disabled = true; return; }
+  state.questions.splice(state.i, 1);          // not answered yet: take it out of this quiz without scoring it
+  if (!state.questions.length) { clearInterval(state.timerId); $("quiz").classList.add("hidden"); $("setup").classList.remove("hidden"); refreshSetup(); return; }
+  if (state.i >= state.questions.length) { showResults(); return; }
+  renderQuestion();
+};
 $("hintBtn").onclick = () => {
   const h = state.questions[state.i].src.h;
   if (!h) return;
@@ -4162,17 +4301,18 @@ $("hintBtn").onclick = () => {
   $("hintBox").style.display = "block";
 };
 $("quitBtn").onclick = () => {
-  if (state.answers.length === 0) { clearInterval(state.timerId); $("quiz").classList.add("hidden"); $("setup").classList.remove("hidden"); return; }
+  if (state.answers.length === 0) { clearInterval(state.timerId); $("quiz").classList.add("hidden"); $("setup").classList.remove("hidden"); refreshSetup(); return; }
   showResults();
 };
 $("retryMissedBtn").onclick = () => {
-  const missedSrc = state.answers.filter(a => !a.ok).map(a => a.q.src);
+  const missedSrc = state.answers.filter(a => !a.ok).map(a => a.q.src).filter(q => !removed.includes(q.q));
+  if (!missedSrc.length) { $("results").classList.add("hidden"); $("setup").classList.remove("hidden"); refreshSetup(); return; }
   startQuiz(buildQuestions(missedSrc, missedSrc.length));
 };
 $("newQuizBtn").onclick = () => {
   $("results").classList.add("hidden");
   $("setup").classList.remove("hidden");
-  updateCountHelp();
+  refreshSetup();
 };
 
 document.addEventListener("keydown", e => {
@@ -4206,6 +4346,7 @@ $("themeBtn").onclick = () => {
 };
 
 initSetup();
+renderRemoved();
 </script>
 </body>
 </html>
