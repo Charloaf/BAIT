@@ -2167,7 +2167,7 @@ const BANK = [
 "m": 5,
 "q": "What is low-level formatting?",
 "o": [
-"Sector markings that are written to the drive at the factory",
+"Splitting the drive into partitions in Windows",
 "Sector markings written to the drive at the factory",
 "Installing a file system on a partition",
 "Installing the operating system on the drive"
@@ -2205,7 +2205,7 @@ const BANK = [
 "q": "How many wires does the newer IDE cable have?",
 "o": [
 "20 wires, and a larger 80-pin connector",
-"80 thinner wires, with the same 40-pin connector",
+"80 thicker wires, with a larger 80-pin connector",
 "40 wires, and a smaller 40-pin connector",
 "80 thinner wires (with the same 40-pin connector)"
 ],
@@ -2256,7 +2256,7 @@ const BANK = [
 "A power connector that is used by SCSI drives",
 "An expansion card with an external and an internal connector for SCSI devices",
 "A cable that has a 50-pin connector at both ends",
-"An expansion card with internal and external connectors for SCSI devices"
+"A drive bay that holds up to seven SCSI drives"
 ],
 "a": 1,
 "e": "It used a PCIe slot."
@@ -2278,7 +2278,7 @@ const BANK = [
 "q": "What does SATA 3.2 allow?",
 "o": [
 "Wireless drives to connect through the motherboard",
-"PCIe and SATA to work together, called SATA Express",
+"Drives to be hot-swapped without powering down",
 "Optical drives to share the same data cable",
 "PCIe and SATA to work together (SATA Express)"
 ],
@@ -2447,7 +2447,7 @@ const BANK = [
 "o": [
 "Uses two drives for one Windows volume, writing to the second after the first is full",
 "Writes the same data to two drives at the same time",
-"Uses two drives for one volume, filling the second after the first is full",
+"Uses two drives to hold a copy of each file for fault tolerance",
 "Stripes data across drives and adds parity information"
 ],
 "a": 0,
@@ -2556,7 +2556,7 @@ const BANK = [
 "o": [
 "Only with Windows Disk Management and a USB drive",
 "Only with a Linux disc that has RAID software on it",
-"With a RAID-enabled motherboard or a RAID controller card",
+"Only by connecting the drives with an eSATA cable",
 "With a RAID-enabled motherboard in BIOS/UEFI or with a RAID controller card"
 ],
 "a": 3,
@@ -2591,7 +2591,7 @@ const BANK = [
 "q": "What does a file system do?",
 "o": [
 "Names, stores and organizes files on a drive",
-"Names, stores and organizes the files on a drive",
+"Divides a drive into sectors during factory formatting",
 "Cools the drive and speeds up the CPU",
 "Encrypts all of the data that is stored on a drive"
 ],
@@ -2603,7 +2603,7 @@ const BANK = [
 "q": "What is a volume in Windows?",
 "o": [
 "A RAID level that stripes data across drives",
-"A storage device that has been assigned a drive letter",
+"A group of drives that Windows treats as one RAID array",
 "A sector on the drive that holds 512 bytes",
 "A storage device assigned a drive letter"
 ],
@@ -2627,7 +2627,7 @@ const BANK = [
 "q": "Which file system is used by DVDs and Blu-ray discs?",
 "o": [
 "UDF (a newer version)",
-"UDF, a newer version of the optical file system",
+"FAT32, the older file system used by flash drives",
 "NTFS, the file system that is used by Windows",
 "CDFS, an older version that is used by CDs"
 ],
@@ -2724,7 +2724,7 @@ const BANK = [
 "q": "How do you migrate data to a new SSD in a laptop?",
 "o": [
 "Use a floppy disk and flash the BIOS",
-"Use cloning software and a SATA-to-USB transfer cable",
+"Swap the drives and let the BIOS copy the data across",
 "Copy the files by email and then reinstall Windows",
 "Use cloning software and a SATA-to-USB data transfer cable"
 ],
@@ -2931,7 +2931,7 @@ const BANK = [
 "Each intersection of a row and column of electrodes",
 "Each polarizer layer that is in front of the screen",
 "Each backlight bulb that is behind the screen",
-"Each intersection of a row and a column of electrodes"
+"Each fluorescent tube behind the screen"
 ],
 "a": 0,
 "e": "Liquid crystal sits between two grids of electrodes."
@@ -2952,7 +2952,7 @@ const BANK = [
 "m": 6,
 "q": "What does OLED stand for?",
 "o": [
-"Organic light-emitting diode, which needs no backlight",
+"Organic liquid-crystal display",
 "Optical light-emitting display, which uses a laser",
 "Organic light-emitting diode",
 "Open light-emitting diode, which uses a backlight"
@@ -2964,7 +2964,7 @@ const BANK = [
 "m": 6,
 "q": "What does a digital projector do?",
 "o": [
-"Shines a bright light through a transparent image onto a screen",
+"Copies the image from the video card onto a printed page",
 "Shines a light that projects a transparent image onto a large screen",
 "Replaces the video card by creating its own signal",
 "Stores video and plays it back through the monitor"
@@ -2978,7 +2978,7 @@ const BANK = [
 "o": [
 "The device's Properties (General or Driver tab)",
 "The Disk Management console",
-"The device's Properties dialog box, on the Driver tab",
+"The Device Manager View menu, under Show hidden devices",
 "The Event Viewer log for the device"
 ],
 "a": 0,
@@ -3001,7 +3001,7 @@ const BANK = [
 "q": "What does a screen going blank after 30 seconds of inactivity indicate?",
 "o": [
 "The keyboard is stuck and keeps the screen off",
-"The Energy Saver sleep or standby settings are working, which also helps prevent burn-in",
+"Burn-in protection that is turned on by the video card",
 "The monitor is broken and needs to be replaced",
 "Energy Saver sleep or standby settings, which can also help prevent burn-in"
 ],
@@ -3014,7 +3014,7 @@ const BANK = [
 "o": [
 "A permanent impression of an image left on a monitor",
 "A dim screen that is caused by running on battery",
-"A permanent impression of an image left on the monitor",
+"A row of pixels that is permanently stuck on one color",
 "A row of dead pixels that stays black on the screen"
 ],
 "a": 0,
@@ -3037,7 +3037,7 @@ const BANK = [
 "q": "Why might a laptop display look dim?",
 "o": [
 "The video card has failed and needs to be replaced",
-"Laptops dim the LCD when running on battery to save power",
+"The backlight is failing and must be replaced",
 "Laptops dim the LCD when running on battery",
 "A missing driver has turned off the backlight"
 ],
@@ -3051,7 +3051,7 @@ const BANK = [
 "Replace the battery and then reseat the RAM",
 "Reflash the BIOS so that it detects the monitor",
 "Use the function keys to toggle between the laptop display and the external one",
-"Use the function keys to toggle between the displays"
+"Open Device Manager and uninstall the display adapter"
 ],
 "a": 2,
 "e": "Also check power, both cable ends, and try another cable or connection."
@@ -4917,7 +4917,7 @@ const BANK = [
 "Only rented servers, storage and networking hardware",
 "Applications hosted on the provider's hardware and OSs",
 "Rented hardware plus an operating system and some supporting applications",
-"Hardware, operating systems and all the user's applications"
+"Software that is licensed per user and run on your own servers"
 ],
 "a": 2,
 "e": "PaaS = Platform (hardware plus OS)."
