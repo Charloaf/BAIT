@@ -1,0 +1,4211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Networking Quiz Bank — Modules 4–10</title>
+<style>
+  :root {
+    --bg: #f6f5f1;
+    --card: #ffffff;
+    --ink: #1f1f1d;
+    --muted: #6b6a65;
+    --line: #dddbd3;
+    --accent: #2f5d8a;
+    --accent-soft: #e6eef6;
+    --good: #2e7d4f;
+    --good-soft: #e3f2e8;
+    --bad: #b3412e;
+    --bad-soft: #f8e4df;
+    --warn-soft: #fbf3dc;
+    --on-accent: #ffffff;
+    --mid: #c99a2e;
+    color-scheme: light;
+  }
+  [data-theme="dark"] {
+    --bg: #161618;
+    --card: #222225;
+    --ink: #ecebe7;
+    --muted: #a3a29c;
+    --line: #3b3b40;
+    --accent: #84b3e3;
+    --accent-soft: #24344a;
+    --good: #66c28e;
+    --good-soft: #1d3527;
+    --bad: #e8826e;
+    --bad-soft: #43231e;
+    --warn-soft: #3a3220;
+    --on-accent: #10161d;
+    --mid: #e0b452;
+    color-scheme: dark;
+  }
+  header { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+  .theme-btn {
+    flex: none; background: var(--card); color: var(--ink); border: 1px solid var(--line);
+    font-weight: 600; padding: 8px 12px; font-size: .9rem; display: inline-flex; gap: 6px; align-items: center;
+  }
+  .theme-btn:hover { border-color: var(--accent); }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font: 16px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 28px 18px 60px; }
+  header h1 { font-size: 1.45rem; margin: 0 0 4px; }
+  header p { margin: 0 0 22px; color: var(--muted); }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 22px;
+    margin-bottom: 16px;
+  }
+  label.field { display: block; font-weight: 600; margin: 0 0 6px; }
+  .row { margin-bottom: 18px; }
+  select, input[type=number] {
+    font: inherit;
+    padding: 9px 10px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: var(--card);
+    width: 100%;
+    max-width: 360px;
+  }
+  .hint-text { color: var(--muted); font-size: .9rem; margin-top: 4px; }
+  .check { display: flex; gap: 8px; align-items: center; margin-bottom: 8px; }
+  button {
+    font: inherit;
+    cursor: pointer;
+    border-radius: 8px;
+    border: 1px solid var(--accent);
+    background: var(--accent);
+    color: var(--on-accent);
+    padding: 10px 18px;
+    font-weight: 600;
+  }
+  button.secondary { background: var(--card); color: var(--accent); }
+  button:disabled { opacity: .45; cursor: default; }
+  .topbar {
+    display: flex; justify-content: space-between; align-items: center;
+    color: var(--muted); font-size: .92rem; margin-bottom: 10px; gap: 10px; flex-wrap: wrap;
+  }
+  .progress { height: 6px; background: var(--line); border-radius: 99px; overflow: hidden; margin-bottom: 18px; }
+  .progress > div { height: 100%; background: var(--accent); width: 0; transition: width .2s; }
+  .qnum { color: var(--muted); font-size: .9rem; margin-bottom: 6px; }
+  .prompt { font-size: 1.12rem; font-weight: 600; margin: 0 0 16px; }
+  .options { display: grid; gap: 10px; }
+  .opt {
+    text-align: left;
+    background: var(--card);
+    color: var(--ink);
+    border: 1px solid var(--line);
+    font-weight: 400;
+    padding: 12px 14px;
+    display: flex; gap: 10px; align-items: flex-start;
+  }
+  .opt:hover:not(:disabled) { border-color: var(--accent); background: var(--accent-soft); }
+  .opt .key {
+    flex: none; width: 24px; height: 24px; border-radius: 6px;
+    border: 1px solid var(--line); display: inline-flex; align-items: center; justify-content: center;
+    font-size: .8rem; color: var(--muted);
+  }
+  .opt.correct { border-color: var(--good); background: var(--good-soft); opacity: 1; }
+  .opt.wrong { border-color: var(--bad); background: var(--bad-soft); opacity: 1; }
+  .opt:disabled { cursor: default; }
+  .feedback {
+    margin-top: 16px; padding: 14px; border-radius: 8px; display: none;
+  }
+  .feedback.good { display: block; background: var(--good-soft); }
+  .feedback.bad { display: block; background: var(--bad-soft); }
+  .feedback strong { display: block; margin-bottom: 4px; }
+  .tag {
+    display: inline-block; font-size: .78rem; padding: 2px 8px; border-radius: 99px;
+    background: var(--accent-soft); color: var(--accent); margin-top: 8px; font-weight: 600;
+  }
+  .typed { display: flex; gap: 10px; flex-wrap: wrap; }
+  .typed input {
+    font: 1.1rem/1.3 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    letter-spacing: .04em;
+    padding: 11px 12px; border: 1px solid var(--line); border-radius: 8px;
+    background: var(--card); color: var(--ink); flex: 1 1 240px; min-width: 0;
+  }
+  .typed input:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+  .typed input.correct { border-color: var(--good); background: var(--good-soft); }
+  .typed input.wrong { border-color: var(--bad); background: var(--bad-soft); }
+  .hintbox { margin-top: 12px; padding: 10px 12px; background: var(--warn-soft); border-radius: 8px; display: none; }
+  .actions { display: flex; gap: 10px; margin-top: 18px; flex-wrap: wrap; justify-content: space-between; }
+  .linkbtn { background: none; border: none; color: var(--accent); padding: 0; font-weight: 600; }
+  .big { font-size: 2.6rem; font-weight: 700; margin: 0; }
+  table { width: 100%; border-collapse: collapse; margin-top: 8px; }
+  th, td { text-align: left; padding: 8px 6px; border-bottom: 1px solid var(--line); font-size: .95rem; }
+  th { color: var(--muted); font-weight: 600; }
+  .bar { height: 8px; background: var(--line); border-radius: 99px; overflow: hidden; min-width: 80px; }
+  .bar > div { height: 100%; }
+  .missed { border-left: 4px solid var(--bad); padding: 10px 14px; margin: 12px 0; background: var(--card); border-radius: 0 8px 8px 0; }
+  .missed .meta { color: var(--muted); font-size: .85rem; }
+  .missed .yours { color: var(--bad); }
+  .missed .right { color: var(--good); font-weight: 600; }
+  .hidden { display: none; }
+  .kbd { color: var(--muted); font-size: .82rem; margin-top: 14px; }
+  @media (max-width: 520px) { .big { font-size: 2rem; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div>
+      <h1>Networking Quiz Bank</h1>
+      <p>Modules 4–10 · Multiple choice + typed conversions · Scrap paper only, no calculator</p>
+    </div>
+    <button class="theme-btn" id="themeBtn" aria-label="Toggle light or dark mode"></button>
+  </header>
+
+  <!-- SETUP -->
+  <section id="setup" class="card">
+    <div class="row">
+      <label class="field" for="moduleSel">Module</label>
+      <select id="moduleSel"></select>
+    </div>
+    <div class="row">
+      <label class="field" for="countInput">Multiple-choice questions</label>
+      <input type="number" id="countInput" min="0" value="50">
+      <div class="hint-text" id="countHelp"></div>
+    </div>
+    <div class="row" id="genRow">
+      <label class="field" for="genInput">Conversion questions (typed answers)</label>
+      <input type="number" id="genInput" min="0" max="200" value="5">
+      <div class="hint-text">Total number of binary / decimal / hex conversions. You type the answer, with no choices to pick from. Freshly generated every time (Module 5).</div>
+    </div>
+    <div class="row">
+      <div class="check"><input type="checkbox" id="shuffleOpts" checked><label for="shuffleOpts">Shuffle answer choices</label></div>
+      <div class="check"><input type="checkbox" id="hideModule" checked><label for="hideModule">Hide each question's module until it's answered</label></div>
+    </div>
+    <button id="startBtn">Start quiz</button>
+  </section>
+
+  <!-- QUIZ -->
+  <section id="quiz" class="hidden">
+    <div class="topbar">
+      <span id="progressText"></span>
+      <span>Score: <strong id="scoreText">0</strong> · <span id="timer">0:00</span></span>
+    </div>
+    <div class="progress"><div id="progressBar"></div></div>
+    <div class="card">
+      <div class="qnum" id="qnum"></div>
+      <p class="prompt" id="prompt"></p>
+      <div class="options" id="options"></div>
+      <div class="hintbox" id="hintBox"></div>
+      <div class="feedback" id="feedback"></div>
+      <div class="actions">
+        <button class="linkbtn" id="hintBtn">Show hint</button>
+        <span style="display:flex;gap:10px">
+          <button class="secondary" id="quitBtn">End quiz</button>
+          <button id="nextBtn" disabled>Next</button>
+        </span>
+      </div>
+      <div class="kbd" id="kbdHelp">Keyboard: 1–4 to answer, Enter for next</div>
+    </div>
+  </section>
+
+  <!-- RESULTS -->
+  <section id="results" class="hidden">
+    <div class="card">
+      <p class="big" id="finalPct"></p>
+      <p id="finalLine" style="margin:4px 0 0;color:var(--muted)"></p>
+    </div>
+    <div class="card">
+      <strong>By module</strong>
+      <table id="moduleTable"></table>
+    </div>
+    <div class="card" id="missedCard">
+      <strong id="missedTitle"></strong>
+      <div id="missedList"></div>
+    </div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap">
+      <button id="retryMissedBtn">Retry missed questions</button>
+      <button class="secondary" id="newQuizBtn">New quiz</button>
+    </div>
+  </section>
+</div>
+
+<script>
+/* =====================================================================
+   QUESTION BANK
+   Each question: { m: module number, q: prompt, o: [options], a: index of
+   correct option (0-based), e: explanation, h: optional hint }
+   To grow the bank, add more objects to this array. The module menu and
+   question counts update automatically.
+   ===================================================================== */
+const MODULE_NAMES = {
+  0: "General Networking",
+  4: "Module 4 – Physical Layer",
+  5: "Module 5 – Number Systems",
+  6: "Module 6 – Data Link Layer",
+  7: "Module 7 – Ethernet Switching",
+  8: "Module 8 – Network Layer",
+  9: "Module 9 – Address Resolution",
+  10: "Module 10 – Basic Router Configuration"
+};
+
+const BANK = [
+{
+"m": 4,
+"q": "What does the physical layer actually send across the network media?",
+"o": [
+"Packets",
+"Segments",
+"Frames",
+"Bits"
+],
+"a": 3,
+"e": "The physical layer turns the frame into bits (signals): electrical, light or radio waves."
+},
+{
+"m": 4,
+"q": "Which OSI layer encodes bits and turns them into signals on the media?",
+"o": [
+"Data link",
+"Physical",
+"Transport",
+"Network"
+],
+"a": 1,
+"e": "Layer 1 handles encoding and signalling."
+},
+{
+"m": 4,
+"q": "Converting a stream of data bits into a predefined 'code' that the receiver recognizes is called...",
+"o": [
+"Attenuation",
+"Encapsulation",
+"Encoding",
+"Signaling"
+],
+"a": 2,
+"e": "Encoding = turning bits into a recognizable pattern. Signaling = how that pattern is represented on the media."
+},
+{
+"m": 4,
+"q": "The method of representing 1s and 0s on the media (voltage, light pulses or radio waves) is called...",
+"o": [
+"Addressing",
+"Encoding",
+"Framing",
+"Signaling"
+],
+"a": 3,
+"e": "Signaling = how bits are physically represented on the wire, fibre or air."
+},
+{
+"m": 4,
+"q": "Which three forms can physical layer signals take?",
+"o": [
+"Electrical, light and radio waves",
+"Analog, digital and hex",
+"Bits, bytes and frames",
+"Unicast, multicast and broadcast"
+],
+"a": 0,
+"e": "Copper = electrical pulses, fibre = light pulses, wireless = radio waves."
+},
+{
+"m": 4,
+"q": "Bandwidth is measured in...",
+"o": [
+"Bits per second",
+"Milliseconds",
+"Hertz only",
+"Bytes per minute"
+],
+"a": 0,
+"e": "Bandwidth = capacity, measured in bits per second (kbps, Mbps, Gbps)."
+},
+{
+"m": 4,
+"q": "Which term describes the time it takes data to travel from one point to another, including delays?",
+"o": [
+"Latency",
+"Bandwidth",
+"Throughput",
+"Goodput"
+],
+"a": 0,
+"e": "Latency is a time (delay). The other three are amounts of data per second."
+},
+{
+"m": 4,
+"q": "Which term describes the ACTUAL measured amount of data transferred over a period of time?",
+"o": [
+"Bandwidth",
+"Latency",
+"Throughput",
+"Attenuation"
+],
+"a": 2,
+"e": "Bandwidth = the theoretical capacity. Throughput = what you actually get."
+},
+{
+"m": 4,
+"q": "Which term describes the amount of usable data transferred, not counting overhead?",
+"o": [
+"Bandwidth",
+"Throughput",
+"Goodput",
+"Latency"
+],
+"a": 2,
+"e": "Goodput = throughput minus overhead."
+},
+{
+"m": 4,
+"q": "Why is throughput usually lower than bandwidth?",
+"o": [
+"Throughput only counts wireless traffic",
+"Throughput includes overhead twice",
+"Traffic amount, traffic type and latency reduce it",
+"Bandwidth is measured in bytes"
+],
+"a": 2,
+"e": "Bandwidth is the theoretical maximum. Throughput is what you actually get."
+},
+{
+"m": 4,
+"q": "A link's throughput is 80 Mbps and the overhead is 10 Mbps. What is the goodput?",
+"o": [
+"80 Mbps",
+"70 Mbps",
+"90 Mbps",
+"10 Mbps"
+],
+"a": 1,
+"e": "Goodput = throughput − overhead = 80 − 10 = 70 Mbps."
+},
+{
+"m": 4,
+"q": "A signal gets weaker the farther it travels down a copper cable. What is this called?",
+"o": [
+"Crosstalk",
+"EMI",
+"Attenuation",
+"Cancellation"
+],
+"a": 2,
+"e": "Attenuation = signal loss over distance. That's why UTP is limited to 100 m."
+},
+{
+"m": 4,
+"q": "How do you reduce attenuation in copper cabling?",
+"o": [
+"Limit the cable length",
+"Twist the pairs",
+"Use crossover cables",
+"Add shielding"
+],
+"a": 0,
+"e": "Attenuation = fading over distance, so keep runs short."
+},
+{
+"m": 4,
+"q": "What is crosstalk?",
+"o": [
+"A signal from one wire interfering with a neighbouring wire",
+"Light spreading out in fibre",
+"A signal weakening over distance",
+"Two devices sending at the same time"
+],
+"a": 0,
+"e": "Crosstalk = wires 'talking across' to each other. Twisting fixes it."
+},
+{
+"m": 4,
+"q": "Twisting the wire pairs in UTP mainly helps reduce which problem?",
+"o": [
+"Crosstalk",
+"Attenuation",
+"Latency",
+"Dispersion"
+],
+"a": 0,
+"e": "Twist = crosstalk, shield = EMI/RFI, limit length = attenuation."
+},
+{
+"m": 4,
+"q": "What is cancellation in UTP cabling?",
+"o": [
+"The switch cancels bad frames",
+"Foil shielding blocks outside interference",
+"Paired wires carry opposite currents, so their magnetic fields cancel out",
+"Signals weaken over distance"
+],
+"a": 2,
+"e": "Twisting the pairs creates cancellation, which reduces crosstalk and EMI."
+},
+{
+"m": 4,
+"q": "The foil shielding in STP cable mainly protects against...",
+"o": [
+"EMI and RFI",
+"Dispersion",
+"Latency",
+"Attenuation"
+],
+"a": 0,
+"e": "Shield = EMI/RFI. Twist = crosstalk. Limit length = attenuation."
+},
+{
+"m": 4,
+"q": "A copper cable must run through a factory with heavy electrical interference. Which cable is the best choice?",
+"o": [
+"STP",
+"Crossover UTP",
+"UTP",
+"Rollover"
+],
+"a": 0,
+"e": "STP's foil shielding protects against EMI and RFI."
+},
+{
+"m": 4,
+"q": "Which copper cable has no shielding and relies only on twisting (cancellation) to limit interference?",
+"o": [
+"UTP",
+"STP",
+"Coaxial",
+"Fibre"
+],
+"a": 0,
+"e": "UTP = Unshielded Twisted Pair."
+},
+{
+"m": 4,
+"q": "What is the maximum recommended length of a UTP Ethernet cable run?",
+"o": [
+"50 m",
+"2 km",
+"100 m",
+"550 m"
+],
+"a": 2,
+"e": "100 m because of attenuation. 550 m is multimode fibre."
+},
+{
+"m": 4,
+"q": "Which connector is used on the ends of UTP Ethernet cables?",
+"o": [
+"BNC",
+"ST",
+"RJ-45",
+"LC"
+],
+"a": 2,
+"e": "UTP uses RJ-45. LC and ST are fibre connectors."
+},
+{
+"m": 4,
+"q": "Which organization's standards define the T568A and T568B wiring schemes?",
+"o": [
+"TIA/EIA",
+"ISO",
+"IEEE",
+"IETF"
+],
+"a": 0,
+"e": "TIA/EIA-568 defines the wiring."
+},
+{
+"m": 4,
+"q": "Which organization rates UTP cables into categories (Cat 5e, Cat 6...) based on performance?",
+"o": [
+"TIA/EIA",
+"IEEE",
+"IETF",
+"ICANN"
+],
+"a": 1,
+"e": "IEEE rates UTP by performance. TIA/EIA-568 defines the wiring and pinouts."
+},
+{
+"m": 4,
+"q": "Which cable has a copper core surrounded by insulation and a braided metal shield?",
+"o": [
+"Coaxial",
+"UTP",
+"Fibre",
+"Rollover"
+],
+"a": 0,
+"e": "Coax = one centre conductor with a braided shield."
+},
+{
+"m": 4,
+"q": "Coaxial cable is commonly used for...",
+"o": [
+"Connecting two switches",
+"Cable TV / cable internet and wireless antennas",
+"Connecting PCs to switches in a LAN",
+"Console connections"
+],
+"a": 1,
+"e": "Coax is used for cable internet and TV and for connecting antennas."
+},
+{
+"m": 4,
+"q": "Which cable is normally used to connect a PC to a switch?",
+"o": [
+"Crossover",
+"Straight-through",
+"Coaxial",
+"Rollover"
+],
+"a": 1,
+"e": "Unlike devices (PC to switch) = straight-through. Like devices = crossover."
+},
+{
+"m": 4,
+"q": "Which cable is normally used to connect a switch to a router?",
+"o": [
+"Rollover",
+"Straight-through",
+"Coaxial",
+"Crossover"
+],
+"a": 1,
+"e": "Switch and router are unlike devices, so straight-through."
+},
+{
+"m": 4,
+"q": "Two older switches without Auto-MDIX need to be connected. Which cable is required?",
+"o": [
+"Coaxial",
+"Rollover",
+"Straight-through",
+"Crossover"
+],
+"a": 3,
+"e": "Like devices (switch to switch, PC to PC, router to router) need a crossover cable."
+},
+{
+"m": 4,
+"q": "A crossover cable has...",
+"o": [
+"Pins completely reversed (1 to 8)",
+"T568A on both ends",
+"T568B on both ends",
+"T568A on one end and T568B on the other"
+],
+"a": 3,
+"e": "Crossover = different ends. Straight-through = same ends. Fully reversed = rollover."
+},
+{
+"m": 4,
+"q": "Which cable connects a PC to the console port of a switch or router?",
+"o": [
+"Straight-through",
+"Crossover",
+"Coaxial",
+"Rollover (console)"
+],
+"a": 3,
+"e": "A rollover (console) cable is Cisco-specific."
+},
+{
+"m": 4,
+"q": "What does Auto-MDIX do?",
+"o": [
+"Sets the port to full duplex",
+"Detects the cable type and adjusts so straight-through or crossover both work",
+"Encrypts traffic on the port",
+"Assigns an IP address"
+],
+"a": 1,
+"e": "MDIX = the 'mix-up fix' for cables. Enabled with mdix auto."
+},
+{
+"m": 4,
+"q": "What is a key advantage of fibre over copper?",
+"o": [
+"It's cheaper",
+"It's easier to terminate",
+"It carries electricity for PoE",
+"It's immune to EMI and RFI"
+],
+"a": 3,
+"e": "Fibre uses light, not electricity. It also goes much farther."
+},
+{
+"m": 4,
+"q": "Which type of fibre uses a laser light source and is used for long distances?",
+"o": [
+"Plastic optical",
+"Coaxial",
+"Single-mode",
+"Multimode"
+],
+"a": 2,
+"e": "Single-mode = one path of laser light, low dispersion, yellow jacket."
+},
+{
+"m": 4,
+"q": "Which is true of multimode fibre?",
+"o": [
+"It's used for hundreds of kilometres",
+"It uses a laser and has a yellow jacket",
+"It has the smallest core",
+"It uses LEDs, has a larger core and more dispersion"
+],
+"a": 3,
+"e": "Multimode = LED, bigger core, many light paths, up to about 550 m, orange or aqua jacket."
+},
+{
+"m": 4,
+"q": "Roughly how far can multimode fibre carry data?",
+"o": [
+"Hundreds of kilometres",
+"Up to 100 m",
+"Only 10 m",
+"Up to about 550 m"
+],
+"a": 3,
+"e": "Multimode ≈ 550 m. Single-mode goes much farther. UTP is 100 m."
+},
+{
+"m": 4,
+"q": "What colour jacket does single-mode fibre usually have?",
+"o": [
+"Blue",
+"Aqua",
+"Yellow",
+"Orange"
+],
+"a": 2,
+"e": "Single-mode = yellow. Multimode = orange or aqua."
+},
+{
+"m": 4,
+"q": "In fibre optics, what is dispersion?",
+"o": [
+"Light reflecting back to the sender",
+"The spreading out of a light pulse as it travels",
+"Interference from nearby motors",
+"Signal loss caused by twisting"
+],
+"a": 1,
+"e": "More light paths = more dispersion, which is why multimode is limited in distance."
+},
+{
+"m": 4,
+"q": "Which is a common use of fibre-optic cabling?",
+"o": [
+"Short patch cables to phones",
+"Undersea (submarine) and long-haul links",
+"Console connections",
+"Connecting a mouse"
+],
+"a": 1,
+"e": "Fibre is used for enterprise backbones, FTTH, long-haul and submarine links."
+},
+{
+"m": 4,
+"q": "Which fibre connector uses a bayonet, twist-lock style?",
+"o": [
+"LC",
+"RJ-45",
+"ST",
+"SC"
+],
+"a": 2,
+"e": "ST = Stick and Twist. SC = Stick and Click. LC = small and popular."
+},
+{
+"m": 4,
+"q": "Which fibre connector is square and uses a push-pull 'click' design?",
+"o": [
+"ST",
+"LC",
+"SC",
+"BNC"
+],
+"a": 2,
+"e": "SC = Stick and Click (square)."
+},
+{
+"m": 4,
+"q": "Which fibre connector is small, uses a push-pull design, and is very popular?",
+"o": [
+"SC",
+"LC",
+"ST",
+"RJ-45"
+],
+"a": 1,
+"e": "LC (Lucent Connector) = the small, popular one."
+},
+{
+"m": 4,
+"q": "Wi-Fi is defined by which IEEE standard?",
+"o": [
+"802.16",
+"802.3",
+"802.15",
+"802.11"
+],
+"a": 3,
+"e": "802.11 Wi-Fi, 802.15 Bluetooth, 802.16 WiMAX, 802.15.4 Zigbee."
+},
+{
+"m": 4,
+"q": "Bluetooth is defined by which IEEE standard?",
+"o": [
+"802.16",
+"802.3",
+"802.15",
+"802.11"
+],
+"a": 2,
+"e": "802.15 = Bluetooth, a WPAN for short-range devices."
+},
+{
+"m": 4,
+"q": "Which wireless standard provides broadband access over a metropolitan area?",
+"o": [
+"802.15 Bluetooth",
+"802.11 Wi-Fi",
+"802.15.4 Zigbee",
+"802.16 WiMAX"
+],
+"a": 3,
+"e": "WiMAX = MAX range, biggest number, a whole city."
+},
+{
+"m": 4,
+"q": "Which wireless standard is designed for low power, low data rate IoT devices?",
+"o": [
+"802.15.4 (Zigbee)",
+"802.11",
+"802.16",
+"802.3"
+],
+"a": 0,
+"e": "Zigbee = the 'tiny bee': low power, smart home sensors."
+},
+{
+"m": 4,
+"q": "Which is a concern specific to wireless media?",
+"o": [
+"Anyone within range can receive the signal, so security is harder",
+"It's limited to 100 m by attenuation of copper",
+"It needs crossover cables",
+"It can't carry IP traffic"
+],
+"a": 0,
+"e": "Wireless concerns: coverage area, interference, security and a shared medium."
+},
+{
+"m": 5,
+"q": "How many bits are in an IPv4 address, and how is it divided?",
+"o": [
+"128 bits, in 8 groups",
+"32 bits, in 4 octets",
+"48 bits, in 6 octets",
+"32 bits, in 8 octets"
+],
+"a": 1,
+"e": "IPv4 = 32 bits = 4 octets of 8 bits, written in dotted decimal."
+},
+{
+"m": 5,
+"q": "How many bits are in one octet?",
+"o": [
+"8",
+"16",
+"32",
+"4"
+],
+"a": 0,
+"e": "Octet = 8 bits. Each octet is 0–255."
+},
+{
+"m": 5,
+"q": "What is the largest decimal value one octet can hold?",
+"o": [
+"255",
+"128",
+"256",
+"127"
+],
+"a": 0,
+"e": "11111111 = 128+64+32+16+8+4+2+1 = 255."
+},
+{
+"m": 5,
+"q": "How many different values can one octet represent?",
+"o": [
+"255",
+"128",
+"512",
+"256"
+],
+"a": 3,
+"e": "0 through 255 = 256 values."
+},
+{
+"m": 5,
+"q": "What is the position value of the leftmost bit in an octet?",
+"o": [
+"256",
+"128",
+"64",
+"1"
+],
+"a": 1,
+"e": "128 64 32 16 8 4 2 1."
+},
+{
+"m": 5,
+"q": "Binary is a base-__ number system.",
+"o": [
+"2",
+"10",
+"16",
+"8"
+],
+"a": 0,
+"e": "Binary = base 2 (0 and 1). Decimal = base 10. Hex = base 16."
+},
+{
+"m": 5,
+"q": "Hexadecimal is a base-__ number system.",
+"o": [
+"2",
+"10",
+"8",
+"16"
+],
+"a": 3,
+"e": "Hex uses 0–9 and A–F (16 symbols)."
+},
+{
+"m": 5,
+"q": "How many bits does one hexadecimal digit represent?",
+"o": [
+"4",
+"16",
+"8",
+"2"
+],
+"a": 0,
+"e": "One hex digit = 4 bits (a nibble), so one octet = 2 hex digits."
+},
+{
+"m": 5,
+"q": "Which of these is a valid hexadecimal digit?",
+"o": [
+"H",
+"F",
+"G",
+"Z"
+],
+"a": 1,
+"e": "Hex digits are 0–9 and A–F."
+},
+{
+"m": 5,
+"q": "What does the 0x in 0x3C tell you?",
+"o": [
+"The number is binary",
+"The number is an IP address",
+"The number is negative",
+"The number is written in hexadecimal"
+],
+"a": 3,
+"e": "Hex can be shown as 0x3C, 3CH or 3C with a subscript 16."
+},
+{
+"m": 5,
+"q": "Which two kinds of addresses are normally written in hexadecimal?",
+"o": [
+"MAC addresses and IPv6 addresses",
+"IPv4 addresses and subnet masks",
+"Only IPv4 addresses",
+"Port numbers and VLANs"
+],
+"a": 0,
+"e": "MAC (48 bits = 12 hex digits) and IPv6 (128 bits) use hex."
+},
+{
+"m": 5,
+"q": "When converting decimal to binary with the subtraction method, what must you check at EVERY position?",
+"o": [
+"Whether the number is even",
+"Whether the octet is above 128",
+"Whether the bit to the left was a 1",
+"Whether the leftover is equal to or bigger than that position value"
+],
+"a": 3,
+"e": "If it fits, write 1 and subtract. If not, write 0. Never put a 1 without checking."
+},
+{
+"m": 5,
+"q": "Convert 11111111 to decimal.",
+"o": [
+"256",
+"255",
+"254",
+"127"
+],
+"a": 1,
+"e": "All 8 bits on = 255.",
+"h": "128 64 32 16 8 4 2 1",
+"k": "dec",
+"ans": "255"
+},
+{
+"m": 5,
+"q": "Convert 01111111 to decimal.",
+"o": [
+"255",
+"127",
+"126",
+"128"
+],
+"a": 1,
+"e": "64+32+16+8+4+2+1 = 127 (that's 128 − 1).",
+"h": "128 64 32 16 8 4 2 1",
+"k": "dec",
+"ans": "127"
+},
+{
+"m": 5,
+"q": "Convert 10110110 to decimal.",
+"o": [
+"186",
+"182",
+"214",
+"178"
+],
+"a": 1,
+"e": "128 + 32 + 16 + 4 + 2 = 182.",
+"h": "128 64 32 16 8 4 2 1",
+"k": "dec",
+"ans": "182"
+},
+{
+"m": 5,
+"q": "Convert 11101001 to decimal.",
+"o": [
+"225",
+"233",
+"217",
+"235"
+],
+"a": 1,
+"e": "128 + 64 + 32 + 8 + 1 = 233.",
+"h": "128 64 32 16 8 4 2 1",
+"k": "dec",
+"ans": "233"
+},
+{
+"m": 5,
+"q": "Convert 11001010 to decimal.",
+"o": [
+"210",
+"198",
+"206",
+"202"
+],
+"a": 3,
+"e": "128 + 64 + 8 + 2 = 202.",
+"h": "128 64 32 16 8 4 2 1",
+"k": "dec",
+"ans": "202"
+},
+{
+"m": 5,
+"q": "Convert 213 to binary.",
+"o": [
+"10110101",
+"11010011",
+"11010101",
+"11100101"
+],
+"a": 2,
+"e": "213−128=85, −64=21, 32 no, −16=5, 8 no, −4=1, 2 no, −1=0 → 11010101.",
+"h": "Check every column. Does the leftover fit?",
+"k": "bin",
+"ans": "11010101"
+},
+{
+"m": 5,
+"q": "Convert 172 to binary.",
+"o": [
+"10110100",
+"11001100",
+"10101010",
+"10101100"
+],
+"a": 3,
+"e": "172−128=44, 64 no, −32=12, 16 no, −8=4, −4=0 → 10101100.",
+"h": "Check every column. Does the leftover fit?",
+"k": "bin",
+"ans": "10101100"
+},
+{
+"m": 5,
+"q": "Convert 168 to binary.",
+"o": [
+"10101100",
+"10110000",
+"10011000",
+"10101000"
+],
+"a": 3,
+"e": "168−128=40, 64 no, −32=8, 16 no, −8=0 → 10101000. (A classic mistake is 10110000.)",
+"h": "Check every column. Does the leftover fit?",
+"k": "bin",
+"ans": "10101000"
+},
+{
+"m": 5,
+"q": "Convert 175 to binary.",
+"o": [
+"10101101",
+"10101111",
+"11001111",
+"10110111"
+],
+"a": 1,
+"e": "175−128=47, 64 no, −32=15, 16 no, −8=7, −4=3, −2=1, −1=0 → 10101111.",
+"h": "Check every column. Does the leftover fit?",
+"k": "bin",
+"ans": "10101111"
+},
+{
+"m": 5,
+"q": "Convert 0xA7 to decimal.",
+"o": [
+"167",
+"157",
+"107",
+"177"
+],
+"a": 0,
+"e": "A = 10. 10 × 16 = 160, plus 7 = 167.",
+"k": "dec",
+"ans": "167"
+},
+{
+"m": 5,
+"q": "Convert 0xB4 to decimal.",
+"o": [
+"184",
+"176",
+"164",
+"180"
+],
+"a": 3,
+"e": "B = 11. 11 × 16 = 176, plus 4 = 180.",
+"k": "dec",
+"ans": "180"
+},
+{
+"m": 5,
+"q": "Convert 0x3C to decimal.",
+"o": [
+"63",
+"60",
+"36",
+"54"
+],
+"a": 1,
+"e": "3 × 16 = 48, plus C (12) = 60.",
+"k": "dec",
+"ans": "60"
+},
+{
+"m": 5,
+"q": "Convert 200 to hexadecimal.",
+"o": [
+"D0",
+"B8",
+"C4",
+"C8"
+],
+"a": 3,
+"e": "200 ÷ 16 = 12 r 8 → C8. Check: 12 × 16 = 192 + 8 = 200.",
+"k": "hex",
+"ans": "C8"
+},
+{
+"m": 5,
+"q": "Convert 94 to hexadecimal.",
+"o": [
+"4E",
+"E5",
+"5D",
+"5E"
+],
+"a": 3,
+"e": "94 ÷ 16 = 5 r 14 → 5E.",
+"k": "hex",
+"ans": "5E"
+},
+{
+"m": 5,
+"q": "Convert 00111001 to hexadecimal.",
+"o": [
+"39",
+"57",
+"93",
+"3A"
+],
+"a": 0,
+"e": "Split into nibbles: 0011 = 3, 1001 = 9 → 39.",
+"k": "hex",
+"ans": "39"
+},
+{
+"m": 5,
+"q": "Convert 0x9B to binary.",
+"o": [
+"10011011",
+"10011101",
+"11011001",
+"10111001"
+],
+"a": 0,
+"e": "9 = 1001, B (11) = 1011 → 10011011.",
+"k": "bin",
+"ans": "10011011"
+},
+{
+"m": 5,
+"q": "What is 11000000.10101000.00000001.01100100 in dotted decimal?",
+"o": [
+"192.168.1.104",
+"192.168.1.100",
+"192.168.2.100",
+"192.160.1.100"
+],
+"a": 1,
+"e": "192 . 168 . 1 . (64+32+4 = 100).",
+"k": "ip",
+"ans": "192.168.1.100"
+},
+{
+"m": 6,
+"q": "What is the PDU called at the data link layer?",
+"o": [
+"Segment",
+"Frame",
+"Bits",
+"Packet"
+],
+"a": 1,
+"e": "Segment (L4) → packet (L3) → frame (L2) → bits (L1)."
+},
+{
+"m": 6,
+"q": "Which is a main job of the data link layer?",
+"o": [
+"Choosing the best path between networks",
+"Converting bits into light pulses",
+"Encapsulating layer 3 packets into frames and controlling access to the media",
+"Providing reliable end-to-end delivery"
+],
+"a": 2,
+"e": "Layer 2 frames the packet and controls how it gets onto the media."
+},
+{
+"m": 6,
+"q": "In networking, what is a node?",
+"o": [
+"Only a cable junction",
+"Only a router",
+"Any device on the network that can send, receive or forward data",
+"A type of IP address"
+],
+"a": 2,
+"e": "PCs, switches, routers and printers are all nodes."
+},
+{
+"m": 6,
+"q": "Which data link sublayer identifies the network layer protocol carried in the frame?",
+"o": [
+"MAC",
+"LLC",
+"Transport",
+"PHY"
+],
+"a": 1,
+"e": "LLC talks UP to the software and says 'this is IPv4' or 'this is IPv6'."
+},
+{
+"m": 6,
+"q": "Which IEEE standard defines the LLC sublayer?",
+"o": [
+"802.11",
+"802.2",
+"802.3",
+"802.15"
+],
+"a": 1,
+"e": "LLC = 802.2. Ethernet MAC = 802.3. Wi-Fi = 802.11."
+},
+{
+"m": 6,
+"q": "Which data link sublayer adds the source and destination MAC addresses?",
+"o": [
+"Network",
+"MAC",
+"LLC",
+"Physical"
+],
+"a": 1,
+"e": "MAC handles addressing and media access."
+},
+{
+"m": 6,
+"q": "Which data link sublayer is implemented in hardware, such as the NIC?",
+"o": [
+"Transport",
+"Session",
+"LLC",
+"MAC"
+],
+"a": 3,
+"e": "MAC talks DOWN to the hardware. LLC talks UP to the software."
+},
+{
+"m": 6,
+"q": "Which data link sublayer decides when a device is allowed to transmit on the media?",
+"o": [
+"Network",
+"Transport",
+"LLC",
+"MAC"
+],
+"a": 3,
+"e": "MAC = Media ACCESS Control."
+},
+{
+"m": 6,
+"q": "Which IEEE standard defines the Ethernet MAC sublayer?",
+"o": [
+"802.3",
+"802.2",
+"802.11",
+"802.16"
+],
+"a": 0,
+"e": "Ethernet = 802.3."
+},
+{
+"m": 6,
+"q": "Which organization defines most LAN data link standards (the 802.x family)?",
+"o": [
+"ICANN",
+"IEEE",
+"TIA/EIA",
+"IETF"
+],
+"a": 1,
+"e": "IEEE 802 standards cover Ethernet, Wi-Fi, LLC and more."
+},
+{
+"m": 6,
+"q": "A router accepts a frame from the media. What does it do next?",
+"o": [
+"Adds a new IP header",
+"Forwards the frame unchanged",
+"Floods the frame out all ports",
+"De-encapsulates the frame to get the packet"
+],
+"a": 3,
+"e": "Accept → de-encapsulate → re-encapsulate → forward."
+},
+{
+"m": 6,
+"q": "After a router de-encapsulates a frame, what does it do with the packet?",
+"o": [
+"Re-encapsulates it in a new frame suited to the outgoing interface",
+"Sends it back to the source",
+"Floods it out all interfaces",
+"Changes the destination IP address"
+],
+"a": 0,
+"e": "A new frame is built for the exit media."
+},
+{
+"m": 6,
+"q": "Which of these is NOT something a router does with a frame at layer 2?",
+"o": [
+"Re-encapsulates the packet into a new frame",
+"Changes the destination IP address",
+"De-encapsulates the frame",
+"Accepts the frame"
+],
+"a": 1,
+"e": "The IP addresses stay the same. Only the frame is rebuilt."
+},
+{
+"m": 6,
+"q": "Which device de-encapsulates and re-encapsulates frames as it forwards packets between different networks?",
+"o": [
+"Hub",
+"Layer 2 switch",
+"Router",
+"Access point"
+],
+"a": 2,
+"e": "Routers build a new frame for each outgoing link."
+},
+{
+"m": 6,
+"q": "Which two things determine the media access control method a network uses?",
+"o": [
+"Cable colour and length",
+"The OS and the applications",
+"IP addressing and the subnet mask",
+"Media sharing and topology"
+],
+"a": 3,
+"e": "How the media is shared and the topology decide the access method."
+},
+{
+"m": 6,
+"q": "Which type of topology shows the actual cables and where devices are located?",
+"o": [
+"Logical topology",
+"Routed topology",
+"Virtual topology",
+"Physical topology"
+],
+"a": 3,
+"e": "Physical = cables and locations. Logical = how data flows."
+},
+{
+"m": 6,
+"q": "Which type of topology shows how frames actually travel between devices?",
+"o": [
+"Cable topology",
+"Site topology",
+"Physical topology",
+"Logical topology"
+],
+"a": 3,
+"e": "Logical = the paths data takes."
+},
+{
+"m": 6,
+"q": "Which WAN topology is a permanent link between exactly two endpoints?",
+"o": [
+"Partial mesh",
+"Point-to-point",
+"Hub and spoke",
+"Full mesh"
+],
+"a": 1,
+"e": "Point-to-point = one link, two ends."
+},
+{
+"m": 6,
+"q": "In which WAN topology do branch sites connect through one central site?",
+"o": [
+"Point-to-point",
+"Hub and spoke",
+"Ring",
+"Full mesh"
+],
+"a": 1,
+"e": "The hub connects to all the spokes."
+},
+{
+"m": 6,
+"q": "Which WAN topology has a single point of failure at the central site?",
+"o": [
+"Hub and spoke",
+"Point-to-point",
+"Full mesh",
+"Partial mesh"
+],
+"a": 0,
+"e": "If the hub fails, the spokes can't reach each other."
+},
+{
+"m": 6,
+"q": "Which WAN topology connects every site directly to every other site, giving the most redundancy?",
+"o": [
+"Point-to-point",
+"Full mesh",
+"Extended star",
+"Hub and spoke"
+],
+"a": 1,
+"e": "Most redundant and most expensive."
+},
+{
+"m": 6,
+"q": "In which WAN topology are some, but not all, sites directly connected to each other?",
+"o": [
+"Point-to-point",
+"Partial mesh",
+"Hub and spoke",
+"Full mesh"
+],
+"a": 1,
+"e": "Partial = some links."
+},
+{
+"m": 6,
+"q": "Which LAN topology is most common in modern networks?",
+"o": [
+"Full mesh",
+"Bus",
+"Ring",
+"Star / extended star"
+],
+"a": 3,
+"e": "End devices connect to switches. Bus and ring are legacy."
+},
+{
+"m": 6,
+"q": "What is an extended star topology?",
+"o": [
+"A bus with a backup cable",
+"Several star networks whose central switches are connected together",
+"A WAN with one hub",
+"A ring with extra devices"
+],
+"a": 1,
+"e": "Star = one central switch. Extended star = multiple switches linked."
+},
+{
+"m": 6,
+"q": "In which legacy LAN topology are all devices connected to one shared cable?",
+"o": [
+"Star",
+"Ring",
+"Bus",
+"Extended star"
+],
+"a": 2,
+"e": "Bus = one cable, everyone on the same line."
+},
+{
+"m": 6,
+"q": "Which legacy LAN topology connects devices in a circle and uses token passing?",
+"o": [
+"Ring",
+"Hub and spoke",
+"Star",
+"Bus"
+],
+"a": 0,
+"e": "Token Ring passes a token around the ring."
+},
+{
+"m": 6,
+"q": "What does half duplex mean?",
+"o": [
+"Devices can send and receive at the same time",
+"Devices can send or receive, but not both at once",
+"Only one device is on the network",
+"Only half the bandwidth is used"
+],
+"a": 1,
+"e": "Half duplex = walkie-talkie. Full duplex = phone call."
+},
+{
+"m": 6,
+"q": "In full-duplex communication...",
+"o": [
+"CSMA/CD is required",
+"Both devices can send and receive at the same time",
+"A token is passed",
+"Only one device can send at a time"
+],
+"a": 1,
+"e": "Full = phone call."
+},
+{
+"m": 6,
+"q": "Which situation needs a contention-based or controlled access method?",
+"o": [
+"Full duplex point-to-point",
+"Full duplex switched Ethernet",
+"Half duplex shared media",
+"Fibre between two routers"
+],
+"a": 2,
+"e": "Sharing the media and taking turns needs rules."
+},
+{
+"m": 6,
+"q": "On a full-duplex point-to-point link, how much media access control is needed?",
+"o": [
+"CSMA/CA is required",
+"CSMA/CD is required",
+"Very little or none, because there's no competition for the media",
+"Token passing is required"
+],
+"a": 2,
+"e": "Nothing to arbitrate when both can send at once."
+},
+{
+"m": 6,
+"q": "Which is a controlled-access (non-contention) method?",
+"o": [
+"Token passing (Token Ring)",
+"CSMA/CA",
+"Full duplex",
+"CSMA/CD"
+],
+"a": 0,
+"e": "Token = Turn. CSMA/CD and CSMA/CA are contention-based."
+},
+{
+"m": 6,
+"q": "Which method is used on legacy wired Ethernet hubs to detect collisions?",
+"o": [
+"CSMA/CD",
+"Token passing",
+"CSMA/CA",
+"Auto-MDIX"
+],
+"a": 0,
+"e": "CD = wired, Detect. CA = Air, Avoid."
+},
+{
+"m": 6,
+"q": "With CSMA/CD, what happens after a collision is detected?",
+"o": [
+"The switch drops all frames permanently",
+"The devices stop, wait a random backoff time, then try again",
+"A token is issued",
+"The devices switch to full duplex"
+],
+"a": 1,
+"e": "Detect the collision, back off randomly, retransmit."
+},
+{
+"m": 6,
+"q": "Which media access method does 802.11 wireless use?",
+"o": [
+"Token passing",
+"CSMA/CA",
+"Full-duplex only",
+"CSMA/CD"
+],
+"a": 1,
+"e": "CA = Collision Avoidance, in the Air."
+},
+{
+"m": 6,
+"q": "Which is true about CSMA/CA?",
+"o": [
+"It uses a token",
+"It's used on Gigabit Ethernet",
+"It detects collisions on a wired hub",
+"The receiver sends an acknowledgement to confirm the frame arrived"
+],
+"a": 3,
+"e": "Wireless can't detect collisions, so it avoids them and ACKs each frame."
+},
+{
+"m": 6,
+"q": "Which fields are found in a generic data link frame HEADER?",
+"o": [
+"Error detection and frame stop",
+"Frame start, addressing, type and control",
+"Source and destination IP",
+"TTL and Protocol"
+],
+"a": 1,
+"e": "Header = start, addressing, type, control. Trailer = error detection, stop."
+},
+{
+"m": 6,
+"q": "What does the frame trailer contain?",
+"o": [
+"The IP packet",
+"Error detection (FCS) and frame stop",
+"Frame start and QoS",
+"Addressing and type"
+],
+"a": 1,
+"e": "The tail checks for errors and stops."
+},
+{
+"m": 6,
+"q": "In a generic frame header, what does the Type field identify?",
+"o": [
+"The layer 3 protocol in the data field",
+"The error check value",
+"The cable type",
+"The frame's size"
+],
+"a": 0,
+"e": "Type says IPv4, IPv6, etc."
+},
+{
+"m": 6,
+"q": "In a generic frame header, what is the Control field used for?",
+"o": [
+"Holding the destination MAC",
+"Error checking",
+"Marking the end of the frame",
+"Special flow control services, such as QoS"
+],
+"a": 3,
+"e": "Control = special services like quality of service."
+},
+{
+"m": 6,
+"q": "Data link (layer 2) addresses are used to deliver frames...",
+"o": [
+"Only between routers",
+"Only across the internet",
+"From the source all the way to a destination on another network",
+"Between devices on the same local network (one hop)"
+],
+"a": 3,
+"e": "Layer 2 = hop to hop. Layer 3 = end to end."
+},
+{
+"m": 6,
+"q": "Layer 3 (IP) addresses are used to deliver packets...",
+"o": [
+"Only on wireless links",
+"From the original source to the final destination, even across networks",
+"Only on the local network",
+"Only between switches"
+],
+"a": 1,
+"e": "Layer 3 = end to end."
+},
+{
+"m": 7,
+"q": "Ethernet operates at which OSI layers?",
+"o": [
+"Physical only",
+"Network and transport",
+"Network and data link",
+"Data link and physical"
+],
+"a": 3,
+"e": "Ethernet covers layer 2 (LLC + MAC) and layer 1."
+},
+{
+"m": 7,
+"q": "Which Ethernet sublayer communicates with the upper layers (software)?",
+"o": [
+"MAC",
+"Physical",
+"LLC",
+"FCS"
+],
+"a": 2,
+"e": "LLC = up to software. MAC = down to hardware."
+},
+{
+"m": 7,
+"q": "Which Ethernet sublayer handles frame delimiting, addressing and error detection?",
+"o": [
+"Network",
+"MAC",
+"Physical",
+"LLC"
+],
+"a": 1,
+"e": "MAC does data encapsulation and media access control."
+},
+{
+"m": 7,
+"q": "What is the purpose of the Preamble and SFD?",
+"o": [
+"Synchronizing the sender and receiver",
+"Holding the destination MAC address",
+"Error checking",
+"Padding small frames"
+],
+"a": 0,
+"e": "A heads-up that a frame is coming."
+},
+{
+"m": 7,
+"q": "How many bytes are the Preamble and SFD together?",
+"o": [
+"2",
+"8",
+"4",
+"6"
+],
+"a": 1,
+"e": "Preamble 7 + SFD 1 = 8."
+},
+{
+"m": 7,
+"q": "Which 6-byte Ethernet frame field identifies the intended recipient?",
+"o": [
+"Source MAC",
+"FCS",
+"Destination MAC",
+"EtherType"
+],
+"a": 2,
+"e": "8 – 6 – 6 – 2 – data – 4."
+},
+{
+"m": 7,
+"q": "In an Ethernet frame, which field comes directly after the Destination MAC?",
+"o": [
+"EtherType",
+"FCS",
+"Preamble",
+"Source MAC"
+],
+"a": 3,
+"e": "Please Don't Send The Data Fast: Preamble, Dest, Source, Type, Data, FCS."
+},
+{
+"m": 7,
+"q": "Which Ethernet frame field comes directly before the Data field?",
+"o": [
+"FCS",
+"Source MAC",
+"SFD",
+"EtherType"
+],
+"a": 3,
+"e": "The '2' is EtherType, which says what's in the data."
+},
+{
+"m": 7,
+"q": "Which Ethernet frame field identifies the upper-layer protocol?",
+"o": [
+"SFD",
+"FCS",
+"Preamble",
+"EtherType"
+],
+"a": 3,
+"e": "EtherType (2 bytes)."
+},
+{
+"m": 7,
+"q": "Which EtherType value indicates an IPv4 packet?",
+"o": [
+"0x806",
+"0x86DD",
+"0x800",
+"0xFFFF"
+],
+"a": 2,
+"e": "IPv4 = 0x800, IPv6 = 0x86DD, ARP = 0x806."
+},
+{
+"m": 7,
+"q": "Which EtherType value indicates an IPv6 packet?",
+"o": [
+"0x800",
+"0x86DD",
+"0x806",
+"0x33"
+],
+"a": 1,
+"e": "IPv6 = 0x86DD. IPv4 = 0x800."
+},
+{
+"m": 7,
+"q": "What is the allowed size of the Data field in an Ethernet frame?",
+"o": [
+"64–1518 bytes",
+"20–40 bytes",
+"0–1518 bytes",
+"46–1500 bytes"
+],
+"a": 3,
+"e": "Data = 46–1500. Whole frame = 64–1518."
+},
+{
+"m": 7,
+"q": "An Ethernet frame's data is only 30 bytes. What happens?",
+"o": [
+"Padding is added so the data field reaches 46 bytes",
+"The frame is sent as a runt",
+"The frame is dropped by the sender",
+"It's combined with another frame"
+],
+"a": 0,
+"e": "Padding brings the frame up to the 64-byte minimum."
+},
+{
+"m": 7,
+"q": "How big is the FCS field in an Ethernet frame?",
+"o": [
+"8 bytes",
+"2 bytes",
+"4 bytes",
+"6 bytes"
+],
+"a": 2,
+"e": "FCS = the last 4 bytes."
+},
+{
+"m": 7,
+"q": "What does the FCS use to detect errors?",
+"o": [
+"ARP",
+"TTL",
+"Hop Limit",
+"CRC (Cyclic Redundancy Check)"
+],
+"a": 3,
+"e": "The receiver recalculates the CRC. No match = drop."
+},
+{
+"m": 7,
+"q": "What is the minimum size of an Ethernet frame?",
+"o": [
+"46 bytes",
+"1518 bytes",
+"128 bytes",
+"64 bytes"
+],
+"a": 3,
+"e": "6+6+2+4 = 18, plus at least 46 data = 64."
+},
+{
+"m": 7,
+"q": "What is the maximum size of a standard Ethernet frame?",
+"o": [
+"1518 bytes",
+"64 bytes",
+"9000 bytes",
+"1500 bytes"
+],
+"a": 0,
+"e": "18 + 1500 data = 1518."
+},
+{
+"m": 7,
+"q": "What is an Ethernet frame smaller than 64 bytes called?",
+"o": [
+"Runt frame",
+"Baby giant",
+"Jumbo frame",
+"Giant frame"
+],
+"a": 0,
+"e": "Runt = too small (usually a collision fragment)."
+},
+{
+"m": 7,
+"q": "A switch receives a 1600-byte Ethernet frame. What is this frame called?",
+"o": [
+"Runt",
+"Multicast",
+"Jumbo / baby giant frame",
+"Fragment"
+],
+"a": 2,
+"e": "Over 1518 = jumbo."
+},
+{
+"m": 7,
+"q": "How many bits are in an Ethernet MAC address?",
+"o": [
+"48",
+"64",
+"128",
+"32"
+],
+"a": 0,
+"e": "MAC = 48 bits. IPv4 = 32, IPv6 = 128."
+},
+{
+"m": 7,
+"q": "How is a MAC address normally written?",
+"o": [
+"12 hexadecimal digits",
+"8 groups of 4 hex digits",
+"4 decimal octets",
+"32 binary digits"
+],
+"a": 0,
+"e": "48 bits ÷ 4 = 12 hex digits."
+},
+{
+"m": 7,
+"q": "What are the first 24 bits of a MAC address called?",
+"o": [
+"EtherType",
+"FCS",
+"OUI",
+"Vendor serial number"
+],
+"a": 2,
+"e": "OUI = Organizationally Unique Identifier (the manufacturer)."
+},
+{
+"m": 7,
+"q": "A MAC address is also known as a burned-in address (BIA) because...",
+"o": [
+"It's assigned by DHCP",
+"It changes at each router",
+"It's stored in the NIC's ROM by the manufacturer",
+"It's configured by the admin"
+],
+"a": 2,
+"e": "The vendor burns it into the NIC."
+},
+{
+"m": 7,
+"q": "A unicast MAC address identifies...",
+"o": [
+"All devices on the LAN",
+"The default gateway only",
+"One specific device",
+"A group of devices"
+],
+"a": 2,
+"e": "Uni = one, multi = a group, broad = everyone."
+},
+{
+"m": 7,
+"q": "What is the Ethernet broadcast MAC address?",
+"o": [
+"01-00-5E-00-00-01",
+"FF-FF-FF-FF-FF-FF",
+"00-00-00-00-00-00",
+"33-33-FF-FF-FF-FF"
+],
+"a": 1,
+"e": "All 1s in binary = all Fs in hex."
+},
+{
+"m": 7,
+"q": "An IPv4 multicast MAC address always begins with...",
+"o": [
+"FF-FF-FF",
+"33-33",
+"00-00-0C",
+"01-00-5E"
+],
+"a": 3,
+"e": "IPv4 multicast = 01-00-5E. IPv6 multicast = 33-33."
+},
+{
+"m": 7,
+"q": "An IPv6 multicast MAC address begins with...",
+"o": [
+"33-33",
+"00-0C",
+"FF-FF",
+"01-00-5E"
+],
+"a": 0,
+"e": "IPv6 multicast = 33-33."
+},
+{
+"m": 7,
+"q": "Which address does a switch use to build its MAC address table?",
+"o": [
+"Destination IP",
+"Source MAC",
+"Destination MAC",
+"Source IP"
+],
+"a": 1,
+"e": "Learn from the SOURCE, forward on the DESTINATION."
+},
+{
+"m": 7,
+"q": "A switch makes its forwarding decision based on...",
+"o": [
+"The EtherType",
+"The destination IP address",
+"The destination MAC address",
+"The source MAC address"
+],
+"a": 2,
+"e": "Learn from source, forward on destination."
+},
+{
+"m": 7,
+"q": "What is another name for the MAC address table?",
+"o": [
+"CAM table",
+"Neighbor table",
+"Routing table",
+"ARP cache"
+],
+"a": 0,
+"e": "CAM = Content Addressable Memory."
+},
+{
+"m": 7,
+"q": "By default, how long does a Cisco switch keep an unused MAC table entry?",
+"o": [
+"30 seconds",
+"5 minutes",
+"1 minute",
+"24 hours"
+],
+"a": 1,
+"e": "Default aging time = 300 seconds."
+},
+{
+"m": 7,
+"q": "A frame arrives with a source MAC already in the table on the same port. What does the switch do?",
+"o": [
+"Deletes the entry",
+"Adds a second entry",
+"Refreshes the aging timer",
+"Floods the frame"
+],
+"a": 2,
+"e": "Same MAC, same port: reset the timer."
+},
+{
+"m": 7,
+"q": "A frame arrives with a source MAC that's in the table but on a DIFFERENT port. What does the switch do?",
+"o": [
+"Shuts the port down",
+"Ignores it",
+"Drops the frame",
+"Updates the entry with the new port"
+],
+"a": 3,
+"e": "The device moved."
+},
+{
+"m": 7,
+"q": "A switch receives a unicast frame whose destination MAC is NOT in its table. What does it do?",
+"o": [
+"Sends it back out the incoming port",
+"Floods it out all ports except the incoming port",
+"Drops it",
+"Sends an ARP request"
+],
+"a": 1,
+"e": "Unknown = flood."
+},
+{
+"m": 7,
+"q": "What does a switch do with a broadcast frame?",
+"o": [
+"Sends it only to the default gateway",
+"Floods it out all ports except the incoming port",
+"Drops it",
+"Filters it"
+],
+"a": 1,
+"e": "Broadcasts and unknown unicasts are flooded."
+},
+{
+"m": 7,
+"q": "The destination MAC is in the table on a different port than the one the frame arrived on. What does the switch do?",
+"o": [
+"Forwards it out that one port only",
+"Filters it",
+"Floods it",
+"Sends it back"
+],
+"a": 0,
+"e": "Known, different port = forward."
+},
+{
+"m": 7,
+"q": "A frame's destination MAC is in the table on the SAME port the frame arrived on. What does the switch do?",
+"o": [
+"Forwards it out that same port",
+"Floods it",
+"Sends it to the router",
+"Filters (drops) it"
+],
+"a": 3,
+"e": "Known, same port = filter."
+},
+{
+"m": 7,
+"q": "What does store-and-forward switching check before forwarding a frame?",
+"o": [
+"The destination IP",
+"The TTL",
+"Only the first 64 bytes",
+"The FCS (CRC) for errors"
+],
+"a": 3,
+"e": "Whole frame, FCS checked, bad frames dropped."
+},
+{
+"m": 7,
+"q": "Which switching method is needed to support QoS?",
+"o": [
+"Fast-forward",
+"Cut-through",
+"Store-and-forward",
+"Fragment-free"
+],
+"a": 2,
+"e": "The switch must hold the whole frame to prioritize it."
+},
+{
+"m": 7,
+"q": "What is the default switching method on Cisco switches?",
+"o": [
+"Store-and-forward",
+"Cut-through",
+"Fast-forward",
+"Fragment-free"
+],
+"a": 0,
+"e": "The careful clerk is the Cisco default."
+},
+{
+"m": 7,
+"q": "Which switching method has the lowest latency and does no error checking?",
+"o": [
+"Store-and-forward",
+"Fast-forward",
+"Shared memory",
+"Fragment-free"
+],
+"a": 1,
+"e": "Forwards right after reading the destination MAC."
+},
+{
+"m": 7,
+"q": "Which switching method can pass damaged frames along to the next device?",
+"o": [
+"Cut-through",
+"Shared memory",
+"Store-and-forward",
+"Port-based"
+],
+"a": 0,
+"e": "Cut-through doesn't check the FCS."
+},
+{
+"m": 7,
+"q": "Fragment-free switching waits to receive how many bytes before forwarding?",
+"o": [
+"64",
+"6",
+"14",
+"1518"
+],
+"a": 0,
+"e": "The first 64 bytes, where most collision damage happens."
+},
+{
+"m": 7,
+"q": "Fragment-free is a modified form of which switching method?",
+"o": [
+"Port-based buffering",
+"Shared memory",
+"Store-and-forward",
+"Cut-through"
+],
+"a": 3,
+"e": "Cut-through types: fast-forward and fragment-free."
+},
+{
+"m": 7,
+"q": "With port-based memory buffering, what can delay a frame?",
+"o": [
+"The shared pool running out of memory",
+"A frame ahead of it in the queue waiting on a busy destination port",
+"Auto-MDIX",
+"The MAC table being full"
+],
+"a": 1,
+"e": "Port gets caught."
+},
+{
+"m": 7,
+"q": "Which buffering method stores all frames in one common pool and links them to destination ports dynamically?",
+"o": [
+"Port-based",
+"Shared memory",
+"Fragment-free",
+"Cut-through"
+],
+"a": 1,
+"e": "One big warehouse vs a locker per port."
+},
+{
+"m": 7,
+"q": "Which buffering method allows asymmetric switching?",
+"o": [
+"Cut-through",
+"Shared memory",
+"Fast-forward",
+"Port-based"
+],
+"a": 1,
+"e": "Ports of different speeds can share the pool."
+},
+{
+"m": 7,
+"q": "What is asymmetric switching?",
+"o": [
+"Half duplex on one end and full on the other",
+"Using different cable types on one switch",
+"Forwarding frames in only one direction",
+"Switching between ports with different bandwidths, like a 1 Gbps server port and 100 Mbps PC ports"
+],
+"a": 3,
+"e": "Different speeds on different ports."
+},
+{
+"m": 7,
+"q": "What does autonegotiation do?",
+"o": [
+"Assigns MAC addresses",
+"Picks the cable type",
+"Lets two devices agree on the best speed and duplex",
+"Learns source MACs"
+],
+"a": 2,
+"e": "Autonegotiation = speed and duplex. Auto-MDIX = cable type."
+},
+{
+"m": 7,
+"q": "Which interface command enables Auto-MDIX?",
+"o": [
+"speed auto",
+"auto cable",
+"mdix auto",
+"duplex auto"
+],
+"a": 2,
+"e": "mdix auto."
+},
+{
+"m": 7,
+"q": "Which interface command forces a port to 100 Mbps?",
+"o": [
+"bandwidth full",
+"speed 100",
+"mdix 100",
+"duplex 100"
+],
+"a": 1,
+"e": "speed sets the rate. duplex sets full/half."
+},
+{
+"m": 7,
+"q": "Which interface command forces a port to full duplex?",
+"o": [
+"speed full",
+"mdix full",
+"duplex full",
+"full-duplex enable"
+],
+"a": 2,
+"e": "duplex full | half | auto."
+},
+{
+"m": 7,
+"q": "What commonly causes a duplex mismatch?",
+"o": [
+"Using a straight-through cable",
+"Autonegotiation failing, or one side set manually and the other not",
+"Store-and-forward switching",
+"Using Auto-MDIX"
+],
+"a": 1,
+"e": "Both ends must match."
+},
+{
+"m": 7,
+"q": "A 100 Mbps link is slow and showing late collisions. One end is full duplex and the other half. What's the problem?",
+"o": [
+"Missing default gateway",
+"Duplex mismatch",
+"MAC table overflow",
+"Wrong cable type"
+],
+"a": 1,
+"e": "Phone call vs walkie-talkie."
+},
+{
+"m": 7,
+"q": "Which statement about Gigabit Ethernet ports is true?",
+"o": [
+"They only operate in half duplex",
+"They require CSMA/CD",
+"They can't use autonegotiation",
+"They only operate in full duplex"
+],
+"a": 3,
+"e": "Gigabit is too fast to wait its turn."
+},
+{
+"m": 8,
+"q": "What is the PDU called at the network layer?",
+"o": [
+"Bits",
+"Segment",
+"Frame",
+"Packet"
+],
+"a": 3,
+"e": "Segment (L4) → packet (L3) → frame (L2) → bits (L1)."
+},
+{
+"m": 8,
+"q": "Which is NOT one of the four basic network layer operations?",
+"o": [
+"Error correction",
+"Addressing end devices",
+"Routing",
+"Encapsulation"
+],
+"a": 0,
+"e": "Always Eat Really Delicious: Addressing, Encapsulation, Routing, De-encapsulation."
+},
+{
+"m": 8,
+"q": "During network layer encapsulation, what is added to the transport layer segment?",
+"o": [
+"A MAC header and FCS",
+"A TCP port number",
+"An IP header with source and destination IP addresses",
+"A preamble"
+],
+"a": 2,
+"e": "Segment + IP header = packet."
+},
+{
+"m": 8,
+"q": "Which network layer operation happens at the destination host when the IP header is removed?",
+"o": [
+"De-encapsulation",
+"Routing",
+"Encapsulation",
+"Addressing"
+],
+"a": 0,
+"e": "Address, wrap, route, unwrap."
+},
+{
+"m": 8,
+"q": "IP is 'connectionless'. What does that mean?",
+"o": [
+"It needs a cable connection",
+"It guarantees delivery",
+"No connection is set up with the destination before sending",
+"It only works on wireless"
+],
+"a": 2,
+"e": "No handshake first. TCP is the one that sets up connections."
+},
+{
+"m": 8,
+"q": "IP is described as 'best effort'. What does that mean?",
+"o": [
+"It doesn't guarantee delivery or retransmit lost packets",
+"It encrypts all data",
+"It sends every packet twice",
+"It always picks the fastest path"
+],
+"a": 0,
+"e": "Best effort = unreliable. TCP handles reliability."
+},
+{
+"m": 8,
+"q": "IP works the same whether it travels over copper, fibre or wireless. Which characteristic is this?",
+"o": [
+"Connectionless",
+"Best effort",
+"Media independent",
+"Reliable"
+],
+"a": 2,
+"e": "Layers 1 and 2 handle the media."
+},
+{
+"m": 8,
+"q": "Which is NOT a characteristic of IP?",
+"o": [
+"Media independent",
+"Reliable, with guaranteed delivery",
+"Connectionless",
+"Best effort"
+],
+"a": 1,
+"e": "IP is connectionless, best effort and media independent."
+},
+{
+"m": 8,
+"q": "How many bits are in an IPv4 address?",
+"o": [
+"64",
+"128",
+"32",
+"48"
+],
+"a": 2,
+"e": "IPv4 = 32, MAC = 48, IPv6 = 128."
+},
+{
+"m": 8,
+"q": "What is the minimum size of an IPv4 header?",
+"o": [
+"20 bytes",
+"40 bytes",
+"64 bytes",
+"128 bytes"
+],
+"a": 0,
+"e": "IPv4 = 20 bytes minimum (variable). IPv6 = 40 fixed."
+},
+{
+"m": 8,
+"q": "Which IPv4 header field identifies the IP version?",
+"o": [
+"IHL",
+"Version (0100 for IPv4)",
+"Protocol",
+"DS"
+],
+"a": 1,
+"e": "Version = 4 (0100). In IPv6 it's 6 (0110)."
+},
+{
+"m": 8,
+"q": "What is the IPv4 DS field used for?",
+"o": [
+"Error checking",
+"Preventing loops",
+"Identifying TCP or UDP",
+"QoS / priority"
+],
+"a": 3,
+"e": "DS = Differentiated Services."
+},
+{
+"m": 8,
+"q": "Which IPv4 header field stops packets from looping forever?",
+"o": [
+"TTL",
+"Protocol",
+"DS",
+"Flags"
+],
+"a": 0,
+"e": "TTL counts down at each router; dropped at 0."
+},
+{
+"m": 8,
+"q": "A packet arrives at a router with TTL = 1. What happens?",
+"o": [
+"TTL is reset to 64",
+"It's forwarded with TTL 1",
+"The packet is flooded",
+"TTL becomes 0, the packet is dropped, and an ICMP Time Exceeded message is sent"
+],
+"a": 3,
+"e": "Decrement to 0 → drop → notify the sender."
+},
+{
+"m": 8,
+"q": "Which IPv4 header field identifies the upper-layer protocol (TCP, UDP, ICMP)?",
+"o": [
+"TTL",
+"DS",
+"Version",
+"Protocol"
+],
+"a": 3,
+"e": "In IPv6 it's called Next Header."
+},
+{
+"m": 8,
+"q": "In the IPv4 Protocol field, what number means UDP?",
+"o": [
+"41",
+"17",
+"1",
+"6"
+],
+"a": 1,
+"e": "ICMP 1, TCP 6, UDP 17."
+},
+{
+"m": 8,
+"q": "An IPv4 header has Protocol = 6. What is in the data?",
+"o": [
+"TCP",
+"ICMP",
+"IPv6",
+"UDP"
+],
+"a": 0,
+"e": "ICMP 1, TCP 6, UDP 17."
+},
+{
+"m": 8,
+"q": "Which IPv4 field detects corruption in the IP header?",
+"o": [
+"Header Checksum",
+"DS",
+"Flags",
+"TTL"
+],
+"a": 0,
+"e": "Removed in IPv6 because layers 2 and 4 already check for errors."
+},
+{
+"m": 8,
+"q": "Which group of IPv4 header fields is used for fragmentation?",
+"o": [
+"Version, IHL, DS",
+"Source, Destination, Options",
+"Identification, Flags, Fragment Offset",
+"TTL, Protocol, Checksum"
+],
+"a": 2,
+"e": "'I Found Fragments.' All three are gone from the IPv6 main header."
+},
+{
+"m": 8,
+"q": "Which IPv4 limitation was a main reason for creating IPv6?",
+"o": [
+"IPv4 can't use Ethernet",
+"IPv4 headers are too small",
+"IPv4 has no TTL",
+"IPv4 address depletion"
+],
+"a": 3,
+"e": "Also: no end-to-end connectivity (NAT) and network complexity."
+},
+{
+"m": 8,
+"q": "What causes IPv4's lack of end-to-end connectivity?",
+"o": [
+"ARP",
+"DHCP",
+"TTL",
+"NAT"
+],
+"a": 3,
+"e": "NAT hides many private addresses behind one public address."
+},
+{
+"m": 8,
+"q": "Which of these is NOT an IPv4 limitation?",
+"o": [
+"It can't travel over fibre",
+"Lack of end-to-end connectivity",
+"Increased network complexity",
+"Address depletion"
+],
+"a": 0,
+"e": "IP is media independent."
+},
+{
+"m": 8,
+"q": "How big is the IPv6 header?",
+"o": [
+"32 bytes, fixed",
+"60 bytes, variable",
+"20 bytes, variable",
+"40 bytes, fixed"
+],
+"a": 3,
+"e": "IPv6 doubles IPv4's 20 and never changes size."
+},
+{
+"m": 8,
+"q": "Why was the IPv6 header simplified (fixed size, fewer fields)?",
+"o": [
+"So routers can process packets more efficiently",
+"To support ARP",
+"To add encryption to every packet",
+"To make room for MAC addresses"
+],
+"a": 0,
+"e": "IPv6 threw out the busywork."
+},
+{
+"m": 8,
+"q": "Which IPv6 header field does the same job as the IPv4 TTL?",
+"o": [
+"Hop Limit",
+"Flow Label",
+"Traffic Class",
+"Next Header"
+],
+"a": 0,
+"e": "Renamed: TTL → Hop Limit."
+},
+{
+"m": 8,
+"q": "What happens to the IPv6 Hop Limit at each router?",
+"o": [
+"It's reset to 64",
+"Nothing; routers ignore it",
+"It's decreased by 1",
+"It's increased by 1"
+],
+"a": 2,
+"e": "A countdown, just like TTL."
+},
+{
+"m": 8,
+"q": "Which IPv6 header field identifies the upper-layer protocol?",
+"o": [
+"Hop Limit",
+"Next Header",
+"Traffic Class",
+"Flow Label"
+],
+"a": 1,
+"e": "Renamed: Protocol → Next Header."
+},
+{
+"m": 8,
+"q": "The IPv6 Traffic Class field does the same job as which IPv4 field?",
+"o": [
+"Flags",
+"TTL",
+"DS",
+"Protocol"
+],
+"a": 2,
+"e": "Both are QoS. Renamed: DS → Traffic Class."
+},
+{
+"m": 8,
+"q": "Which IPv6 header field has NO equivalent in IPv4?",
+"o": [
+"Flow Label",
+"Hop Limit",
+"Next Header",
+"Traffic Class"
+],
+"a": 0,
+"e": "Renamed 3, added 1: Flow Label."
+},
+{
+"m": 8,
+"q": "Which IPv6 field marks packets in the same flow, like a video call, for the same handling?",
+"o": [
+"Flow Label",
+"Hop Limit",
+"Traffic Class",
+"Payload Length"
+],
+"a": 0,
+"e": "Flow Label = labels a flow."
+},
+{
+"m": 8,
+"q": "Which IPv6 field replaced the IPv4 Total Length field?",
+"o": [
+"Hop Limit",
+"Flow Label",
+"Next Header",
+"Payload Length"
+],
+"a": 3,
+"e": "The header is always 40, so only the payload is counted."
+},
+{
+"m": 8,
+"q": "Which IPv4 field was REMOVED in IPv6?",
+"o": [
+"Source address",
+"Destination address",
+"Version",
+"Header Checksum"
+],
+"a": 3,
+"e": "Removed: Checksum, Identification, Flags, Fragment Offset, IHL, Options."
+},
+{
+"m": 8,
+"q": "Why does the IPv6 header have no Flags or Fragment Offset fields?",
+"o": [
+"Those fields moved to the Ethernet frame",
+"IPv6 packets are always small",
+"IPv6 uses TCP for everything",
+"Routers don't fragment IPv6 packets"
+],
+"a": 3,
+"e": "Only the sending host fragments in IPv6."
+},
+{
+"m": 8,
+"q": "In IPv6, where is optional information carried?",
+"o": [
+"In the Flow Label",
+"In extension headers",
+"In the Options field of the main header",
+"In the Ethernet trailer"
+],
+"a": 1,
+"e": "Options moved out of the fixed 40-byte header."
+},
+{
+"m": 8,
+"q": "What is the version field value in an IPv6 header?",
+"o": [
+"4 (0100)",
+"16",
+"6 (0110)",
+"128"
+],
+"a": 2,
+"e": "Version 6 = 0110 in binary."
+},
+{
+"m": 8,
+"q": "A host sends a packet to 127.0.0.1. Where does it go?",
+"o": [
+"To the DNS server",
+"Back to the host itself (loopback)",
+"To every host on the LAN",
+"To the default gateway"
+],
+"a": 1,
+"e": "Loopback tests the host's own TCP/IP stack."
+},
+{
+"m": 8,
+"q": "What is the IPv6 loopback address?",
+"o": [
+"127.0.0.1",
+"FE80::1",
+"::1",
+"FF02::1"
+],
+"a": 2,
+"e": "IPv4 loopback = 127.0.0.1."
+},
+{
+"m": 8,
+"q": "A host's destination is on the same network. Where does it send the packet?",
+"o": [
+"Directly to the destination host",
+"To the DNS server",
+"To the default gateway",
+"To the loopback address"
+],
+"a": 0,
+"e": "Me → loopback. Neighbour → direct. Far away → gateway."
+},
+{
+"m": 8,
+"q": "A host needs to send a packet to a device on a DIFFERENT network. Where does it send it?",
+"o": [
+"To 127.0.0.1",
+"Directly to the destination",
+"To every host on the LAN",
+"To its default gateway"
+],
+"a": 3,
+"e": "Far away = default gateway."
+},
+{
+"m": 8,
+"q": "What is a host's default gateway?",
+"o": [
+"The switch's management IP",
+"The host's own loopback",
+"The DNS server's address",
+"The IP address of the local router interface, the way out to other networks"
+],
+"a": 3,
+"e": "The front door of the house."
+},
+{
+"m": 8,
+"q": "A PC can ping devices on its own network but not on any other network. What is most likely wrong?",
+"o": [
+"The switch's MAC table",
+"Its default gateway is missing or wrong",
+"Its MAC address",
+"Its loopback address"
+],
+"a": 1,
+"e": "Without the front door, you can only talk inside the house."
+},
+{
+"m": 8,
+"q": "Which Windows command displays the host's routing table?",
+"o": [
+"arp -a",
+"route print",
+"ipconfig /all",
+"show ip route"
+],
+"a": 1,
+"e": "route print or netstat -r. show ip route is Cisco."
+},
+{
+"m": 8,
+"q": "Which Windows command, besides route print, displays the host routing table?",
+"o": [
+"netstat -r",
+"show ip route",
+"arp -a",
+"ipconfig"
+],
+"a": 0,
+"e": "netstat -r = routes."
+},
+{
+"m": 8,
+"q": "How does the default route appear in a Windows host's routing table?",
+"o": [
+"::1",
+"127.0.0.1",
+"255.255.255.255",
+"0.0.0.0"
+],
+"a": 3,
+"e": "Destination 0.0.0.0 mask 0.0.0.0 → the gateway."
+},
+{
+"m": 8,
+"q": "Which command displays a Cisco router's routing table?",
+"o": [
+"show ip arp",
+"route print",
+"netstat -r",
+"show ip route"
+],
+"a": 3,
+"e": "Starts with 'show' = Cisco."
+},
+{
+"m": 8,
+"q": "What does a router use to decide where to forward a packet?",
+"o": [
+"The destination IP and its routing table",
+"The source MAC and the MAC table",
+"The source IP and the ARP table",
+"The EtherType"
+],
+"a": 0,
+"e": "Router = routing table = IP. Switch = MAC table = MAC."
+},
+{
+"m": 8,
+"q": "Which three types of routes can appear in a router's routing table?",
+"o": [
+"Unicast, multicast and broadcast routes",
+"Static, ARP and MAC routes",
+"Local, global and private routes",
+"Directly connected, remote, and default routes"
+],
+"a": 3,
+"e": "Remote routes are learned statically or dynamically."
+},
+{
+"m": 8,
+"q": "How can a router learn about remote networks?",
+"o": [
+"Static routes configured manually, or dynamic routing protocols",
+"From the switch's MAC table",
+"Only through ARP",
+"Only through DHCP"
+],
+"a": 0,
+"e": "S = static. O, D, R = dynamic protocols."
+},
+{
+"m": 8,
+"q": "In a Cisco routing table, what does code C mean?",
+"o": [
+"A Cisco EIGRP route",
+"A configured static route",
+"A candidate default",
+"A directly connected network"
+],
+"a": 3,
+"e": "C = connected (the street)."
+},
+{
+"m": 8,
+"q": "In a Cisco routing table, what does code L mean?",
+"o": [
+"Learned from another router",
+"A long-distance route",
+"The router's own interface IP address (/32)",
+"A loopback to the default route"
+],
+"a": 2,
+"e": "L = local (the router's house number)."
+},
+{
+"m": 8,
+"q": "In a Cisco routing table, what does code S mean?",
+"o": [
+"Secure route",
+"Shortest path",
+"A static route set manually",
+"Learned from a switch"
+],
+"a": 2,
+"e": "S = set by hand."
+},
+{
+"m": 8,
+"q": "Which routing table entry creates the 'gateway of last resort'?",
+"o": [
+"L 192.168.1.1/32",
+"O 10.0.0.0/8",
+"S* 0.0.0.0/0",
+"C 192.168.1.0/24"
+],
+"a": 2,
+"e": "S* = static default route."
+},
+{
+"m": 8,
+"q": "A router has no specific route that matches a packet's destination. Which route does it use?",
+"o": [
+"The directly connected route",
+"It always floods the packet",
+"The default route (gateway of last resort)",
+"The local route"
+],
+"a": 2,
+"e": "With no default route, the packet is dropped."
+},
+{
+"m": 8,
+"q": "In a Cisco routing table, what does code O mean?",
+"o": [
+"Overflow",
+"Outbound",
+"Other",
+"OSPF"
+],
+"a": 3,
+"e": "O = OSPF, D = EIGRP, R = RIP."
+},
+{
+"m": 8,
+"q": "In a Cisco routing table, which code means a route was learned by EIGRP?",
+"o": [
+"O",
+"S",
+"D",
+"E"
+],
+"a": 2,
+"e": "D = EIGRP (DUAL). Don't pick E!"
+},
+{
+"m": 8,
+"q": "In a Cisco routing table, what does code R mean?",
+"o": [
+"Remote static",
+"Redirect",
+"RIP",
+"Router-local"
+],
+"a": 2,
+"e": "R = RIP."
+},
+{
+"m": 8,
+"q": "A router has 172.16.0.0/16, 172.16.5.0/24 and 0.0.0.0/0. Which route does it use for 172.16.5.10?",
+"o": [
+"172.16.0.0/16",
+"172.16.5.0/24",
+"It drops the packet",
+"0.0.0.0/0"
+],
+"a": 1,
+"e": "Longest prefix match: the most specific route wins."
+},
+{
+"m": 8,
+"q": "A router has O 10.0.0.0/8, D 10.1.1.0/24 and S* 0.0.0.0/0. A packet arrives for 10.1.1.20. How was the route it uses learned?",
+"o": [
+"EIGRP",
+"Directly connected",
+"Static default",
+"OSPF"
+],
+"a": 0,
+"e": "Longest match = /24, and D = EIGRP."
+},
+{
+"m": 9,
+"q": "What is the purpose of ARP?",
+"o": [
+"To find the IP address of a domain name",
+"To find the MAC address that belongs to a known IPv4 address",
+"To choose the best route",
+"To assign IP addresses automatically"
+],
+"a": 1,
+"e": "ARP resolves IPv4 → MAC on the local network."
+},
+{
+"m": 9,
+"q": "How is an ARP request sent?",
+"o": [
+"Multicast",
+"Unicast",
+"Broadcast",
+"Anycast"
+],
+"a": 2,
+"e": "Shout the question, whisper the answer."
+},
+{
+"m": 9,
+"q": "What is the destination MAC address in an ARP request?",
+"o": [
+"00-00-00-00-00-00",
+"The target host's MAC",
+"FF-FF-FF-FF-FF-FF",
+"01-00-5E-00-00-01"
+],
+"a": 2,
+"e": "The sender doesn't know the MAC yet, so it broadcasts."
+},
+{
+"m": 9,
+"q": "How is an ARP reply sent?",
+"o": [
+"Unicast",
+"It isn't sent",
+"Multicast",
+"Broadcast"
+],
+"a": 0,
+"e": "Only back to the device that asked."
+},
+{
+"m": 9,
+"q": "PC1 wants to send to PC2 on the same LAN but doesn't know PC2's MAC. What does PC1 do?",
+"o": [
+"Asks the default gateway for the MAC",
+"Sends an RS message",
+"Broadcasts an ARP request for PC2's IP address",
+"Sends a unicast ARP reply"
+],
+"a": 2,
+"e": "'Who has this IP? Tell me your MAC.'"
+},
+{
+"m": 9,
+"q": "A host already has the destination's MAC in its ARP table. What does it do?",
+"o": [
+"Asks the router to confirm it",
+"Sends an ARP request anyway",
+"Uses that MAC and sends the frame without an ARP request",
+"Broadcasts the frame"
+],
+"a": 2,
+"e": "ARP only runs when the mapping isn't already cached."
+},
+{
+"m": 9,
+"q": "A host receives an ARP request for an IP address that isn't its own. What does it do?",
+"o": [
+"Floods it to other hosts",
+"Forwards it to the router",
+"Ignores (discards) it",
+"Replies with its own MAC"
+],
+"a": 2,
+"e": "Only the owner of the IP replies."
+},
+{
+"m": 9,
+"q": "What happens to entries in a host's ARP cache over time?",
+"o": [
+"They become static",
+"They're sent to the router",
+"They time out and are removed",
+"They stay forever"
+],
+"a": 2,
+"e": "ARP entries expire, like MAC table entries."
+},
+{
+"m": 9,
+"q": "Where does a device keep its ARP table?",
+"o": [
+"In RAM (temporary memory)",
+"On the switch",
+"In the startup-config",
+"In NVRAM"
+],
+"a": 0,
+"e": "The ARP cache is temporary and is lost on reboot."
+},
+{
+"m": 9,
+"q": "PC1 wants to reach a server on a remote network. Its ARP request asks for the MAC of which IP?",
+"o": [
+"The DNS server's IP",
+"The remote server's IP",
+"255.255.255.255",
+"The default gateway's IP"
+],
+"a": 3,
+"e": "ARP doesn't cross routers."
+},
+{
+"m": 9,
+"q": "PC1 sends a packet to a server on a different network. What is the destination IP address in the packet?",
+"o": [
+"PC1's IP",
+"255.255.255.255",
+"The server's IP",
+"The default gateway's IP"
+],
+"a": 2,
+"e": "IP = final destination."
+},
+{
+"m": 9,
+"q": "PC1 sends a packet to a remote web server. What is the destination MAC address in the frame?",
+"o": [
+"The default gateway's MAC",
+"The broadcast MAC",
+"The web server's MAC",
+"The DNS server's MAC"
+],
+"a": 0,
+"e": "MAC = next hop."
+},
+{
+"m": 9,
+"q": "A router forwards a packet to a next-hop router over Ethernet. Whose MAC does it need?",
+"o": [
+"The next-hop router's MAC",
+"The original sender's MAC",
+"The final destination's MAC",
+"The broadcast MAC"
+],
+"a": 0,
+"e": "Every hop needs the MAC of the next device."
+},
+{
+"m": 9,
+"q": "As a packet travels across several routers, which addresses change at each hop?",
+"o": [
+"Source and destination MAC",
+"Source and destination IP",
+"None of them",
+"Only the destination IP"
+],
+"a": 0,
+"e": "IP = permanent. MAC = Make A Change each hop."
+},
+{
+"m": 9,
+"q": "Which Cisco command displays the ARP table on a router?",
+"o": [
+"show ip arp",
+"show mac address-table",
+"show ipv6 neighbors",
+"arp -a"
+],
+"a": 0,
+"e": "Starts with 'show' = Cisco."
+},
+{
+"m": 9,
+"q": "Which command shows the ARP cache on a Windows PC?",
+"o": [
+"show ip arp",
+"ipconfig /arp",
+"netstat -r",
+"arp -a"
+],
+"a": 3,
+"e": "No 'show' = not Cisco."
+},
+{
+"m": 9,
+"q": "An attacker sends fake ARP replies claiming to be the default gateway. What is this attack called?",
+"o": [
+"Ping sweep",
+"MAC flooding",
+"DNS hijacking",
+"ARP spoofing / poisoning"
+],
+"a": 3,
+"e": "Traffic goes to the attacker instead of the gateway."
+},
+{
+"m": 9,
+"q": "Why is ARP spoofing possible?",
+"o": [
+"Hosts accept ARP replies without verifying who sent them",
+"ARP is encrypted with a weak key",
+"ARP replies are always broadcast",
+"Routers forward ARP across networks"
+],
+"a": 0,
+"e": "ARP believes anyone who answers."
+},
+{
+"m": 9,
+"q": "What is a performance issue caused by ARP?",
+"o": [
+"ARP slows down fibre links",
+"ARP doubles the frame size",
+"Many hosts broadcasting ARP requests at once can add network overhead",
+"ARP disables full duplex"
+],
+"a": 2,
+"e": "ARP broadcasts reach every device on the LAN."
+},
+{
+"m": 9,
+"q": "IPv6 replaces ARP with which process?",
+"o": [
+"Neighbor Discovery (ND), using ICMPv6",
+"DHCPv6",
+"Reverse ARP",
+"NAT64"
+],
+"a": 0,
+"e": "ND does address resolution and router discovery."
+},
+{
+"m": 9,
+"q": "IPv6 Neighbor Discovery messages are carried by which protocol?",
+"o": [
+"DHCP",
+"ICMPv6",
+"ARP",
+"TCP"
+],
+"a": 1,
+"e": "IPv6 doesn't use ARP at all."
+},
+{
+"m": 9,
+"q": "Which two ND messages does IPv6 use for address resolution (finding a MAC)?",
+"o": [
+"NS and NA",
+"ARP request and reply",
+"Redirect and RA",
+"RS and RA"
+],
+"a": 0,
+"e": "N = Neighbor = MAC. R = Router."
+},
+{
+"m": 9,
+"q": "Which IPv6 ND message asks for a neighbour's MAC address?",
+"o": [
+"Neighbor Advertisement",
+"Neighbor Solicitation (NS)",
+"Redirect",
+"Router Solicitation"
+],
+"a": 1,
+"e": "Solicitation = asking."
+},
+{
+"m": 9,
+"q": "Which IPv6 ND message is the reply that gives a device's MAC address?",
+"o": [
+"Neighbor Advertisement (NA)",
+"Neighbor Solicitation (NS)",
+"Redirect",
+"Router Solicitation (RS)"
+],
+"a": 0,
+"e": "NS asks, NA answers."
+},
+{
+"m": 9,
+"q": "What address is a Neighbor Solicitation sent to?",
+"o": [
+"A solicited-node multicast address",
+"127.0.0.1",
+"The router only",
+"Broadcast FF-FF-FF-FF-FF-FF"
+],
+"a": 0,
+"e": "IPv6 never broadcasts."
+},
+{
+"m": 9,
+"q": "A host that just booted wants to find a router. Which message does it send?",
+"o": [
+"Router Advertisement (RA)",
+"Router Solicitation (RS)",
+"ARP reply",
+"Neighbor Advertisement (NA)"
+],
+"a": 1,
+"e": "The host is asking: RS."
+},
+{
+"m": 9,
+"q": "Which ND message does a router send to share network prefix and gateway information?",
+"o": [
+"Neighbor Solicitation (NS)",
+"Router Solicitation (RS)",
+"Neighbor Advertisement (NA)",
+"Router Advertisement (RA)"
+],
+"a": 3,
+"e": "Advertisement = announcing."
+},
+{
+"m": 9,
+"q": "Which ND message does a router send to tell a host there's a better next hop?",
+"o": [
+"Redirect",
+"RA",
+"NA",
+"NS"
+],
+"a": 0,
+"e": "'Use that other router instead.'"
+},
+{
+"m": 9,
+"q": "Besides address resolution, what can NS/NA messages be used for?",
+"o": [
+"Encrypting traffic",
+"Assigning VLANs",
+"Calculating the FCS",
+"Duplicate Address Detection (checking no one else uses the same IPv6 address)"
+],
+"a": 3,
+"e": "A host sends NS for its own address. If an NA comes back, it's a duplicate."
+},
+{
+"m": 9,
+"q": "Which Cisco command shows the IPv6 neighbour table?",
+"o": [
+"show ipv6 neighbors",
+"show ip arp",
+"show ipv6 route",
+"arp -a"
+],
+"a": 0,
+"e": "IPv6's version of show ip arp."
+},
+{
+"m": 9,
+"q": "Which Windows command shows the IPv6 neighbour cache?",
+"o": [
+"show ipv6 neighbors",
+"route print",
+"arp -a",
+"netsh interface ipv6 show neighbors"
+],
+"a": 3,
+"e": "No 'show' at the start = Windows."
+},
+{
+"m": 10,
+"q": "Which mode does the prompt Router> indicate?",
+"o": [
+"User EXEC",
+"Interface configuration",
+"Privileged EXEC",
+"Global configuration"
+],
+"a": 0,
+"e": "> = user, # = privileged, (config)# = global."
+},
+{
+"m": 10,
+"q": "Which prompt shows privileged EXEC mode?",
+"o": [
+"Router>",
+"Router(config-line)#",
+"Router(config)#",
+"Router#"
+],
+"a": 3,
+"e": "# without (config) = privileged EXEC."
+},
+{
+"m": 10,
+"q": "Which command moves you from user EXEC to privileged EXEC?",
+"o": [
+"enable",
+"exit",
+"configure terminal",
+"login"
+],
+"a": 0,
+"e": "Router> enable → Router#."
+},
+{
+"m": 10,
+"q": "Which command moves you from privileged EXEC into global configuration mode?",
+"o": [
+"enable",
+"line console 0",
+"interface g0/0",
+"configure terminal"
+],
+"a": 3,
+"e": "Router# configure terminal → Router(config)#."
+},
+{
+"m": 10,
+"q": "The prompt Router(config-if)# means you are in which mode?",
+"o": [
+"Global configuration",
+"Interface configuration",
+"Privileged EXEC",
+"Line configuration"
+],
+"a": 1,
+"e": "(config-if)# = interface, (config-line)# = line."
+},
+{
+"m": 10,
+"q": "Which command returns you directly to privileged EXEC from any configuration mode?",
+"o": [
+"end",
+"disable",
+"exit",
+"logout"
+],
+"a": 0,
+"e": "end (or Ctrl+Z) jumps straight back. exit goes up one level."
+},
+{
+"m": 10,
+"q": "Which command names a router R1?",
+"o": [
+"R1(config)# name R1",
+"Router(config-if)# hostname R1",
+"Router# hostname R1",
+"Router(config)# hostname R1"
+],
+"a": 3,
+"e": "hostname is a global config command."
+},
+{
+"m": 10,
+"q": "Which command secures privileged EXEC mode with a password that's encrypted by default?",
+"o": [
+"enable secret",
+"enable password",
+"login local",
+"password cisco"
+],
+"a": 0,
+"e": "enable secret is hashed. enable password is plaintext."
+},
+{
+"m": 10,
+"q": "Which line configuration controls access through the physical console port?",
+"o": [
+"line vty 0 15",
+"interface console",
+"line console 0",
+"line aux 1"
+],
+"a": 2,
+"e": "Console = sitting next to it with a cable."
+},
+{
+"m": 10,
+"q": "Which lines are configured to secure remote access through Telnet or SSH?",
+"o": [
+"line aux 0",
+"line vty 0 4 (or 0 15)",
+"interface g0/0",
+"line console 0"
+],
+"a": 1,
+"e": "VTY = Virtual = far away."
+},
+{
+"m": 10,
+"q": "After setting a password under line console 0, which command makes the router actually ask for it?",
+"o": [
+"login",
+"enable",
+"service password-encryption",
+"no shutdown"
+],
+"a": 0,
+"e": "password sets it. login turns on checking."
+},
+{
+"m": 10,
+"q": "Which command encrypts all plaintext passwords in the configuration?",
+"o": [
+"login",
+"enable secret",
+"banner motd",
+"service password-encryption"
+],
+"a": 3,
+"e": "Scrambles console and VTY passwords."
+},
+{
+"m": 10,
+"q": "Which command creates a warning message shown to anyone connecting to the router?",
+"o": [
+"hostname Warning",
+"login message",
+"banner motd #Authorized access only#",
+"description Authorized only"
+],
+"a": 2,
+"e": "The # characters are delimiters."
+},
+{
+"m": 10,
+"q": "Which interface command adds a text note like 'Link to Branch office'?",
+"o": [
+"name",
+"banner motd",
+"hostname",
+"description"
+],
+"a": 3,
+"e": "description labels one interface."
+},
+{
+"m": 10,
+"q": "Which command assigns an IPv4 address to a router interface?",
+"o": [
+"Router# ip address 192.168.1.1/24",
+"Router(config-if)# ip default-gateway 192.168.1.1",
+"Router(config-if)# ip address 192.168.1.1 255.255.255.0",
+"Router(config)# ip address 192.168.1.1 255.255.255.0"
+],
+"a": 2,
+"e": "Interface config mode, IP then subnet mask."
+},
+{
+"m": 10,
+"q": "Which command assigns an IPv6 address to a router interface?",
+"o": [
+"Router(config-if)# ipv6 address 2001:db8:acad:1::1/64",
+"Router(config-if)# ip address 2001:db8:acad:1::1/64",
+"Router# ipv6 enable",
+"Router(config)# ipv6 address 2001:db8:acad:1::1/64"
+],
+"a": 0,
+"e": "Interface mode, ipv6 address, prefix length."
+},
+{
+"m": 10,
+"q": "Which global command allows a Cisco router to forward IPv6 packets?",
+"o": [
+"ip routing ipv6",
+"ipv6 enable",
+"ipv6 unicast-routing",
+"ipv6 forward"
+],
+"a": 2,
+"e": "Without it, the router won't route IPv6."
+},
+{
+"m": 10,
+"q": "Which command turns a router interface on?",
+"o": [
+"ip enable",
+"no shutdown",
+"interface up",
+"enable"
+],
+"a": 1,
+"e": "Router interfaces are shut down by default."
+},
+{
+"m": 10,
+"q": "Which interface command disables a router interface?",
+"o": [
+"shutdown",
+"no shutdown",
+"no ip address",
+"disable"
+],
+"a": 0,
+"e": "shutdown = off, no shutdown = on."
+},
+{
+"m": 10,
+"q": "Which command saves the running configuration to NVRAM?",
+"o": [
+"erase startup-config",
+"copy running-config startup-config",
+"copy startup-config running-config",
+"show running-config"
+],
+"a": 1,
+"e": "Copy FROM running TO startup."
+},
+{
+"m": 10,
+"q": "Which command shows the current configuration stored in RAM?",
+"o": [
+"show running-config",
+"show flash",
+"show startup-config",
+"show version"
+],
+"a": 0,
+"e": "running = RAM (current). startup = NVRAM (saved)."
+},
+{
+"m": 10,
+"q": "Which command shows the SAVED configuration that loads at boot?",
+"o": [
+"show version",
+"show startup-config",
+"show running-config",
+"show flash"
+],
+"a": 1,
+"e": "startup-config lives in NVRAM."
+},
+{
+"m": 10,
+"q": "Which command shows a one-line summary of each interface, its IP address and its status?",
+"o": [
+"show ip arp",
+"show version",
+"show ip route",
+"show ip interface brief"
+],
+"a": 3,
+"e": "The quick interface summary."
+},
+{
+"m": 10,
+"q": "Which command gives a quick summary of a router's IPv6 interfaces and addresses?",
+"o": [
+"ipconfig",
+"show ipv6 interface brief",
+"show ip interface brief",
+"show ipv6 neighbors"
+],
+"a": 1,
+"e": "Add 'v6' to the IPv4 version."
+},
+{
+"m": 10,
+"q": "Which command shows detailed statistics for router interfaces, such as errors and bandwidth?",
+"o": [
+"show ip interface brief",
+"show interfaces",
+"show version",
+"show ip route"
+],
+"a": 1,
+"e": "show interfaces gives the full detail. brief gives the summary."
+},
+{
+"m": 10,
+"q": "Which command shows the IOS version, uptime and memory of a router?",
+"o": [
+"show running-config",
+"show ip route",
+"show version",
+"show ip interface brief"
+],
+"a": 2,
+"e": "IOS, uptime, hardware and memory."
+},
+{
+"m": 10,
+"q": "A switch must be managed from a different network. Which command is needed?",
+"o": [
+"ip route 0.0.0.0 0.0.0.0",
+"no shutdown",
+"ip default-gateway 192.168.1.1",
+"mdix auto"
+],
+"a": 2,
+"e": "A layer 2 switch needs a gateway, just like a PC."
+}
+];
+const JOKES = [
+{
+"m": 0,
+"q": "Finish the joke: 'I'd tell you a UDP joke, but...'",
+"o": [
+"...my TTL just expired.",
+"...it's too big and would get fragmented.",
+"...you might not get it.",
+"...it would need a three-way handshake."
+],
+"a": 2,
+"e": "UDP is best effort: no guarantee the joke (or the packet) ever arrives.",
+"joke": true
+},
+{
+"m": 0,
+"q": "Why don't switches ever spill secrets?",
+"o": [
+"They're too busy flooding.",
+"They have no ports to talk through.",
+"Their secrets are encrypted with an FCS.",
+"They only forward what they learn to the right port... and they forget it all after 5 minutes."
+],
+"a": 3,
+"e": "Learn from the source, forward on the destination, age out after 300 seconds.",
+"joke": true
+},
+{
+"m": 0,
+"q": "What did the IPv4 address say to the IPv6 address?",
+"o": [
+"'Nice header, is it fixed?'",
+"'Must be nice having all that space. I'm totally depleted.'",
+"'Want to share a NAT sometime?'",
+"'Stop broadcasting, nobody asked.'"
+],
+"a": 1,
+"e": "IPv4 address depletion vs IPv6's 128-bit address space.",
+"joke": true
+},
+{
+"m": 0,
+"q": "Why was the UTP cable so calm during the argument?",
+"o": [
+"It was shielded from the drama.",
+"It used a crossover to switch sides.",
+"It twisted things around until the noise cancelled out.",
+"It stayed under 100 metres away."
+],
+"a": 2,
+"e": "Twisted pairs use cancellation to reduce crosstalk and EMI.",
+"joke": true
+},
+{
+"m": 0,
+"q": "Why did the packet go to therapy?",
+"o": [
+"Its TTL was running out.",
+"It felt like everyone was ignoring its broadcasts.",
+"It kept getting fragmented.",
+"It had too many unresolved addresses."
+],
+"a": 3,
+"e": "Unresolved, like an ARP request that never got a reply.",
+"joke": true
+}
+];
+
+/* ===================================================================== */
+
+const $ = id => document.getElementById(id);
+const state = { questions: [], i: 0, score: 0, answers: [], answered: false, start: 0, timerId: null, lastSettings: null };
+
+function shuffle(arr) {
+  const a = arr.slice();
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+// Multiple-choice pool = bank questions that are NOT typed conversions.
+function poolFor(mod) {
+  return (mod === "all" ? BANK : BANK.filter(q => String(q.m) === mod)).filter(q => !q.k);
+}
+// Typed conversion questions stored in the bank (they're mixed in with freshly generated ones).
+function bankConversions() {
+  return BANK.filter(q => q.k);
+}
+
+function initSetup() {
+  const sel = $("moduleSel");
+  sel.innerHTML = "";
+  const all = document.createElement("option");
+  all.value = "all";
+  all.textContent = `All modules (${poolFor("all").length} + typed conversions)`;
+  sel.appendChild(all);
+  const mods = [...new Set(BANK.map(q => q.m))].sort((a, b) => a - b);
+  mods.forEach(m => {
+    const o = document.createElement("option");
+    o.value = String(m);
+    const n = poolFor(String(m)).length;
+    o.textContent = `${MODULE_NAMES[m] || "Module " + m} (${n}${m === 5 ? " + typed" : ""})`;
+    sel.appendChild(o);
+  });
+  sel.onchange = updateCountHelp;
+  updateCountHelp();
+}
+
+function updateCountHelp() {
+  const mod = $("moduleSel").value;
+  const n = poolFor(mod).length;
+  const input = $("countInput");
+  input.max = n;
+  input.value = mod === "all" ? Math.min(45, n) : n;
+  $("countHelp").textContent = `Up to ${n} available. Questions are picked at random each time.`;
+  const showGen = mod === "all" || mod === "5";
+  $("genRow").style.display = showGen ? "" : "none";
+  $("genInput").value = mod === "5" ? 15 : mod === "all" ? 5 : 0;
+}
+
+/* ---------- Conversion questions (Module 5), answered by typing ---------- */
+const POS = [128, 64, 32, 16, 8, 4, 2, 1];
+const rnd = n => Math.floor(Math.random() * n);
+const bin8 = n => n.toString(2).padStart(8, "0");
+const hex2 = n => n.toString(16).toUpperCase().padStart(2, "0");
+
+function convQ(prompt, kind, ans, expl, hint) {
+  return { m: 5, q: prompt, k: kind, ans, e: expl, h: hint, gen: true };
+}
+
+function binSteps(n) {
+  const parts = POS.filter(p => n & p);
+  return parts.length ? `${parts.join(" + ")} = ${n}` : "0";
+}
+
+function subSteps(n) {
+  let left = n, out = [];
+  POS.forEach(p => {
+    if (left >= p) { out.push(`${left} − ${p} = ${left - p} → 1`); left -= p; }
+    else out.push(`${p} doesn't fit → 0`);
+  });
+  return out.join("; ");
+}
+
+function genConversion() {
+  const n = rnd(256);
+  const type = rnd(7);
+  if (type === 0) return convQ(`Convert ${bin8(n)} to decimal.`, "dec", String(n),
+    `Add the position values under each 1: ${binSteps(n)}.`, "128 64 32 16 8 4 2 1");
+  if (type === 1) return convQ(`Convert ${n} to binary.`, "bin", bin8(n),
+    `${subSteps(n)}. Answer: ${bin8(n)}.`, "Check every column. Does the leftover fit?");
+  if (type === 2) return convQ(`Convert 0x${hex2(n)} to decimal.`, "dec", String(n),
+    `${hex2(n)[0]} × 16 = ${(n >> 4) * 16}, plus ${hex2(n)[1]} (${n & 15}) = ${n}.`, "First digit × 16, then add the second digit. A=10 … F=15.");
+  if (type === 3) return convQ(`Convert ${n} to hexadecimal.`, "hex", hex2(n),
+    `${n} ÷ 16 = ${n >> 4} remainder ${n & 15} → ${hex2(n)}. Check: ${n >> 4} × 16 + ${n & 15} = ${n}.`, "Divide by 16. The answer is the first digit, the remainder is the second.");
+  if (type === 4) return convQ(`Convert ${bin8(n)} to hexadecimal.`, "hex", hex2(n),
+    `Split into nibbles: ${bin8(n).slice(0, 4)} = ${hex2(n)[0]}, ${bin8(n).slice(4)} = ${hex2(n)[1]} → ${hex2(n)}.`, "Split into two groups of 4 bits: 8 4 2 1 | 8 4 2 1.");
+  if (type === 5) return convQ(`Convert 0x${hex2(n)} to binary.`, "bin", bin8(n),
+    `${hex2(n)[0]} = ${bin8(n).slice(0, 4)}, ${hex2(n)[1]} = ${bin8(n).slice(4)} → ${bin8(n)}.`, "Each hex digit becomes 4 bits (8 4 2 1).");
+  const firsts = [10, 172, 192];
+  const ip = [firsts[rnd(3)], rnd(256), rnd(256), rnd(254) + 1];
+  return convQ(`What is ${ip.map(bin8).join(".")} in dotted decimal?`, "ip", ip.join("."),
+    ip.map(o => `${bin8(o)} = ${o}`).join(", ") + ".", "Convert each octet separately.");
+}
+
+// Total conversions = count: a random mix of the bank's conversion questions and fresh generated ones.
+function pickConversions(count) {
+  if (count <= 0) return [];
+  const fresh = [], seen = new Set();
+  let guard = 0;
+  while (fresh.length < count && guard++ < count * 20) {
+    const q = genConversion();
+    if (seen.has(q.q)) continue;
+    seen.add(q.q);
+    fresh.push(q);
+  }
+  return shuffle(bankConversions().concat(fresh)).slice(0, count);
+}
+
+const PLACEHOLDER = {
+  dec: "Type the decimal number, e.g. 172",
+  bin: "Type the bits, e.g. 10101100",
+  hex: "Type the hex value, e.g. AC",
+  ip: "Type it in dotted decimal, e.g. 192.168.1.1"
+};
+
+// Forgiving answer check: ignores spaces, case, 0x / h on hex, missing leading zeros on binary.
+function checkTyped(kind, typed, ans) {
+  const s = String(typed).trim().replace(/\s+/g, "");
+  if (!s) return false;
+  if (kind === "dec") return /^\d+$/.test(s) && parseInt(s, 10) === parseInt(ans, 10);
+  if (kind === "bin") return /^[01]{1,8}$/.test(s) && parseInt(s, 2) === parseInt(ans, 2);
+  if (kind === "hex") {
+    const h = s.replace(/^0x/i, "").replace(/h$/i, "");
+    return /^[0-9a-f]{1,2}$/i.test(h) && parseInt(h, 16) === parseInt(ans, 16);
+  }
+  if (kind === "ip") {
+    const a = s.split("."), b = ans.split(".");
+    return a.length === 4 && a.every((p, i) => /^\d+$/.test(p) && parseInt(p, 10) === parseInt(b[i], 10));
+  }
+  return false;
+}
+
+function startQuiz(questionList) {
+  state.questions = questionList;
+  state.i = 0;
+  state.score = 0;
+  state.answers = [];
+  state.start = Date.now();
+  clearInterval(state.timerId);
+  state.timerId = setInterval(tickTimer, 1000);
+  tickTimer();
+  $("setup").classList.add("hidden");
+  $("results").classList.add("hidden");
+  $("quiz").classList.remove("hidden");
+  renderQuestion();
+}
+
+function buildQuestions(pool, count) {
+  const shuffleOpts = $("shuffleOpts").checked;
+  return shuffle(pool).slice(0, count).map(src => {
+    if (src.k) return { src, typed: true };
+    let order = src.o.map((_, idx) => idx);
+    if (shuffleOpts) order = shuffle(order);
+    return { src, opts: order.map(idx => src.o[idx]), correct: order.indexOf(src.a) };
+  });
+}
+
+function tickTimer() {
+  const s = Math.floor((Date.now() - state.start) / 1000);
+  $("timer").textContent = `${Math.floor(s / 60)}:${String(s % 60).padStart(2, "0")}`;
+}
+
+function renderQuestion() {
+  const total = state.questions.length;
+  const cur = state.questions[state.i];
+  state.answered = false;
+  $("progressText").textContent = `Question ${state.i + 1} of ${total}`;
+  $("progressBar").style.width = `${(state.i / total) * 100}%`;
+  $("scoreText").textContent = state.score;
+  $("qnum").textContent = $("hideModule").checked ? `Question ${state.i + 1}` : `Question ${state.i + 1} · ${MODULE_NAMES[cur.src.m] || "Module " + cur.src.m}`;
+  $("prompt").textContent = cur.src.q;
+
+  const box = $("options");
+  box.innerHTML = "";
+  if (cur.typed) {
+    const form = document.createElement("form");
+    form.className = "typed";
+    form.autocomplete = "off";
+    const input = document.createElement("input");
+    input.id = "typedInput";
+    input.type = "text";
+    input.spellcheck = false;
+    input.setAttribute("autocapitalize", "off");
+    input.inputMode = cur.src.k === "hex" ? "text" : cur.src.k === "ip" ? "decimal" : "numeric";
+    input.placeholder = PLACEHOLDER[cur.src.k] || "Type your answer";
+    const btn = document.createElement("button");
+    btn.type = "submit";
+    btn.textContent = "Check";
+    form.append(input, btn);
+    form.onsubmit = ev => { ev.preventDefault(); submitTyped(); };
+    box.appendChild(form);
+    $("kbdHelp").textContent = "Type your answer, Enter to check, Enter again for next";
+    setTimeout(() => input.focus(), 0);
+  } else {
+    cur.opts.forEach((text, idx) => {
+      const b = document.createElement("button");
+      b.className = "opt";
+      const k = document.createElement("span");
+      k.className = "key";
+      k.textContent = idx + 1;
+      const t = document.createElement("span");
+      t.textContent = text;
+      b.append(k, t);
+      b.onclick = () => choose(idx);
+      box.appendChild(b);
+    });
+    $("kbdHelp").textContent = "Keyboard: 1–4 to answer, Enter for next";
+  }
+
+  const fb = $("feedback");
+  fb.className = "feedback";
+  fb.innerHTML = "";
+  $("hintBox").style.display = "none";
+  $("hintBtn").style.visibility = cur.src.h ? "visible" : "hidden";
+  $("nextBtn").disabled = true;
+  $("nextBtn").textContent = state.i === total - 1 ? "See results" : "Next";
+}
+
+function showFeedback(cur, ok, rightText) {
+  const fb = $("feedback");
+  fb.className = "feedback " + (ok ? "good" : "bad");
+  const head = document.createElement("strong");
+  head.textContent = ok ? "Correct!" : `Not quite. The answer is: ${rightText}`;
+  const body = document.createElement("div");
+  body.textContent = cur.src.e;
+  const tag = document.createElement("span");
+  tag.className = "tag";
+  tag.textContent = MODULE_NAMES[cur.src.m] || "Module " + cur.src.m;
+  fb.append(head, body, tag);
+  $("scoreText").textContent = state.score;
+  $("nextBtn").disabled = false;
+  $("nextBtn").focus();
+}
+
+function choose(idx) {
+  const cur = state.questions[state.i];
+  if (state.answered || cur.typed) return;
+  state.answered = true;
+  const ok = idx === cur.correct;
+  if (ok) state.score++;
+  state.answers.push({ q: cur, picked: cur.opts[idx], ok, n: state.i + 1 });
+  [...$("options").children].forEach((b, j) => {
+    b.disabled = true;
+    if (j === cur.correct) b.classList.add("correct");
+    else if (j === idx) b.classList.add("wrong");
+  });
+  showFeedback(cur, ok, cur.opts[cur.correct]);
+}
+
+function submitTyped() {
+  const cur = state.questions[state.i];
+  if (state.answered || !cur.typed) return;
+  const input = $("typedInput");
+  const typed = input.value.trim();
+  if (!typed) { input.focus(); return; }
+  state.answered = true;
+  const ok = checkTyped(cur.src.k, typed, cur.src.ans);
+  if (ok) state.score++;
+  state.answers.push({ q: cur, picked: typed, ok, n: state.i + 1 });
+  input.disabled = true;
+  input.classList.add(ok ? "correct" : "wrong");
+  $("options").querySelector("button").disabled = true;
+  showFeedback(cur, ok, cur.src.ans);
+}
+
+function next() {
+  if (!state.answered) return;
+  if (state.i < state.questions.length - 1) {
+    state.i++;
+    renderQuestion();
+  } else {
+    showResults();
+  }
+}
+
+function rightAnswer(q) {
+  return q.typed ? q.src.ans : q.opts[q.correct];
+}
+
+function showResults() {
+  clearInterval(state.timerId);
+  $("quiz").classList.add("hidden");
+  $("results").classList.remove("hidden");
+  const answered = state.answers.length;
+  const pct = answered ? Math.round((state.score / answered) * 100) : 0;
+  const secs = Math.floor((Date.now() - state.start) / 1000);
+  $("finalPct").textContent = `${pct}%`;
+  $("finalLine").textContent = `${state.score} of ${answered} correct · ${Math.floor(secs / 60)} min ${secs % 60} s` +
+    (answered < state.questions.length ? ` · ended early (${state.questions.length - answered} unanswered)` : "");
+
+  const byMod = {};
+  state.answers.forEach(a => {
+    const m = a.q.src.m;
+    byMod[m] = byMod[m] || { right: 0, total: 0 };
+    byMod[m].total++;
+    if (a.ok) byMod[m].right++;
+  });
+  const table = $("moduleTable");
+  table.innerHTML = "<tr><th>Module</th><th>Score</th><th></th></tr>";
+  Object.keys(byMod).sort((a, b) => a - b).forEach(m => {
+    const r = byMod[m];
+    const p = Math.round((r.right / r.total) * 100);
+    const color = p >= 80 ? "var(--good)" : p >= 60 ? "var(--mid)" : "var(--bad)";
+    const tr = document.createElement("tr");
+    const td1 = document.createElement("td"); td1.textContent = MODULE_NAMES[m] || "Module " + m;
+    const td2 = document.createElement("td"); td2.textContent = `${r.right}/${r.total} (${p}%)`;
+    const td3 = document.createElement("td");
+    td3.innerHTML = `<div class="bar"><div style="width:${p}%;background:${color}"></div></div>`;
+    tr.append(td1, td2, td3);
+    table.appendChild(tr);
+  });
+
+  const missed = state.answers.filter(a => !a.ok);
+  const list = $("missedList");
+  list.innerHTML = "";
+  $("missedTitle").textContent = missed.length ? `Questions you missed (${missed.length})` : "You didn't miss any. Nice work!";
+  missed.forEach(a => {
+    const d = document.createElement("div");
+    d.className = "missed";
+    const meta = document.createElement("div"); meta.className = "meta";
+    meta.textContent = `Question ${a.n} · ${MODULE_NAMES[a.q.src.m] || "Module " + a.q.src.m}`;
+    const p = document.createElement("div"); p.style.fontWeight = "600"; p.textContent = a.q.src.q;
+    const y = document.createElement("div"); y.className = "yours"; y.textContent = `Your answer: ${a.picked}`;
+    const r = document.createElement("div"); r.className = "right"; r.textContent = `Correct answer: ${rightAnswer(a.q)}`;
+    const e = document.createElement("div"); e.textContent = a.q.src.e;
+    d.append(meta, p, y, r, e);
+    list.appendChild(d);
+  });
+  $("retryMissedBtn").style.display = missed.length ? "" : "none";
+}
+
+$("startBtn").onclick = () => {
+  const mod = $("moduleSel").value;
+  const pool = poolFor(mod);
+  const raw = parseInt($("countInput").value, 10);
+  const count = Math.max(0, Math.min(pool.length, isNaN(raw) ? pool.length : raw));
+  const convCount = (mod === "all" || mod === "5") ? Math.max(0, Math.min(200, parseInt($("genInput").value, 10) || 0)) : 0;
+  const conversions = pickConversions(convCount);
+  let combined = buildQuestions(pool, count).concat(buildQuestions(conversions, conversions.length));
+  if (combined.length && JOKES.length) combined = combined.concat(buildQuestions(JOKES, 1)); // never more than 1 per quiz
+  if (!combined.length) { $("countHelp").textContent = "Pick at least one question."; return; }
+  startQuiz(shuffle(combined));
+};
+$("nextBtn").onclick = next;
+$("hintBtn").onclick = () => {
+  const h = state.questions[state.i].src.h;
+  if (!h) return;
+  $("hintBox").textContent = "Hint: " + h;
+  $("hintBox").style.display = "block";
+};
+$("quitBtn").onclick = () => {
+  if (state.answers.length === 0) { clearInterval(state.timerId); $("quiz").classList.add("hidden"); $("setup").classList.remove("hidden"); return; }
+  showResults();
+};
+$("retryMissedBtn").onclick = () => {
+  const missedSrc = state.answers.filter(a => !a.ok).map(a => a.q.src);
+  startQuiz(buildQuestions(missedSrc, missedSrc.length));
+};
+$("newQuizBtn").onclick = () => {
+  $("results").classList.add("hidden");
+  $("setup").classList.remove("hidden");
+  updateCountHelp();
+};
+
+document.addEventListener("keydown", e => {
+  if ($("quiz").classList.contains("hidden")) return;
+  const cur = state.questions[state.i];
+  if (e.target && e.target.tagName === "INPUT") return; // typing an answer; the form handles Enter
+  if (!cur.typed && e.key >= "1" && e.key <= "9") {
+    const idx = parseInt(e.key, 10) - 1;
+    if (idx < cur.opts.length) choose(idx);
+  } else if (e.key === "Enter" && state.answered) {
+    e.preventDefault();
+    next();
+  }
+});
+
+/* ---------- Light / dark mode ---------- */
+function applyTheme(t) {
+  document.documentElement.setAttribute("data-theme", t);
+  $("themeBtn").textContent = t === "dark" ? "☀ Light mode" : "☾ Dark mode";
+}
+(function initTheme() {
+  let saved = null;
+  try { saved = localStorage.getItem("nq-theme"); } catch (e) {}
+  const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+  applyTheme(saved || (prefersDark ? "dark" : "light"));
+})();
+$("themeBtn").onclick = () => {
+  const next = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+  applyTheme(next);
+  try { localStorage.setItem("nq-theme", next); } catch (e) {}
+};
+
+initSetup();
+</script>
+</body>
+</html>
