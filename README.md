@@ -42,7 +42,7 @@ Every quiz works the same way, so once you've used one you've used them all.
 
 **Quiz-specific extras**
 - **Networking:** typed conversion questions (binary, decimal, hex, dotted-decimal IPs) are freshly generated every time. Answers are checked forgivingly, so spacing, case, `0x` prefixes and missing leading zeros are all fine.
-- **PowerShell:** a **Terminal practice** mode with step-by-step scenarios. You type commands into a practice terminal, and wrong commands get a realistic error and a hint. Nothing you type is ever run; answers are checked against a built-in answer key.
+- **PowerShell:** **Test 1** and **Test 2** buttons next to Select all and Clear tick exactly the modules each test covers (Test 1: modules 1–12, Test 2: modules 11–13). A **Terminal practice** mode with step-by-step scenarios. You type commands into a practice terminal, and wrong commands get a realistic error and a hint. Nothing you type is ever run; answers are checked against a built-in answer key.
 - Each quiz has a few hidden joke questions that very occasionally replace a normal one. They never change how many questions you asked for.
 
 ## Privacy

@@ -344,7 +344,34 @@ const COURSE = {
 "17": "Module 17 – Reference B - Modules, Remoting, Jobs, Registry and Extras",
 "0": "General PowerShell"
 },
-"generator": null
+"generator": null,
+"presets": [
+{
+"label": "Test 1",
+"modules": [
+1,
+2,
+3,
+4,
+5,
+6,
+7,
+8,
+9,
+10,
+11,
+12
+]
+},
+{
+"label": "Test 2",
+"modules": [
+11,
+12,
+13
+]
+}
+]
 };          // from courses/<id>/course.json
 const MODULE_NAMES = COURSE.modules;          // {"4": "Module 4 – ...", "0": easter-egg label}
 const BANK = [
@@ -5858,6 +5885,102 @@ const BANK = [
 "e": "-not $true gives False. The exclamation mark (!) works as a shorthand."
 },
 {
+"m": 11,
+"q": "What does $colors[0] return if $colors = \"red\",\"green\",\"blue\"?",
+"o": [
+"green",
+"red",
+"The whole array",
+"An error, because indexes start at 1"
+],
+"a": 1,
+"e": "Array indexes start at 0, so [0] is the first item."
+},
+{
+"m": 11,
+"q": "An array holds 5 items. What is the highest valid index?",
+"o": [
+"5",
+"6",
+"1",
+"4"
+],
+"a": 3,
+"e": "Indexes run from 0 to Count minus 1, so five items use 0, 1, 2, 3 and 4."
+},
+{
+"m": 11,
+"q": "$colors = \"red\",\"green\",\"blue\". What does $colors[3] return by default?",
+"o": [
+"blue, because it wraps around",
+"Nothing ($null), with no error",
+"The number 3",
+"A red error saying the index is invalid"
+],
+"a": 1,
+"e": "There is no fourth item. Unless strict mode is on, PowerShell quietly returns $null for an index past the end."
+},
+{
+"m": 11,
+"q": "What does $colors[-1] return if $colors = \"red\",\"green\",\"blue\"?",
+"o": [
+"blue",
+"An error, because negative indexes are not allowed",
+"red",
+"Nothing"
+],
+"a": 0,
+"e": "A negative index counts from the end, so [-1] is the last item."
+},
+{
+"m": 11,
+"q": "What does this display? $nums = 10,20,30; $nums[1] = 99; $nums",
+"o": [
+"10, 20, 30 and 99",
+"99, 20 and 30",
+"10, 99 and 30",
+"10, 20 and 99"
+],
+"a": 2,
+"e": "$nums[1] is the second item (index 1), so it is replaced with 99."
+},
+{
+"m": 11,
+"q": "What does $n = 1..5 create?",
+"o": [
+"An array holding 0 through 5",
+"A single string \"1..5\"",
+"An array holding only 1 and 5",
+"An array holding 1, 2, 3, 4 and 5"
+],
+"a": 3,
+"e": "The range operator .. produces every whole number between the two ends, inclusive."
+},
+{
+"m": 11,
+"q": "How can you find out how many items are in the array $items?",
+"o": [
+"$items[Count]",
+"$items.Last",
+"Count($items)",
+"$items.Count"
+],
+"a": 3,
+"e": "Arrays have a Count property (Length also works)."
+},
+{
+"m": 11,
+"q": "Why is a loop often used with an array?",
+"o": [
+"Because loops make an array's indexes start at 1",
+"Because arrays can only be read inside a loop",
+"To process every element without writing one line per item",
+"Because arrays cannot be displayed any other way"
+],
+"a": 2,
+"e": "A loop repeats the same code for each element, so you do not repeat yourself for every index."
+},
+{
 "m": 12,
 "q": "What is the PowerShell way to start a single-line comment?",
 "o": [
@@ -6159,6 +6282,102 @@ const BANK = [
 "e": "Conditionals and loops redirect the flow, but otherwise PowerShell reads a script top to bottom."
 },
 {
+"m": 12,
+"q": "What does this display? $age = 17; if ($age -ge 18) { \"Adult\" } else { \"Minor\" }",
+"o": [
+"Adult and Minor",
+"Minor",
+"Nothing",
+"Adult"
+],
+"a": 1,
+"e": "17 is not greater than or equal to 18, so the else block runs."
+},
+{
+"m": 12,
+"q": "What does this display? $score = 85; if ($score -ge 90) { \"A\" } elseif ($score -ge 80) { \"B\" } elseif ($score -ge 70) { \"C\" } else { \"F\" }",
+"o": [
+"B",
+"C",
+"B and C",
+"A"
+],
+"a": 0,
+"e": "The first condition is false. The second is true, so B is shown and the rest of the chain is skipped."
+},
+{
+"m": 12,
+"q": "What does this display? $x = 95; if ($x -ge 60) { \"Pass\" } elseif ($x -ge 90) { \"Honours\" }",
+"o": [
+"Pass",
+"Pass and Honours",
+"Nothing",
+"Honours"
+],
+"a": 0,
+"e": "Only the first true branch in an if / elseif chain runs. 95 is at least 60, so the elseif is never tested."
+},
+{
+"m": 12,
+"q": "What is wrong with if ($x = 5) { \"five\" }?",
+"o": [
+"It assigns 5 to $x instead of comparing; use -eq",
+"Numbers cannot be used in an if condition",
+"The braces must come before the condition",
+"Nothing, because = is the comparison operator"
+],
+"a": 0,
+"e": "A single = assigns a value. Comparison in PowerShell uses -eq."
+},
+{
+"m": 12,
+"q": "When does the else block in an if / elseif / else statement run?",
+"o": [
+"Every time, after the if block",
+"Only when an error occurs",
+"When none of the earlier conditions is true",
+"Only when the if condition is true"
+],
+"a": 2,
+"e": "Else is the fallback for when every if and elseif test fails."
+},
+{
+"m": 12,
+"q": "Is an else block required at the end of an if / elseif chain?",
+"o": [
+"Yes, but only after an elseif",
+"No, it is optional",
+"No, but then elseif is not allowed either",
+"Yes, or the script will not run"
+],
+"a": 1,
+"e": "You can end an if or elseif chain without an else; nothing happens if no condition is true."
+},
+{
+"m": 12,
+"q": "Which result does 5 -lt 5 produce?",
+"o": [
+"0",
+"An error",
+"True",
+"False"
+],
+"a": 3,
+"e": "5 is not less than 5. Use -le for less than or equal."
+},
+{
+"m": 12,
+"q": "What does this display? $x = 5; if ($x -gt 1 -and $x -lt 5) { \"In range\" } else { \"Out of range\" }",
+"o": [
+"An error",
+"In range",
+"Both lines",
+"Out of range"
+],
+"a": 3,
+"e": "-and needs both tests to be true. $x -lt 5 is false because 5 is not less than 5."
+},
+{
 "m": 13,
 "q": "Which loop runs the block once for each item in a collection?",
 "o": [
@@ -6337,6 +6556,186 @@ const BANK = [
 ],
 "a": 2,
 "e": "The block runs once before the condition is tested. After that $i is 2, which is not less than 1, so the loop ends."
+},
+{
+"m": 13,
+"q": "What does this display? $colors = \"red\",\"green\",\"blue\"; for ($i = 0; $i -lt $colors.Count; $i++) { $colors[$i] }",
+"o": [
+"red, green and blue",
+"0, 1 and 2",
+"red, green, blue and an empty line",
+"green and blue only"
+],
+"a": 0,
+"e": "$i runs from 0 to 2 and each pass shows $colors[$i], so every item is displayed once."
+},
+{
+"m": 13,
+"q": "Why does the loop for ($i = 0; $i -lt $colors.Count; $i++) use -lt and not -le?",
+"o": [
+"-le is not allowed in a for loop",
+"-lt makes the loop run faster",
+"Valid indexes stop at Count minus 1",
+"Indexes start at 1, so the last index equals Count"
+],
+"a": 2,
+"e": "With three items the indexes are 0, 1 and 2. Using -le would also try index 3, which does not exist."
+},
+{
+"m": 13,
+"q": "How many times does this loop run? for ($i = 0; $i -lt 5; $i++) { \"hello\" }",
+"o": [
+"5 times",
+"6 times",
+"0 times",
+"4 times"
+],
+"a": 0,
+"e": "$i takes the values 0, 1, 2, 3 and 4, so the body runs five times."
+},
+{
+"m": 13,
+"q": "What does this display? for ($i = 1; $i -le 10; $i += 3) { $i }",
+"o": [
+"1, 4, 7 and 10",
+"1, 4 and 7",
+"1 through 10",
+"3, 6 and 9"
+],
+"a": 0,
+"e": "$i += 3 adds 3 each time: 1, 4, 7, 10. Then 13 is not less than or equal to 10."
+},
+{
+"m": 13,
+"q": "What does this display? foreach ($n in 2,4,6) { $n * 2 }",
+"o": [
+"4, 8 and 12",
+"12 only",
+"2, 4 and 6",
+"2, 4, 6, 4, 8 and 12"
+],
+"a": 0,
+"e": "Each item is doubled as the loop visits it."
+},
+{
+"m": 13,
+"q": "What does this display? foreach ($n in 1..5) { if ($n -eq 3) { break }; $n }",
+"o": [
+"3 only",
+"1, 2, 4 and 5",
+"1 and 2",
+"1, 2 and 3"
+],
+"a": 2,
+"e": "break ends the loop completely as soon as $n is 3."
+},
+{
+"m": 13,
+"q": "What does this display? foreach ($n in 1..5) { if ($n -eq 3) { continue }; $n }",
+"o": [
+"1 and 2",
+"1, 2, 4 and 5",
+"1 through 5",
+"3 only"
+],
+"a": 1,
+"e": "continue skips the rest of that pass only, so 3 is skipped and the loop carries on."
+},
+{
+"m": 13,
+"q": "What does this display? $x = 10; do { $x; $x -= 5 } while ($x -gt 0)",
+"o": [
+"10, 5 and 0",
+"10 and 5",
+"5 and 0",
+"Nothing"
+],
+"a": 1,
+"e": "Pass one shows 10, then $x is 5 (still above 0). Pass two shows 5, then $x is 0, so the loop stops."
+},
+{
+"m": 13,
+"q": "What does this display? $i = 5; while ($i -le 3) { \"run\"; $i++ }",
+"o": [
+"run, once",
+"Nothing",
+"An infinite loop of run",
+"run, three times"
+],
+"a": 1,
+"e": "The condition is false at the first check, so a while loop never runs its body."
+},
+{
+"m": 13,
+"q": "Which loop guarantees the code runs at least once?",
+"o": [
+"while",
+"do while",
+"foreach",
+"for"
+],
+"a": 1,
+"e": "A do while loop tests its condition after the block, so one pass always happens."
+},
+{
+"m": 13,
+"q": "What is $total after this code? $total = 0; foreach ($n in 1,2,3,4) { $total += $n }",
+"o": [
+"24",
+"0",
+"4",
+"10"
+],
+"a": 3,
+"e": "The loop adds each number to $total: 1 + 2 + 3 + 4 = 10."
+},
+{
+"m": 13,
+"q": "Why should $total = 0 be written before a loop that adds to $total, not inside it?",
+"o": [
+"Variables cannot be created inside a loop",
+"Inside, it would reset the total on every pass",
+"Inside, it would make the loop run forever",
+"PowerShell requires it to be the first line of a script"
+],
+"a": 1,
+"e": "Set the starting value once before the loop. Put inside the loop, it restarts at 0 every time and the sum is lost."
+},
+{
+"m": 13,
+"q": "What is $evens after this code? $evens = 0; foreach ($n in 1..10) { if ($n % 2 -eq 0) { $evens++ } }",
+"o": [
+"5",
+"6",
+"4",
+"10"
+],
+"a": 0,
+"e": "% gives the remainder after division. Evens (2, 4, 6, 8, 10) have remainder 0, so the if is true five times and $evens++ adds 1 each time."
+},
+{
+"m": 13,
+"q": "What does this display? foreach ($n in 1..6) { if ($n -gt 4) { $n } }",
+"o": [
+"4, 5 and 6",
+"5 and 6",
+"6 only",
+"1, 2, 3 and 4"
+],
+"a": 1,
+"e": "The if is inside the loop, so each number is tested and only those greater than 4 are shown."
+},
+{
+"m": 13,
+"q": "Which loop is the best fit for visiting each item of a collection when you do not need the index?",
+"o": [
+"do while",
+"while with a counter you manage yourself",
+"for with a hard-coded count",
+"foreach"
+],
+"a": 3,
+"e": "foreach hands you each item directly, so no counter or index is needed."
 },
 {
 "m": 14,
@@ -18721,7 +19120,7 @@ const modSet = mod => new Set(String(mod).split(",").filter(Boolean));
 const inScope = (mod) => { if (mod === "all") return BANK; const s = modSet(mod); return BANK.filter(q => s.has(String(q.m))); };
 
 /* Module picker: checkboxes; click to toggle, Shift+click to select a range (e.g. 4 through 8) */
-function modPicker(box, items, selSet, onChange) {
+function modPicker(box, items, selSet, onChange, presets) {
   box.innerHTML = "";
   const tools = document.createElement("div"); tools.className = "modtools";
   const info = document.createElement("span");
@@ -18732,6 +19131,9 @@ function modPicker(box, items, selSet, onChange) {
   const sync = () => { items.forEach((it, i) => { boxes[i].checked = selSet.has(it.value); }); info.textContent = `${selSet.size} of ${items.length} selected · Shift+click selects a range`; onChange(); };
   tools.appendChild(mk("Select all", () => { items.forEach(it => selSet.add(it.value)); sync(); }));
   tools.appendChild(mk("Clear", () => { selSet.clear(); sync(); }));
+  (presets || []).forEach(pr => tools.appendChild(mk(pr.label, () => {
+    selSet.clear(); pr.modules.forEach(m => { if (items.some(it => it.value === String(m))) selSet.add(String(m)); }); sync();
+  })));
   tools.appendChild(info);
   items.forEach((it, i) => {
     const lab = document.createElement("label");
@@ -18775,7 +19177,7 @@ function initSetup() {
   });
   if (mcSel === null) mcSel = new Set(mcItems.map(i => i.value));
   else mcSel = new Set([...mcSel].filter(v => mcItems.some(i => i.value === v)));
-  modPicker($("moduleSel"), mcItems, mcSel, updateCountHelp);
+  modPicker($("moduleSel"), mcItems, mcSel, updateCountHelp, COURSE.presets);
 }
 
 function renderRemoved() {
@@ -19229,7 +19631,7 @@ renderRemoved();
     });
     if (tSel === null) tSel = new Set(tItems.map(i => i.value));
     else tSel = new Set([...tSel].filter(v => tItems.some(i => i.value === v)));
-    modPicker($t("tModule"), tItems, tSel, updTCount);
+    modPicker($t("tModule"), tItems, tSel, updTCount, COURSE.presets);
   }
   armReset($t("tResetDone"), "Reset completed scenarios", () => { done = new Set([...done].filter(k => !k.startsWith("LA:"))); saveDone(); initTSetup(); });
   function tpool() { return fresh().filter(q => tSel.has(String(parseInt(q.module, 10)))); }
