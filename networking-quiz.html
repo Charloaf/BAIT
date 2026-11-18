@@ -255,9 +255,12 @@
    ===================================================================== */
 const COURSE = {
 "title": "Networking Quiz Bank",
-"subtitle": "Modules 4–10 · Multiple choice + typed conversions · Scrap paper only, no calculator",
+"subtitle": "Modules 1–10 · Multiple choice + typed conversions · Scrap paper only, no calculator",
 "modules": {
 "0": "General Networking",
+"1": "Module 1 – Networking Today",
+"2": "Module 2 – Basic Switch and End Device Configuration",
+"3": "Module 3 – Protocols and Models",
 "4": "Module 4 – Physical Layer",
 "5": "Module 5 – Number Systems",
 "6": "Module 6 – Data Link Layer",
@@ -276,6 +279,3654 @@ const COURSE = {
 };
 const MODULE_NAMES = COURSE.modules;
 const BANK = [
+{
+"m": 1,
+"q": "Every computer on a network is called a what?",
+"o": [
+"Medium",
+"Hub",
+"Host (end device)",
+"Intermediary"
+],
+"a": 2,
+"e": "Hosts = end devices = where data starts and ends."
+},
+{
+"m": 1,
+"q": "Which device type provides information (email, web pages, files) to other devices on a network?",
+"o": [
+"Server",
+"Switch",
+"Client",
+"Firewall"
+],
+"a": 0,
+"e": "Server SERVES, client asks. Servers run server software."
+},
+{
+"m": 1,
+"q": "A computer that sends requests to a server to retrieve information is called a what?",
+"o": [
+"Client",
+"Router",
+"Peer-only host",
+"Server"
+],
+"a": 0,
+"e": "Client = the asker. Your browser or mail app is client software."
+},
+{
+"m": 1,
+"q": "Which software does a client use to access web pages from a web server?",
+"o": [
+"File Explorer",
+"A web browser",
+"Server software",
+"Email client software"
+],
+"a": 1,
+"e": "Web server runs web server software; clients use a browser."
+},
+{
+"m": 1,
+"q": "A file server stores corporate and user files. How do client devices usually access them?",
+"o": [
+"Server software installed on the switch",
+"Web server software such as a browser",
+"Email client software such as Outlook",
+"Client software such as File Explorer"
+],
+"a": 3,
+"e": "File server = shared folders accessed with client software."
+},
+{
+"m": 1,
+"q": "In a peer-to-peer network, a device can act as...",
+"o": [
+"a server only, never a client",
+"a client only, never a server",
+"an intermediary device only",
+"both a client and a server"
+],
+"a": 3,
+"e": "Peer-to-peer = every computer does both jobs."
+},
+{
+"m": 1,
+"q": "Peer-to-peer networks are only recommended for what size of network?",
+"o": [
+"Worldwide networks",
+"Large enterprises",
+"Very small networks",
+"Medium-sized campuses"
+],
+"a": 2,
+"e": "No central control, so they do not scale."
+},
+{
+"m": 1,
+"q": "Which is an ADVANTAGE of a peer-to-peer network?",
+"o": [
+"Easy to set up and low cost",
+"Centralized administration",
+"Better security",
+"Highly scalable"
+],
+"a": 0,
+"e": "Advantages: easy, less complex, cheap. Disadvantages are the opposite of a server setup."
+},
+{
+"m": 1,
+"q": "Which is a DISADVANTAGE of a peer-to-peer network?",
+"o": [
+"The network is too complex for small offices",
+"No centralized administration",
+"It is more expensive than a server network",
+"A dedicated server is required to share files"
+],
+"a": 1,
+"e": "Disadvantages: no central admin, less secure, not scalable, slower."
+},
+{
+"m": 1,
+"q": "Which statement about peer-to-peer networks is true?",
+"o": [
+"They give each administrator central control",
+"They always scale better than client/server networks",
+"They are not as secure as client/server networks",
+"They need a dedicated file server for every user"
+],
+"a": 2,
+"e": "P2P = less secure, no central admin."
+},
+{
+"m": 1,
+"q": "An end device is...",
+"o": [
+"a device that only regenerates and retransmits signals",
+"a cable or medium that carries the message",
+"a device that only filters unwanted traffic",
+"where a message originates or where it is received"
+],
+"a": 3,
+"e": "Data starts at an end device and arrives at an end device."
+},
+{
+"m": 1,
+"q": "Which of these is an intermediary device?",
+"o": [
+"Router",
+"Laptop",
+"Printer",
+"Smartphone"
+],
+"a": 0,
+"e": "Intermediary = interconnects end devices: switches, wireless access points, routers, firewalls."
+},
+{
+"m": 1,
+"q": "Which of these is an end device?",
+"o": [
+"Firewall",
+"Router",
+"Switch",
+"Printer"
+],
+"a": 3,
+"e": "Printers, phones, laptops and tablets are end devices."
+},
+{
+"m": 1,
+"q": "Which device connects devices on the same network together and forwards frames by MAC address?",
+"o": [
+"Firewall",
+"Router",
+"Switch",
+"Modem"
+],
+"a": 2,
+"e": "Switch = same LAN. Router = between networks."
+},
+{
+"m": 1,
+"q": "Which device decides which direction to send messages and connects different networks together?",
+"o": [
+"Printer",
+"NIC",
+"Router",
+"Switch"
+],
+"a": 2,
+"e": "Router = different networks, picks the path."
+},
+{
+"m": 1,
+"q": "Which intermediary device acts like a security guard, deciding what traffic is allowed in or out?",
+"o": [
+"Firewall",
+"Hub",
+"Switch",
+"Access point"
+],
+"a": 0,
+"e": "Firewall filters traffic based on security rules."
+},
+{
+"m": 1,
+"q": "Which role of an intermediary device involves the data signals?",
+"o": [
+"Display web pages to the user in a browser",
+"Regenerate and retransmit data signals",
+"Create the original message for the user",
+"Store and serve the user's files to clients"
+],
+"a": 1,
+"e": "They also keep path information and notify others of errors and failures."
+},
+{
+"m": 1,
+"q": "Which role of an intermediary device involves path information?",
+"o": [
+"Maintain information about what pathways exist in the network",
+"Hold and serve user documents",
+"Act as the source of the message",
+"Run browser software for the user"
+],
+"a": 0,
+"e": "Intermediary roles: regenerate signals, keep path info, report errors."
+},
+{
+"m": 1,
+"q": "Which medium carries data as pulses of light?",
+"o": [
+"Glass or plastic fibers (fiber-optic cable)",
+"Wireless transmission over radio waves",
+"Metal wires within copper cables",
+"Powerline adapters in electrical outlets"
+],
+"a": 0,
+"e": "Fiber = light. Copper = electrical impulses. Wireless = radio waves."
+},
+{
+"m": 1,
+"q": "Which medium carries data as electrical impulses?",
+"o": [
+"Metal wires within cables",
+"Wireless transmission",
+"Satellite dishes",
+"Fiber-optic cable"
+],
+"a": 0,
+"e": "Metal wire = electricity."
+},
+{
+"m": 1,
+"q": "Wireless transmission carries data using...",
+"o": [
+"vibrations sent through the power line",
+"pulses of light sent through glass fibers",
+"modulation of specific frequencies of electromagnetic waves",
+"electrical impulses sent over copper wires"
+],
+"a": 2,
+"e": "Wireless = EM wave frequencies."
+},
+{
+"m": 1,
+"q": "What does NIC stand for?",
+"o": [
+"Node Interface Controller",
+"Network Interface Card",
+"Network Interchange Cable",
+"Network Internet Connection"
+],
+"a": 1,
+"e": "The NIC physically connects a host to the network."
+},
+{
+"m": 1,
+"q": "Which term describes the actual outlet where a cable plugs into a device?",
+"o": [
+"Medium",
+"Logical topology",
+"Physical port",
+"Intermediary"
+],
+"a": 2,
+"e": "Port = outlet. Interface = ports on networking devices (often used interchangeably with port)."
+},
+{
+"m": 1,
+"q": "Network diagrams use symbols to represent devices. These diagrams are also called what?",
+"o": [
+"Packet captures",
+"Topology diagrams",
+"Addressing tables only",
+"Protocol stacks"
+],
+"a": 1,
+"e": "Network diagram = topology diagram."
+},
+{
+"m": 1,
+"q": "Which type of diagram shows the physical location of intermediary devices and cable installation?",
+"o": [
+"Logical topology diagram",
+"Physical topology diagram",
+"Protocol diagram",
+"Addressing table"
+],
+"a": 1,
+"e": "Physical = where things are and where the cables run."
+},
+{
+"m": 1,
+"q": "Which type of diagram shows devices, ports and the addressing scheme?",
+"o": [
+"Logical topology diagram",
+"Physical topology diagram",
+"Floor plan",
+"Cable map"
+],
+"a": 0,
+"e": "Logical = addresses and ports, not building layout."
+},
+{
+"m": 1,
+"q": "Which network type connects a few computers to each other and the internet in a home?",
+"o": [
+"Small home network",
+"Worldwide network",
+"Medium to large network",
+"SOHO network"
+],
+"a": 0,
+"e": "Small home = few computers. SOHO = connects to a corporate network."
+},
+{
+"m": 1,
+"q": "A network that lets a computer in a home or remote office connect to a corporate network is called a...",
+"o": [
+"Extranet",
+"WAN-only network",
+"Small home network",
+"SOHO network"
+],
+"a": 3,
+"e": "SOHO = Small Office/Home Office."
+},
+{
+"m": 1,
+"q": "A LAN is a network infrastructure that spans...",
+"o": [
+"only a single device",
+"a wide geographical area",
+"the whole world",
+"a small geographical area"
+],
+"a": 3,
+"e": "LAN = Local. WAN = Wide."
+},
+{
+"m": 1,
+"q": "Which statement describes a LAN?",
+"o": [
+"Interconnects LANs over wide geographical areas",
+"Owned by no one and spans the whole world",
+"Administered by service providers and provides slower links",
+"Administered by a single organization or individual and provides high-speed bandwidth"
+],
+"a": 3,
+"e": "LAN: small area, one admin, fast. WAN: wide area, providers, slower."
+},
+{
+"m": 1,
+"q": "Which statement describes a WAN?",
+"o": [
+"Interconnects LANs over wide geographical areas, typically administered by service providers",
+"Provides the highest-speed links to internal devices",
+"Is limited to a single building and one organization",
+"Spans a small area and is administered by a single owner"
+],
+"a": 0,
+"e": "WANs connect LANs and typically run slower than LAN links."
+},
+{
+"m": 1,
+"q": "Who typically administers a WAN?",
+"o": [
+"The Internet Engineering Task Force (IETF)",
+"One or more service providers",
+"The end users of the network",
+"A single home user or small business"
+],
+"a": 1,
+"e": "SPs / ISPs manage WANs."
+},
+{
+"m": 1,
+"q": "What is the internet?",
+"o": [
+"A worldwide collection of interconnected LANs and WANs",
+"A network made up only of web servers",
+"A single large WAN owned and run by ICANN",
+"A private network belonging to one company"
+],
+"a": 0,
+"e": "The internet is a network of networks, owned by nobody."
+},
+{
+"m": 1,
+"q": "Which group develops technical standards for the internet?",
+"o": [
+"ICANN",
+"IAB",
+"ISP",
+"IETF"
+],
+"a": 3,
+"e": "IETF = Engineering Task Force = technical standards. ICANN = names and numbers. IAB = architecture oversight."
+},
+{
+"m": 1,
+"q": "Which organization manages domain names and IP address assignment?",
+"o": [
+"ICANN",
+"IEEE",
+"IETF",
+"IAB"
+],
+"a": 0,
+"e": "ICANN = Assigned Names and Numbers."
+},
+{
+"m": 1,
+"q": "Which organization oversees the architecture of the internet?",
+"o": [
+"IETF",
+"IAB",
+"ICANN",
+"ISP"
+],
+"a": 1,
+"e": "IAB = Architecture Board."
+},
+{
+"m": 1,
+"q": "A private collection of LANs and WANs internal to an organization, accessible only to its members, is a(n)...",
+"o": [
+"Metro Ethernet",
+"Intranet",
+"Internet",
+"Extranet"
+],
+"a": 1,
+"e": "INtranet = IN the organization only."
+},
+{
+"m": 1,
+"q": "Which network gives secure access to people who work for a different organization?",
+"o": [
+"Extranet",
+"Intranet",
+"Home LAN",
+"Internet"
+],
+"a": 0,
+"e": "EXtranet = lets EXternal approved people in."
+},
+{
+"m": 1,
+"q": "Which home internet connection runs over a telephone line and is always on?",
+"o": [
+"Satellite",
+"Cable",
+"Dial-up",
+"DSL"
+],
+"a": 3,
+"e": "DSL = Digital Subscriber Line, uses the phone line."
+},
+{
+"m": 1,
+"q": "Which home internet connection is offered by cable television providers?",
+"o": [
+"Satellite",
+"DSL",
+"Cable",
+"Cellular"
+],
+"a": 2,
+"e": "Cable = high bandwidth, always on, TV provider."
+},
+{
+"m": 1,
+"q": "Which connection is the major benefit for rural areas without ISPs?",
+"o": [
+"Cable",
+"DSL",
+"Satellite",
+"Metro Ethernet"
+],
+"a": 2,
+"e": "Satellite works anywhere with a clear view of the sky."
+},
+{
+"m": 1,
+"q": "Which home connection is an inexpensive, low-bandwidth option that uses a modem?",
+"o": [
+"Cellular",
+"Cable",
+"Dial-up telephone",
+"Fiber"
+],
+"a": 2,
+"e": "Dial-up = cheap and very slow."
+},
+{
+"m": 1,
+"q": "ADSL means that...",
+"o": [
+"it only works on cable",
+"download speed is faster than upload speed",
+"upload and download speeds are equal",
+"upload speed is faster than download speed"
+],
+"a": 1,
+"e": "Asymmetrical = unequal. SDSL (symmetrical) has equal speeds."
+},
+{
+"m": 1,
+"q": "SDSL (Symmetric DSL) means that...",
+"o": [
+"download is much faster than upload",
+"it only uses wireless",
+"upload and download speeds are the same",
+"it is dial-up"
+],
+"a": 2,
+"e": "Symmetric = same both ways."
+},
+{
+"m": 1,
+"q": "Which is a typical BUSINESS internet connection?",
+"o": [
+"Dedicated leased line",
+"Powerline adapter",
+"Dial-up",
+"Wi-Fi hotspot"
+],
+"a": 0,
+"e": "Business: leased line, Metro Ethernet, business DSL, satellite."
+},
+{
+"m": 1,
+"q": "What is a dedicated leased line?",
+"o": [
+"A reserved circuit within the service provider's network connecting distant offices",
+"A wireless hotspot provided by a cellular carrier",
+"A shared home cable connection from the cable provider",
+"A DSL line running over the home phone line"
+],
+"a": 0,
+"e": "Private, reliable, secure, paid monthly or yearly."
+},
+{
+"m": 1,
+"q": "Which business connection extends LAN access technology into the WAN?",
+"o": [
+"Dedicated leased line from a provider",
+"Dial-up telephone (modem) access",
+"Metro Ethernet (Ethernet WAN)",
+"Cellular access through a cell tower"
+],
+"a": 2,
+"e": "Ethernet WAN = LAN technology over a wide area."
+},
+{
+"m": 1,
+"q": "What does a converged network carry on one link?",
+"o": [
+"Data, voice and video",
+"Only encrypted traffic",
+"Voice only",
+"Data only"
+],
+"a": 0,
+"e": "Before convergence there were separate networks for telephone, video and data."
+},
+{
+"m": 1,
+"q": "Which is a benefit of a converged network?",
+"o": [
+"Networks no longer need any common standards",
+"Three separate networks that each use their own rules",
+"Each service keeps using different technology",
+"One infrastructure using the same set of rules and standards"
+],
+"a": 3,
+"e": "Cheaper, simpler, more flexible."
+},
+{
+"m": 1,
+"q": "Which are the four basic characteristics of a reliable network architecture?",
+"o": [
+"Confidentiality, integrity, availability, speed",
+"Speed, cost, size, color",
+"Redundancy, bandwidth, topology, media",
+"Fault tolerance, scalability, QoS, security"
+],
+"a": 3,
+"e": "Four characteristics: FT, Scale, QoS, Security."
+},
+{
+"m": 1,
+"q": "A network that limits the impact of a failure by limiting the number of affected devices is...",
+"o": [
+"converged",
+"QoS-enabled",
+"fault tolerant",
+"scalable"
+],
+"a": 2,
+"e": "Fault tolerance needs multiple paths (redundancy)."
+},
+{
+"m": 1,
+"q": "What is required for fault tolerance?",
+"o": [
+"A dedicated circuit per user",
+"Multiple paths",
+"Only a wireless link",
+"A single high-speed path"
+],
+"a": 1,
+"e": "If one path breaks, traffic uses another."
+},
+{
+"m": 1,
+"q": "Packet switching splits traffic into packets that are...",
+"o": [
+"sent only over wireless links to the destination",
+"all required to take the same single route",
+"routed over a network, each possibly taking a different path",
+"sent over one dedicated circuit for the whole message"
+],
+"a": 2,
+"e": "Packet-switched = redundancy. Circuit-switched = dedicated circuit."
+},
+{
+"m": 1,
+"q": "Which network type establishes dedicated circuits and so cannot reroute each packet differently?",
+"o": [
+"Packet-switched network",
+"Converged network",
+"Peer-to-peer network",
+"Circuit-switched network"
+],
+"a": 3,
+"e": "Circuit = dedicated path for the whole call."
+},
+{
+"m": 1,
+"q": "A scalable network can...",
+"o": [
+"expand quickly to support new users and applications without affecting existing users",
+"give priority to voice traffic over file downloads",
+"keep running normally after one of its devices fails",
+"encrypt all traffic that crosses the network"
+],
+"a": 0,
+"e": "Scalable = grows. Designers follow standards and protocols."
+},
+{
+"m": 1,
+"q": "How do network designers make networks scalable?",
+"o": [
+"By following accepted standards and protocols",
+"By using only wireless links everywhere",
+"By using equipment from only one vendor",
+"By limiting the number of users on the network"
+],
+"a": 0,
+"e": "Standards let new equipment work with old."
+},
+{
+"m": 1,
+"q": "What is the primary mechanism used to ensure reliable delivery of content (voice, live video) for all users?",
+"o": [
+"Quality of Service (QoS)",
+"Fault tolerance of the paths",
+"Scalability of the network",
+"Packet filtering at the edge"
+],
+"a": 0,
+"e": "QoS prioritizes time-sensitive traffic when bandwidth is short."
+},
+{
+"m": 1,
+"q": "Live video that keeps pausing during peak demand is a sign of...",
+"o": [
+"too many servers connected to the switch",
+"a missing firewall on the network edge",
+"a faulty NIC in one of the end devices only",
+"higher demand for bandwidth than available with QoS not configured"
+],
+"a": 3,
+"e": "No QoS plus congestion causes breaks."
+},
+{
+"m": 1,
+"q": "Which traffic would QoS give HIGH priority?",
+"o": [
+"Voice and video calls",
+"Email messages",
+"Web browsing sessions",
+"Large file downloads"
+],
+"a": 0,
+"e": "Time-sensitive traffic first; downloads can wait."
+},
+{
+"m": 1,
+"q": "Which are the three goals of network security (the CIA triad)?",
+"o": [
+"Cost, integrity, accounting",
+"Confidentiality, integrity, availability",
+"Confidentiality, identity, authorization",
+"Control, identity, access"
+],
+"a": 1,
+"e": "CIA = Confidentiality, Integrity, Availability."
+},
+{
+"m": 1,
+"q": "Which security goal means only the intended recipients can read the data?",
+"o": [
+"Integrity",
+"Availability",
+"Confidentiality",
+"Scalability"
+],
+"a": 2,
+"e": "Confidentiality = secret."
+},
+{
+"m": 1,
+"q": "Which security goal ensures data has not been altered in transmission?",
+"o": [
+"Availability",
+"Confidentiality",
+"Integrity",
+"Redundancy"
+],
+"a": 2,
+"e": "Integrity = intact."
+},
+{
+"m": 1,
+"q": "Which security goal ensures timely and reliable access to data for authorized users?",
+"o": [
+"Authentication",
+"Confidentiality",
+"Availability",
+"Integrity"
+],
+"a": 2,
+"e": "Availability = it is there when needed."
+},
+{
+"m": 1,
+"q": "Network infrastructure security includes...",
+"o": [
+"physical security of devices and preventing unauthorized access to them",
+"encrypting email messages sent between hosts",
+"protecting data stored in the cloud and nothing else",
+"load balancing traffic across the available links"
+],
+"a": 0,
+"e": "Infrastructure = the devices; information security = the data."
+},
+{
+"m": 1,
+"q": "Information security is about...",
+"o": [
+"choosing which cable types to install",
+"locking the server room and protecting the devices",
+"protecting the data transmitted over the network",
+"adding more bandwidth to the busiest links"
+],
+"a": 2,
+"e": "Data in transit and stored."
+},
+{
+"m": 1,
+"q": "Which networking trend lets users use their own laptops, tablets and phones on the network?",
+"o": [
+"Smart home technology",
+"Online collaboration",
+"Powerline networking",
+"BYOD"
+],
+"a": 3,
+"e": "BYOD = any device, any ownership, used anywhere."
+},
+{
+"m": 1,
+"q": "BYOD means...",
+"o": [
+"devices that are not allowed to leave the office",
+"any device, with any ownership, used anywhere",
+"only company-owned devices used on site",
+"only smartphones used on the company network"
+],
+"a": 1,
+"e": "Flexibility for users, security headaches for the company."
+},
+{
+"m": 1,
+"q": "Which four trends does Module 1 list as changing how we interact?",
+"o": [
+"BYOD, VPN, ACL, IPS",
+"BYOD, online collaboration, video communications, cloud computing",
+"Cable, DSL, satellite, dial-up",
+"LAN, WAN, intranet, extranet"
+],
+"a": 1,
+"e": "Recent trends: BYOD, collaboration, video, cloud."
+},
+{
+"m": 1,
+"q": "Which is a Cisco tool for instant messaging, posting images and videos, and collaboration?",
+"o": [
+"Cisco Talent Bridge",
+"Cisco Packet Tracer",
+"Cisco NetAcad",
+"Cisco Webex Teams"
+],
+"a": 3,
+"e": "Webex = collaboration. Packet Tracer = simulation."
+},
+{
+"m": 1,
+"q": "Cloud computing is made possible by...",
+"o": [
+"powerline adapters",
+"smart home devices",
+"wireless broadband",
+"data centers"
+],
+"a": 3,
+"e": "Big companies rent data center space to smaller companies."
+},
+{
+"m": 1,
+"q": "Which cloud type is available to the general public on a pay-per-use model or for free?",
+"o": [
+"Custom cloud",
+"Public cloud",
+"Private cloud",
+"Hybrid cloud"
+],
+"a": 1,
+"e": "Public = anyone."
+},
+{
+"m": 1,
+"q": "Which cloud type is intended for a specific organization, such as a government?",
+"o": [
+"Hybrid cloud",
+"Custom cloud",
+"Private cloud",
+"Public cloud"
+],
+"a": 2,
+"e": "Private = one organization."
+},
+{
+"m": 1,
+"q": "Which cloud type is made up of two or more cloud types connected by the same architecture?",
+"o": [
+"Hybrid cloud",
+"Public cloud",
+"Custom cloud",
+"Private cloud"
+],
+"a": 0,
+"e": "Hybrid = a mix, e.g. part custom, part public."
+},
+{
+"m": 1,
+"q": "Which cloud type is built to meet the needs of a specific industry, such as healthcare or media?",
+"o": [
+"Private-only cloud",
+"Public cloud",
+"Custom cloud",
+"Hybrid cloud"
+],
+"a": 2,
+"e": "Slides say Custom (can be private or public). Your notes call a shared industry cloud a community cloud."
+},
+{
+"m": 1,
+"q": "Smart home technology allows...",
+"o": [
+"everyday appliances to interconnect with other devices",
+"homes to avoid the use of the internet",
+"appliances to make voice calls only",
+"only laptops to connect to the corporate network"
+],
+"a": 0,
+"e": "E.g. an oven that talks to your calendar."
+},
+{
+"m": 1,
+"q": "Powerline networking connects devices to a LAN by...",
+"o": [
+"using satellite signals from a rooftop dish",
+"running fiber-optic cable through the walls",
+"using Bluetooth between adapters only",
+"sending data over electrical wiring using a powerline adapter"
+],
+"a": 3,
+"e": "Plug into any outlet. Useful when Wi-Fi does not reach."
+},
+{
+"m": 1,
+"q": "When is powerline networking especially useful?",
+"o": [
+"When running a corporate data center",
+"When wireless access points cannot reach all devices in the home",
+"When fiber is already installed to the home",
+"When the fastest possible wired link is required"
+],
+"a": 1,
+"e": "It is not as fast as Ethernet and not for businesses."
+},
+{
+"m": 1,
+"q": "What does WISP stand for?",
+"o": [
+"Wireless Internet Service Provider",
+"Wide Internet Service Provider",
+"Wireless IP Switching Protocol",
+"Web Internet Security Policy"
+],
+"a": 0,
+"e": "A WISP connects subscribers to access points or hotspots, commonly rural."
+},
+{
+"m": 1,
+"q": "Which is an EXTERNAL network threat?",
+"o": [
+"Lost or stolen device",
+"Denial of service attack",
+"Accidental misuse by an employee",
+"Malicious employee"
+],
+"a": 1,
+"e": "Internal threats: lost/stolen devices, accidental misuse, malicious employees."
+},
+{
+"m": 1,
+"q": "Which is an INTERNAL network threat?",
+"o": [
+"A zero-day attack",
+"Spyware installed on a device",
+"Identity theft",
+"Accidental misuse by employees"
+],
+"a": 3,
+"e": "Internal = from inside the organization."
+},
+{
+"m": 1,
+"q": "What is a zero-day attack?",
+"o": [
+"A flood of traffic that crashes a network",
+"Installing spyware secretly on an old device",
+"An attack that always takes place at midnight",
+"An attack on a newly discovered vulnerability that the vendor has not yet patched"
+],
+"a": 3,
+"e": "No patch exists yet, so it is dangerous."
+},
+{
+"m": 1,
+"q": "What does a denial of service (DoS) attack do?",
+"o": [
+"Floods the network with traffic so it crashes",
+"Secretly records keystrokes and passwords",
+"Encrypts files and demands a ransom",
+"Steals the login credentials of users"
+],
+"a": 0,
+"e": "DoS = overload."
+},
+{
+"m": 1,
+"q": "Which software secretly watches what you do (keystrokes, passwords)?",
+"o": [
+"Adware",
+"Spyware",
+"A firewall",
+"An ACL"
+],
+"a": 1,
+"e": "Spyware spies. Adware shows unwanted ads."
+},
+{
+"m": 1,
+"q": "Which security components are recommended for a home or small office network?",
+"o": [
+"Metro Ethernet and a leased line",
+"A dedicated firewall system and a VPN",
+"ACLs and intrusion prevention systems",
+"Antivirus/antispyware software and firewall filtering"
+],
+"a": 3,
+"e": "Home: antivirus + firewall. Larger networks add dedicated firewall, ACL, IPS, VPN."
+},
+{
+"m": 1,
+"q": "Which security solution creates an encrypted tunnel for remote workers?",
+"o": [
+"ACL",
+"VPN",
+"IPS",
+"Antispyware"
+],
+"a": 1,
+"e": "Virtual Private Network = secure connection from home to company."
+},
+{
+"m": 1,
+"q": "Which security solution actively watches for fast attacks, including zero-day attacks, and stops them?",
+"o": [
+"VPN",
+"Antivirus software",
+"ACL",
+"IPS"
+],
+"a": 3,
+"e": "IPS = prevention, in real time."
+},
+{
+"m": 1,
+"q": "Which security feature filters access based on IP addresses and applications?",
+"o": [
+"IPS",
+"VPN",
+"ACL",
+"Antispyware software"
+],
+"a": 2,
+"e": "ACL decides who can access what."
+},
+{
+"m": 1,
+"q": "Which security approach does Module 1 recommend?",
+"o": [
+"A single strong firewall used on its own",
+"Antivirus software used on its own",
+"No security is needed on small networks",
+"Multiple layers using more than one security solution"
+],
+"a": 3,
+"e": "If one layer fails, others still catch the threat."
+},
+{
+"m": 1,
+"q": "Which Cisco certification demonstrates knowledge of foundational networking technologies?",
+"o": [
+"DevNet Professional",
+"CCIE only",
+"CCNA",
+"A+"
+],
+"a": 2,
+"e": "Cisco Certified Network Associate."
+},
+{
+"m": 1,
+"q": "The Talent Bridge Matching Engine on netacad.com is used to...",
+"o": [
+"take the module quizzes and final exam",
+"download and install Cisco Packet Tracer",
+"configure routers and switches online",
+"find employment opportunities with Cisco partners seeking NetAcad students"
+],
+"a": 3,
+"e": "Careers menu on netacad.com."
+},
+{
+"m": 2,
+"q": "In an operating system, which part is the user interface that lets users request tasks through the CLI or GUI?",
+"o": [
+"Shell",
+"Firmware",
+"Hardware",
+"Kernel"
+],
+"a": 0,
+"e": "Shell = the part you talk to. Kernel sits between hardware and software."
+},
+{
+"m": 2,
+"q": "Which part of an operating system communicates between the hardware and software and manages how hardware resources are used?",
+"o": [
+"Shell",
+"Terminal",
+"Kernel",
+"GUI"
+],
+"a": 2,
+"e": "Kernel = the middleman with the hardware."
+},
+{
+"m": 2,
+"q": "Why are network devices typically accessed through a CLI instead of a GUI?",
+"o": [
+"GUIs cannot display any command output",
+"Network devices have no drivers for screens",
+"GUIs can fail, crash or misbehave",
+"A CLI always needs less typing than a GUI"
+],
+"a": 2,
+"e": "CLI is more reliable for network devices."
+},
+{
+"m": 2,
+"q": "Which are examples of a GUI-based operating system?",
+"o": [
+"Windows, macOS, Android",
+"Cisco IOS, PuTTY",
+"Tera Term, SecureCRT",
+"Telnet, SSH"
+],
+"a": 0,
+"e": "GUI = icons, menus, windows."
+},
+{
+"m": 2,
+"q": "Which access method is a physical management port used for initial configuration?",
+"o": [
+"VTY",
+"SSH",
+"Console",
+"Telnet"
+],
+"a": 2,
+"e": "Console = cable plugged straight into the device (out-of-band)."
+},
+{
+"m": 2,
+"q": "Which is the recommended method for remotely connecting to a Cisco device?",
+"o": [
+"SSH",
+"Console",
+"HTTP",
+"Telnet"
+],
+"a": 0,
+"e": "SSH is secure; Telnet is plaintext."
+},
+{
+"m": 2,
+"q": "Which remote access method sends user authentication, passwords and commands in plaintext?",
+"o": [
+"Telnet",
+"SSH",
+"Encrypted VPN",
+"Console"
+],
+"a": 0,
+"e": "Telnet = insecure."
+},
+{
+"m": 2,
+"q": "Which are terminal emulation programs?",
+"o": [
+"Wireshark, Nmap, Packet Tracer",
+"Chrome, Firefox, Edge",
+"Webex, Zoom, Skype",
+"PuTTY, Tera Term, SecureCRT"
+],
+"a": 3,
+"e": "They connect through the console port or SSH/Telnet."
+},
+{
+"m": 2,
+"q": "Which management method uses a separate or direct path such as the console, rather than the normal network?",
+"o": [
+"SVI management",
+"Telnet management",
+"In-band management",
+"Out-of-band management"
+],
+"a": 3,
+"e": "Out-of-band = outside the production network (console). In-band = over the network (SSH, Telnet)."
+},
+{
+"m": 2,
+"q": "Which management method uses the normal network, such as SSH or Telnet?",
+"o": [
+"Console-only management",
+"Out-of-band management",
+"Serial-only management",
+"In-band management"
+],
+"a": 3,
+"e": "In-band = through the network."
+},
+{
+"m": 2,
+"q": "Which prompt symbol identifies user EXEC mode?",
+"o": [
+"(config)#",
+"$",
+"#",
+">"
+],
+"a": 3,
+"e": "> = limited (user). # = privileged."
+},
+{
+"m": 2,
+"q": "Which prompt symbol identifies privileged EXEC mode?",
+"o": [
+"(config)>",
+">",
+"#",
+"~"
+],
+"a": 2,
+"e": "# = hash gives you full access."
+},
+{
+"m": 2,
+"q": "Which mode allows access to only a limited number of basic monitoring commands?",
+"o": [
+"User EXEC mode",
+"Global configuration mode",
+"Privileged EXEC mode",
+"Interface configuration mode"
+],
+"a": 0,
+"e": "User EXEC is the entry level."
+},
+{
+"m": 2,
+"q": "Which mode allows access to all commands and features?",
+"o": [
+"Console mode",
+"Line configuration mode",
+"Privileged EXEC mode",
+"User EXEC mode"
+],
+"a": 2,
+"e": "Privileged EXEC gets you everything."
+},
+{
+"m": 2,
+"q": "Which command returns you from privileged EXEC mode to user EXEC mode?",
+"o": [
+"end",
+"exit global",
+"disable",
+"reload"
+],
+"a": 2,
+"e": "disable is the opposite of enable."
+},
+{
+"m": 2,
+"q": "Which mode is used to configure console, SSH, Telnet or AUX access?",
+"o": [
+"Interface configuration mode",
+"Line configuration mode",
+"Global configuration mode",
+"User EXEC mode"
+],
+"a": 1,
+"e": "Line = console/VTY/AUX."
+},
+{
+"m": 2,
+"q": "Which mode is used to configure a switch port or router interface?",
+"o": [
+"Privileged EXEC mode",
+"Line configuration mode",
+"Interface configuration mode",
+"Global configuration mode"
+],
+"a": 2,
+"e": "Interface = ports."
+},
+{
+"m": 2,
+"q": "What is the prompt in global configuration mode?",
+"o": [
+"Switch#",
+"Switch(config)#",
+"Switch(config-if)#",
+"Switch>"
+],
+"a": 1,
+"e": "(config) = global config. (config-if) = interface. (config-line) = line."
+},
+{
+"m": 2,
+"q": "What is the prompt in interface configuration mode?",
+"o": [
+"Switch(config-if)#",
+"Switch(config-line)#",
+"Switch(config)#",
+"Switch>"
+],
+"a": 0,
+"e": "if = interface."
+},
+{
+"m": 2,
+"q": "What is the prompt in line configuration mode?",
+"o": [
+"Switch(config)#",
+"Switch#",
+"Switch(config-line)#",
+"Switch(config-if)#"
+],
+"a": 2,
+"e": "line = console/vty."
+},
+{
+"m": 2,
+"q": "Which command enters line configuration mode for the console?",
+"o": [
+"line console 0",
+"console line 0",
+"interface console 0",
+"enable console"
+],
+"a": 0,
+"e": "line + the line type. Console is 0."
+},
+{
+"m": 2,
+"q": "Which command returns you from a subconfiguration mode to global configuration mode?",
+"o": [
+"Ctrl+Z",
+"exit",
+"disable",
+"end"
+],
+"a": 1,
+"e": "exit = back one level. end / Ctrl+Z = all the way to privileged EXEC."
+},
+{
+"m": 2,
+"q": "In an IOS command, what is a keyword?",
+"o": [
+"An optional element in brackets",
+"A predefined parameter of the OS",
+"A delimiting character such as #",
+"A value or variable set by the user"
+],
+"a": 1,
+"e": "Keyword = predefined (e.g. ip protocols). Argument = what you supply."
+},
+{
+"m": 2,
+"q": "In an IOS command, what is an argument?",
+"o": [
+"The mode prompt",
+"A value or variable defined by the user",
+"A specific parameter defined in the OS",
+"A hot key"
+],
+"a": 1,
+"e": "E.g. the IP address 192.168.10.5."
+},
+{
+"m": 2,
+"q": "In IOS command syntax, what does boldface text indicate?",
+"o": [
+"A required choice shown in braces",
+"Arguments you supply your own values for",
+"Commands and keywords entered literally as shown",
+"An optional element shown in square brackets"
+],
+"a": 2,
+"e": "Bold = type it as is. Italic = you fill it in."
+},
+{
+"m": 2,
+"q": "In IOS command syntax, what does italic text indicate?",
+"o": [
+"Arguments for which you supply values",
+"Keywords that are entered literally as shown",
+"Optional elements shown in square brackets",
+"Commands that should be avoided"
+],
+"a": 0,
+"e": "Italic = your value."
+},
+{
+"m": 2,
+"q": "In IOS command syntax, what do square brackets [x] indicate?",
+"o": [
+"An optional element",
+"A required choice",
+"An argument",
+"A required element"
+],
+"a": 0,
+"e": "Square = optional."
+},
+{
+"m": 2,
+"q": "In IOS command syntax, what do braces {x} indicate?",
+"o": [
+"A required element",
+"A keyword that is hidden",
+"An optional element",
+"A comment"
+],
+"a": 0,
+"e": "Braces = required."
+},
+{
+"m": 2,
+"q": "Which command tests reachability of a destination?",
+"o": [
+"ipconfig",
+"show running-config",
+"traceroute",
+"ping"
+],
+"a": 3,
+"e": "ping = is it there? traceroute = which path?"
+},
+{
+"m": 2,
+"q": "Which command shows the path packets take to a destination?",
+"o": [
+"traceroute",
+"ipconfig",
+"ping",
+"show ip interface brief"
+],
+"a": 0,
+"e": "On Windows the same idea is tracert."
+},
+{
+"m": 2,
+"q": "Which two forms of help does the IOS have?",
+"o": [
+"Context-sensitive help and syntax check",
+"Manual pages and tab help",
+"Hot key help and GUI help",
+"Online help and offline help"
+],
+"a": 0,
+"e": "Context-sensitive = ?. Syntax check = error feedback."
+},
+{
+"m": 2,
+"q": "Which character shows available commands in the current mode?",
+"o": [
+"*",
+"?",
+"!",
+"#"
+],
+"a": 1,
+"e": "Type ? for context-sensitive help."
+},
+{
+"m": 2,
+"q": "What does the command syntax check do?",
+"o": [
+"Lists the commands in the current mode",
+"Checks a command and says what is wrong",
+"Completes a partial command with Tab",
+"Saves the running configuration to NVRAM"
+],
+"a": 1,
+"e": "Syntax check = validator. Context-sensitive help = lister."
+},
+{
+"m": 2,
+"q": "Which key completes a partial command name?",
+"o": [
+"Enter",
+"Tab",
+"Space bar",
+"Backspace"
+],
+"a": 1,
+"e": "Tab completion."
+},
+{
+"m": 2,
+"q": "Commands can be shortened to the minimum characters that identify a unique selection. Which shortening of configure is valid?",
+"o": [
+"conf",
+"co",
+"cf",
+"c"
+],
+"a": 0,
+"e": "Only configure starts with conf."
+},
+{
+"m": 2,
+"q": "Which keystroke recalls previously entered commands, starting with the most recent?",
+"o": [
+"Up arrow or Ctrl+P",
+"Ctrl+R",
+"Left arrow or Ctrl+B",
+"Tab"
+],
+"a": 0,
+"e": "Up arrow = history buffer."
+},
+{
+"m": 2,
+"q": "Which keystroke moves the cursor one character to the left?",
+"o": [
+"Right arrow or Ctrl+F",
+"Backspace",
+"Up arrow",
+"Left arrow or Ctrl+B"
+],
+"a": 3,
+"e": "B = Back. F = Forward."
+},
+{
+"m": 2,
+"q": "Which keystroke moves the cursor one character to the right?",
+"o": [
+"Right arrow or Ctrl+F",
+"Left arrow or Ctrl+B",
+"Ctrl+P",
+"Tab"
+],
+"a": 0,
+"e": "F = Forward."
+},
+{
+"m": 2,
+"q": "What does the Backspace key do?",
+"o": [
+"Erases the character to the left of the cursor",
+"Completes the command being typed",
+"Erases the character to the right of the cursor",
+"Recalls the last command from the history"
+],
+"a": 0,
+"e": "Left of cursor."
+},
+{
+"m": 2,
+"q": "Which keystroke is the all-purpose break sequence used to abort DNS lookups, traceroutes and pings?",
+"o": [
+"Ctrl+C",
+"Ctrl+Z",
+"Ctrl+R",
+"Ctrl+Shift+6"
+],
+"a": 3,
+"e": "Ctrl+Shift+6 = abort running processes."
+},
+{
+"m": 2,
+"q": "What does the --More-- prompt mean?",
+"o": [
+"The command failed with a syntax error",
+"The configuration was saved successfully",
+"You are in the wrong command mode",
+"There is more output than fits on screen"
+],
+"a": 3,
+"e": "Space = next screen. Enter = next line."
+},
+{
+"m": 2,
+"q": "At a --More-- prompt, which key displays the next screen?",
+"o": [
+"Space bar",
+"Backspace",
+"Tab",
+"Enter"
+],
+"a": 0,
+"e": "Space = screen. Enter = line."
+},
+{
+"m": 2,
+"q": "At a --More-- prompt, which key displays the next line?",
+"o": [
+"Ctrl+C",
+"Enter",
+"Tab",
+"Space bar"
+],
+"a": 1,
+"e": "Enter = one line."
+},
+{
+"m": 2,
+"q": "What should be the FIRST configuration command on any device?",
+"o": [
+"Set a banner message",
+"Encrypt all passwords",
+"Save the configuration",
+"Give it a unique hostname"
+],
+"a": 3,
+"e": "The default name on a Cisco IOS switch is Switch."
+},
+{
+"m": 2,
+"q": "What is the default hostname of a Cisco IOS switch?",
+"o": [
+"Switch",
+"Router",
+"Cisco",
+"Default"
+],
+"a": 0,
+"e": "Factory default is Switch."
+},
+{
+"m": 2,
+"q": "Which hostname follows the IOS naming guidelines?",
+"o": [
+"Sw-Floor-1",
+"Sw-Floor-",
+"1-Sw-Floor",
+"Sw Floor 1"
+],
+"a": 0,
+"e": "Start with a letter, no spaces, end with a letter or digit, letters/digits/dashes only, under 64 characters."
+},
+{
+"m": 2,
+"q": "Which command returns a switch to its default prompt (removes the hostname)?",
+"o": [
+"erase hostname",
+"default hostname",
+"no hostname",
+"reload hostname"
+],
+"a": 2,
+"e": "no + command removes it."
+},
+{
+"m": 2,
+"q": "What is the maximum hostname length in IOS?",
+"o": [
+"Fewer than 64 characters",
+"Fewer than 16 characters",
+"No limit",
+"Fewer than 8 characters"
+],
+"a": 0,
+"e": "Less than 64."
+},
+{
+"m": 2,
+"q": "Which password guideline does Module 2 recommend?",
+"o": [
+"Use short numeric passwords of four digits",
+"Use the same password on all devices for convenience",
+"Use over eight characters, mixing letters, numbers and symbols",
+"Use common words so they are easy to remember"
+],
+"a": 2,
+"e": "Avoid common words and reused passwords."
+},
+{
+"m": 2,
+"q": "Why are passwords such as cisco or class used in the labs a problem for real networks?",
+"o": [
+"They cannot be encrypted",
+"They only work in Packet Tracer",
+"IOS rejects them",
+"They are weak and easily guessable"
+],
+"a": 3,
+"e": "Labs use them for convenience only."
+},
+{
+"m": 2,
+"q": "Which command sets the user EXEC mode password on the console line (after entering line console 0)?",
+"o": [
+"enable secret password",
+"password password",
+"banner motd",
+"service password-encryption"
+],
+"a": 1,
+"e": "Then login to enable it."
+},
+{
+"m": 2,
+"q": "Which command makes the line ask for the password you set?",
+"o": [
+"no shutdown",
+"login",
+"password-encryption",
+"enable"
+],
+"a": 1,
+"e": "password sets it. login turns checking on."
+},
+{
+"m": 2,
+"q": "Which command secures privileged EXEC mode access?",
+"o": [
+"enable secret password",
+"login local",
+"line console 0",
+"service password-encryption"
+],
+"a": 0,
+"e": "Run it in global configuration mode."
+},
+{
+"m": 2,
+"q": "Which command enters VTY line configuration mode for 16 lines?",
+"o": [
+"line vty 0 15",
+"interface vty 0 15",
+"line console 0 15",
+"vty line 0 15"
+],
+"a": 0,
+"e": "0 to 15 = 16 lines."
+},
+{
+"m": 2,
+"q": "VTY lines enable what kind of access?",
+"o": [
+"Direct access to the disk or flash memory",
+"Remote access using Telnet or SSH",
+"Local access through the console port",
+"Wireless access through a nearby access point"
+],
+"a": 1,
+"e": "VTY = virtual terminal for remote login."
+},
+{
+"m": 2,
+"q": "How many VTY lines do many Cisco switches support?",
+"o": [
+"8 (numbered 0 to 7)",
+"32 (numbered 0 to 31)",
+"16 (numbered 0 to 15)",
+"1 (numbered 0)"
+],
+"a": 2,
+"e": "vty 0 15."
+},
+{
+"m": 2,
+"q": "Which command verifies that passwords are encrypted?",
+"o": [
+"show interfaces",
+"show running-config",
+"show version",
+"show ip interface brief"
+],
+"a": 1,
+"e": "Passwords appear as encrypted strings."
+},
+{
+"m": 2,
+"q": "Which command creates a message-of-the-day banner?",
+"o": [
+"banner login on",
+"motd banner enable",
+"message banner motd",
+"banner motd # message #"
+],
+"a": 3,
+"e": "The # is the delimiting character, used before and after the message."
+},
+{
+"m": 2,
+"q": "What is the delimiting character in banner motd # message # ?",
+"o": [
+"The semicolon",
+"The quotes",
+"The # symbol",
+"The message text"
+],
+"a": 2,
+"e": "Any character not used in the message works."
+},
+{
+"m": 2,
+"q": "Why is a banner message important?",
+"o": [
+"It saves the configuration to NVRAM for later",
+"It warns unauthorized people not to try to access the device",
+"It encrypts all the passwords on the device",
+"It speeds up the login process for admins"
+],
+"a": 1,
+"e": "Legal notification."
+},
+{
+"m": 2,
+"q": "Where is the startup-config stored?",
+"o": [
+"A USB drive only",
+"ROM",
+"RAM",
+"NVRAM"
+],
+"a": 3,
+"e": "NVRAM keeps contents after power off."
+},
+{
+"m": 2,
+"q": "Where is the running-config stored?",
+"o": [
+"RAM",
+"Flash only",
+"NVRAM",
+"ROM"
+],
+"a": 0,
+"e": "RAM is volatile: it loses its contents on power off or restart."
+},
+{
+"m": 2,
+"q": "Which file reflects the current configuration and takes effect immediately when changed?",
+"o": [
+"running-config",
+"boot-config",
+"startup-config",
+"backup-config"
+],
+"a": 0,
+"e": "Running = live."
+},
+{
+"m": 2,
+"q": "Which file contains the commands used by the device upon startup or reboot?",
+"o": [
+"flash-config",
+"ram-config",
+"running-config",
+"startup-config"
+],
+"a": 3,
+"e": "Startup = saved."
+},
+{
+"m": 2,
+"q": "Which command reloads the device?",
+"o": [
+"erase reload",
+"restart config",
+"boot reset",
+"reload"
+],
+"a": 3,
+"e": "Reload causes brief downtime."
+},
+{
+"m": 2,
+"q": "If you made unwanted changes and have NOT saved them, which option restores the previous configuration?",
+"o": [
+"Erase the running-config only, then keep working",
+"Change the hostname of the device and reload",
+"Run copy running-config startup-config first",
+"Reload the device, or remove the changed commands"
+],
+"a": 3,
+"e": "The unsaved changes are lost on reload."
+},
+{
+"m": 2,
+"q": "Which command clears the saved configuration from NVRAM?",
+"o": [
+"erase running-config",
+"erase startup-config",
+"delete flash",
+"clear ram"
+],
+"a": 1,
+"e": "Then reload to clear the running-config from RAM."
+},
+{
+"m": 2,
+"q": "After erasing the startup-config, what must you do to clear the running-config from RAM?",
+"o": [
+"Nothing",
+"Save again",
+"Reload the device",
+"Run show running-config"
+],
+"a": 2,
+"e": "RAM clears on restart."
+},
+{
+"m": 2,
+"q": "What is the first step in capturing a configuration to a text file?",
+"o": [
+"Run show running-config at the # prompt",
+"Open terminal software already connected to the switch",
+"Disable logging in the terminal software",
+"Erase the startup-config before capturing"
+],
+"a": 1,
+"e": "Steps: open software, enable logging, run show command, disable logging."
+},
+{
+"m": 2,
+"q": "Which command output is placed into the log file when capturing a configuration?",
+"o": [
+"show version (or show history)",
+"show running-config (or show startup-config)",
+"ping (or traceroute) to the destination",
+"reload (or erase startup-config)"
+],
+"a": 1,
+"e": "Text displayed is logged."
+},
+{
+"m": 2,
+"q": "What is the primary means of enabling devices to locate one another and establish end-to-end communication on the internet?",
+"o": [
+"IP addresses",
+"Hostnames only",
+"Port numbers",
+"MAC addresses only"
+],
+"a": 0,
+"e": "IP = location."
+},
+{
+"m": 2,
+"q": "IPv4 addresses are written in what notation?",
+"o": [
+"Eight hex groups of four digits separated by colons",
+"Binary digits only, with no separators",
+"Dotted decimal: four decimal numbers between 0 and 255",
+"Three decimal numbers between 0 and 1023"
+],
+"a": 2,
+"e": "192.168.10.5 style."
+},
+{
+"m": 2,
+"q": "What is an IPv4 subnet mask?",
+"o": [
+"A 32-bit value separating network from host bits",
+"The name given to the device by the admin",
+"A 128-bit value that identifies the device",
+"The IP address of the router on the LAN"
+],
+"a": 0,
+"e": "Mask + address = which subnet."
+},
+{
+"m": 2,
+"q": "What is the default gateway?",
+"o": [
+"The first host address on every LAN",
+"The router address a host uses to reach remote networks",
+"The IP address of the DNS server",
+"The subnet mask used on the LAN"
+],
+"a": 1,
+"e": "The door out of your network."
+},
+{
+"m": 2,
+"q": "How long is an IPv6 address?",
+"o": [
+"48 bits",
+"64 bits",
+"32 bits",
+"128 bits"
+],
+"a": 3,
+"e": "32 hex digits."
+},
+{
+"m": 2,
+"q": "How are IPv6 addresses written?",
+"o": [
+"A string of letters only, with no digits",
+"Hexadecimal groups of four digits separated by colons",
+"Four decimal numbers separated by dots",
+"A binary string with no separators"
+],
+"a": 1,
+"e": "Not case-sensitive."
+},
+{
+"m": 2,
+"q": "Which types of media does Module 2 list?",
+"o": [
+"Bluetooth, infrared and laser",
+"Copper, laser, coax and radio",
+"Twisted-pair copper, fiber-optic, coaxial, wireless",
+"Fiber, USB cable, serial cable"
+],
+"a": 2,
+"e": "Pick by distance, environment, speed and cost."
+},
+{
+"m": 2,
+"q": "Which is a factor in choosing network media?",
+"o": [
+"The number of VLANs on the switch",
+"The logo of the device manufacturer",
+"Distance the media can carry a signal",
+"The color of the cable jacket"
+],
+"a": 2,
+"e": "Distance, environment, data amount and speed, cost."
+},
+{
+"m": 2,
+"q": "How can IPv4 address information be entered on end devices?",
+"o": [
+"Only with ARP, never manually",
+"Manually, or automatically with DHCP",
+"Only with DNS, never manually",
+"Only manually, never automatically"
+],
+"a": 1,
+"e": "End devices typically use DHCP by default."
+},
+{
+"m": 2,
+"q": "What does DHCP stand for?",
+"o": [
+"Dynamic Host Control Packet",
+"Domain Host Configuration Protocol",
+"Direct Host Connection Protocol",
+"Dynamic Host Configuration Protocol"
+],
+"a": 3,
+"e": "Automatic IPv4 configuration."
+},
+{
+"m": 2,
+"q": "On a Windows PC, which settings select DHCP?",
+"o": [
+"Use the following IP address and DNS server",
+"Enable promiscuous mode on the adapter",
+"Obtain an IP address and DNS server address automatically",
+"Disable the network adapter and reconnect"
+],
+"a": 2,
+"e": "Control Panel > Network Sharing Center > Change adapter settings > Properties > IPv4."
+},
+{
+"m": 2,
+"q": "For manual IPv4 configuration on a Windows PC you must enter...",
+"o": [
+"MAC address and hostname only",
+"IP address and VLAN ID only",
+"Subnet mask and port number only",
+"IP address, subnet mask and default gateway"
+],
+"a": 3,
+"e": "DNS servers are optional but recommended."
+},
+{
+"m": 2,
+"q": "What does IPv6 use for dynamic address allocation?",
+"o": [
+"DHCPv6 and SLAAC",
+"SNMP and DHCP",
+"NAT and DNS",
+"ARP and DHCP"
+],
+"a": 0,
+"e": "SLAAC = Stateless Address Autoconfiguration."
+},
+{
+"m": 2,
+"q": "What does SVI stand for?",
+"o": [
+"Switch VLAN Index",
+"Serial Virtual Interface",
+"Secure VLAN Interface",
+"Switch Virtual Interface"
+],
+"a": 3,
+"e": "Software-only; lets a switch have an IP address for remote management."
+},
+{
+"m": 2,
+"q": "Why does a switch need an IP address on an SVI?",
+"o": [
+"To supply power to its ports",
+"To learn the MAC addresses of hosts",
+"To forward frames between its ports",
+"To be accessed and managed remotely"
+],
+"a": 3,
+"e": "Ports work without an IP; remote SSH/Telnet needs one."
+},
+{
+"m": 2,
+"q": "Which command enters the SVI for VLAN 1?",
+"o": [
+"line vlan 1",
+"interface fastethernet vlan 1",
+"vlan interface 1",
+"interface vlan 1"
+],
+"a": 3,
+"e": "Then ip address and no shutdown."
+},
+{
+"m": 2,
+"q": "Which command assigns an IP address to the SVI?",
+"o": [
+"ip assign address mask-value",
+"address ip subnet-mask-value",
+"set ip address ip-address-value",
+"ip address ip-address subnet-mask"
+],
+"a": 3,
+"e": "Run in interface configuration mode."
+},
+{
+"m": 2,
+"q": "Which command enables (activates) the SVI?",
+"o": [
+"shutdown",
+"login",
+"enable",
+"no shutdown"
+],
+"a": 3,
+"e": "Interfaces are shut down by default for virtual SVI; no shutdown wakes it up."
+},
+{
+"m": 2,
+"q": "Which Windows command displays the IP configuration on a host?",
+"o": [
+"show ip interface brief",
+"traceroute",
+"ping",
+"ipconfig"
+],
+"a": 3,
+"e": "Windows = ipconfig."
+},
+{
+"m": 2,
+"q": "Which switch command gives a quick summary of interface IP addresses and status?",
+"o": [
+"show running-config",
+"ipconfig /all",
+"show startup-config",
+"show ip interface brief"
+],
+"a": 3,
+"e": "Short and sweet."
+},
+{
+"m": 2,
+"q": "Which command tests end-to-end connectivity between two devices?",
+"o": [
+"hostname",
+"ping",
+"copy",
+"enable"
+],
+"a": 1,
+"e": "A successful reply proves the path works."
+},
+{
+"m": 2,
+"q": "Which statement about Cisco IOS command modes is true?",
+"o": [
+"All commands work in all modes of the IOS",
+"Each command has a set format and works only in the right mode",
+"Global config is entered directly from user EXEC",
+"The IOS has only one single command mode"
+],
+"a": 1,
+"e": "Global config is accessed before other config modes."
+},
+{
+"m": 2,
+"q": "Which basic device configurations does Module 2 list?",
+"o": [
+"Hostname, password, encrypted passwords, banner",
+"VLANs, trunks, STP, EtherChannel",
+"DNS, DHCP, NAT, ICMP",
+"OSPF, EIGRP, BGP, RIP"
+],
+"a": 0,
+"e": "H-P-E-B: Hostname, Password, Encrypt, Banner."
+},
+{
+"m": 3,
+"q": "Which three elements are required in any communication?",
+"o": [
+"A client, a server and a firewall",
+"A source, a destination and a channel",
+"A sender, a router and a switch",
+"A protocol, a password and a port"
+],
+"a": 1,
+"e": "Source (sender), destination (receiver), channel (media)."
+},
+{
+"m": 3,
+"q": "What are protocols?",
+"o": [
+"The cables used to connect devices",
+"The rules that communications follow",
+"The addresses of devices",
+"The names of network devices"
+],
+"a": 1,
+"e": "All communications are governed by protocols."
+},
+{
+"m": 3,
+"q": "Which protocol requirement concerns who is taking part in the communication?",
+"o": [
+"A unique color for each cable",
+"A minimum number of users",
+"A fixed network topology",
+"An identified sender and receiver"
+],
+"a": 3,
+"e": "Also: common language and grammar, speed and timing, acknowledgment requirements."
+},
+{
+"m": 3,
+"q": "Which protocol requirement concerns whether a message arrived?",
+"o": [
+"Confirmation or acknowledgment requirements",
+"The number of VLANs configured",
+"The wallpaper settings on the host",
+"The type of logo on the device"
+],
+"a": 0,
+"e": "Did the message arrive? Rules decide."
+},
+{
+"m": 3,
+"q": "Which list shows the five network protocol requirements?",
+"o": [
+"Encryption, routing, switching, size, color",
+"Encoding, formatting, size, timing, delivery options",
+"Speed, cost, distance, media, color, size",
+"Addressing, naming, mapping, filtering, timing"
+],
+"a": 1,
+"e": "Encoding, Formatting, Size, Timing, Delivery."
+},
+{
+"m": 3,
+"q": "What is message encoding?",
+"o": [
+"Splitting a message into smaller segments",
+"Converting information into a form fit for transmission",
+"Choosing a delivery method for the message",
+"Waiting for a reply from the destination"
+],
+"a": 1,
+"e": "Decoding reverses it."
+},
+{
+"m": 3,
+"q": "What is decoding?",
+"o": [
+"Numbering segments so they can be reassembled",
+"Reversing encoding to interpret the information",
+"Converting data into a stream of bits",
+"Adding a header to the front of the data"
+],
+"a": 1,
+"e": "Receiver decodes the signal."
+},
+{
+"m": 3,
+"q": "Messages sent across a network are converted to bits. The bits are encoded into patterns of...",
+"o": [
+"letters, digits or symbols typed by the user",
+"packets, frames or segments of data",
+"colors, shapes or sizes of characters",
+"light, sound or electrical impulses"
+],
+"a": 3,
+"e": "Pattern depends on the medium."
+},
+{
+"m": 3,
+"q": "Which message timing function manages the rate of data transmission?",
+"o": [
+"Flow control",
+"Encapsulation",
+"Response timeout",
+"Access method"
+],
+"a": 0,
+"e": "Flow control = how much, how fast."
+},
+{
+"m": 3,
+"q": "Which message timing function manages how long a device waits when it does not hear a reply?",
+"o": [
+"Access method",
+"Response timeout",
+"Flow control",
+"Sequencing"
+],
+"a": 1,
+"e": "Timeout = how long to wait."
+},
+{
+"m": 3,
+"q": "Which message timing function determines when someone can send a message?",
+"o": [
+"Flow control",
+"Access method",
+"Response timeout",
+"Decoding"
+],
+"a": 1,
+"e": "Access method = whose turn."
+},
+{
+"m": 3,
+"q": "What is a collision?",
+"o": [
+"A message that is too large for the medium",
+"A message sent to the wrong address by mistake",
+"A device that cannot hear a reply in time",
+"Two devices sending at the same time so messages are corrupted"
+],
+"a": 3,
+"e": "Some protocols prevent collisions (proactive); others recover after (reactive)."
+},
+{
+"m": 3,
+"q": "A protocol that establishes a recovery method after a collision occurs is...",
+"o": [
+"unicast",
+"proactive",
+"reactive",
+"multicast"
+],
+"a": 2,
+"e": "Reactive = reacts after. Proactive = prevents."
+},
+{
+"m": 3,
+"q": "Which delivery method is one-to-one communication?",
+"o": [
+"Anycast",
+"Unicast",
+"Multicast",
+"Broadcast"
+],
+"a": 1,
+"e": "Uni = one."
+},
+{
+"m": 3,
+"q": "Which delivery method is one-to-many, typically not all?",
+"o": [
+"Multicast",
+"Unicast",
+"Anycast",
+"Broadcast"
+],
+"a": 0,
+"e": "Multi = many (a group)."
+},
+{
+"m": 3,
+"q": "Which delivery method is one-to-all?",
+"o": [
+"Multicast",
+"Unicast",
+"Broadcast",
+"Anycast"
+],
+"a": 2,
+"e": "Broadcast = everyone."
+},
+{
+"m": 3,
+"q": "Which delivery option is used in IPv4 networks but is NOT an option in IPv6?",
+"o": [
+"Anycast",
+"Multicast",
+"Broadcast",
+"Unicast"
+],
+"a": 2,
+"e": "IPv6 adds anycast and drops broadcast."
+},
+{
+"m": 3,
+"q": "Which delivery option does IPv6 add?",
+"o": [
+"Unicast only",
+"Broadcast",
+"Anycast",
+"Simulcast"
+],
+"a": 2,
+"e": "Anycast: delivered to the nearest of a group."
+},
+{
+"m": 3,
+"q": "Network protocols can be implemented in...",
+"o": [
+"firmware only, never software",
+"software only, never hardware",
+"software, hardware, or both",
+"hardware only, never software"
+],
+"a": 2,
+"e": "Each has its own function, format and rules."
+},
+{
+"m": 3,
+"q": "Which protocol type enables two or more devices to communicate over one or more networks?",
+"o": [
+"Network communications protocol",
+"Network security protocol",
+"Routing protocol",
+"Service discovery protocol"
+],
+"a": 0,
+"e": "Ethernet, HTTP, TCP, IP."
+},
+{
+"m": 3,
+"q": "Which protocol type secures data to provide authentication, data integrity and data encryption?",
+"o": [
+"Service discovery protocol",
+"Routing protocol",
+"Network communications protocol",
+"Network security protocol"
+],
+"a": 3,
+"e": "e.g. SSH, HTTPS."
+},
+{
+"m": 3,
+"q": "Which protocol type enables routers to exchange route information, compare path information and select the best path?",
+"o": [
+"Network communications protocol",
+"Network security protocol",
+"Service discovery protocol",
+"Routing protocol"
+],
+"a": 3,
+"e": "e.g. OSPF, EIGRP."
+},
+{
+"m": 3,
+"q": "Which protocol type is used for the automatic detection of devices or services?",
+"o": [
+"Routing protocol",
+"Network security protocol",
+"Network communications protocol",
+"Service discovery protocol"
+],
+"a": 3,
+"e": "e.g. DHCP, DNS."
+},
+{
+"m": 3,
+"q": "Which protocol function identifies the sender and receiver?",
+"o": [
+"Addressing",
+"Sequencing",
+"Reliability",
+"Flow control"
+],
+"a": 0,
+"e": "Who is it from and to."
+},
+{
+"m": 3,
+"q": "Which protocol function provides guaranteed delivery?",
+"o": [
+"Addressing",
+"Reliability",
+"Sequencing",
+"Error detection"
+],
+"a": 1,
+"e": "TCP does this."
+},
+{
+"m": 3,
+"q": "Which protocol function ensures data flows at an efficient rate?",
+"o": [
+"Addressing",
+"Reliability",
+"Flow control",
+"Sequencing"
+],
+"a": 2,
+"e": "TCP does this too."
+},
+{
+"m": 3,
+"q": "Which protocol function uniquely labels each transmitted segment of data?",
+"o": [
+"Reliability",
+"Addressing",
+"Sequencing",
+"Error detection"
+],
+"a": 2,
+"e": "Lets the receiver reassemble in order."
+},
+{
+"m": 3,
+"q": "Which protocol function determines if data became corrupted during transmission?",
+"o": [
+"Error detection",
+"Sequencing",
+"Reliability",
+"Flow control"
+],
+"a": 0,
+"e": "Ethernet, IPv4, IPv6 and TCP all do error detection."
+},
+{
+"m": 3,
+"q": "Which protocol function provides process-to-process communications between network applications?",
+"o": [
+"Reliability",
+"Flow control",
+"Application interface",
+"Addressing"
+],
+"a": 2,
+"e": "e.g. HTTP."
+},
+{
+"m": 3,
+"q": "Which mnemonic helps you remember the six protocol functions?",
+"o": [
+"Please Do Not Throw Sausage Pizza Away",
+"All People Seem To Need Diet Pepsi",
+"Hot Tea Is Eternal",
+"A Really Fast Server Eats Apps"
+],
+"a": 3,
+"e": "Addressing, Reliability, Flow control, Sequencing, Error detection, Application interface."
+},
+{
+"m": 3,
+"q": "Which protocol governs the way a web server and web client interact, defining content and format?",
+"o": [
+"Ethernet",
+"TCP",
+"IP",
+"HTTP"
+],
+"a": 3,
+"e": "HTTP = the web conversation."
+},
+{
+"m": 3,
+"q": "Which protocol manages individual conversations, provides guaranteed delivery and manages flow control?",
+"o": [
+"HTTP",
+"TCP",
+"IP",
+"Ethernet"
+],
+"a": 1,
+"e": "TCP = reliable conversations."
+},
+{
+"m": 3,
+"q": "Which protocol delivers messages globally from the sender to the receiver?",
+"o": [
+"TCP",
+"Ethernet",
+"HTTP",
+"IP"
+],
+"a": 3,
+"e": "IP = across networks, routers use it."
+},
+{
+"m": 3,
+"q": "Which protocol delivers messages from one NIC to another NIC on the same Ethernet LAN?",
+"o": [
+"IP",
+"TCP",
+"Ethernet",
+"HTTP"
+],
+"a": 2,
+"e": "Ethernet = local, NIC to NIC."
+},
+{
+"m": 3,
+"q": "In the protocol interaction example, in what order are the protocols used from top to bottom?",
+"o": [
+"Ethernet, IP, TCP, HTTP",
+"TCP, HTTP, IP, Ethernet",
+"HTTP, TCP, IP, Ethernet",
+"HTTP, IP, TCP, Ethernet"
+],
+"a": 2,
+"e": "Mnemonic: Hot Tea Is Eternal."
+},
+{
+"m": 3,
+"q": "Which mnemonic helps you remember HTTP, TCP, IP, Ethernet?",
+"o": [
+"Hot Tea Is Eternal",
+"A Really Fast Server Eats Apps",
+"Never Do Pizza Tonight",
+"All People Seem To Need Diet Pepsi"
+],
+"a": 0,
+"e": "H-T-I-E."
+},
+{
+"m": 3,
+"q": "What is a protocol suite?",
+"o": [
+"A set of passwords used to secure devices",
+"A list of cable types a network can use",
+"A group of inter-related protocols that do one communication job",
+"A single protocol that runs on every network"
+],
+"a": 2,
+"e": "Sets of rules that work together."
+},
+{
+"m": 3,
+"q": "Protocol suites are viewed in terms of layers. Lower layers are concerned with...",
+"o": [
+"presenting data to the user and the application",
+"writing and running the application itself",
+"naming the devices on the network",
+"moving data and providing services to upper layers"
+],
+"a": 3,
+"e": "Higher layers = application. Lower = movement."
+},
+{
+"m": 3,
+"q": "Which protocol suite is the most common and is maintained by the IETF?",
+"o": [
+"Internet Protocol Suite (TCP/IP)",
+"Novell NetWare, a proprietary Novell suite",
+"AppleTalk, a proprietary Apple suite",
+"The OSI protocol suite"
+],
+"a": 0,
+"e": "IETF maintains TCP/IP."
+},
+{
+"m": 3,
+"q": "Which protocol suite was developed by ISO and ITU?",
+"o": [
+"TCP/IP",
+"OSI protocols",
+"AppleTalk",
+"Novell NetWare"
+],
+"a": 1,
+"e": "OSI = Open Systems Interconnection."
+},
+{
+"m": 3,
+"q": "Which protocol suite is a proprietary suite released by Apple Inc.?",
+"o": [
+"Novell NetWare",
+"TCP/IP",
+"OSI",
+"AppleTalk"
+],
+"a": 3,
+"e": "Apple made AppleTalk."
+},
+{
+"m": 3,
+"q": "Which protocol suite is a proprietary suite developed by Novell Inc.?",
+"o": [
+"OSI",
+"TCP/IP",
+"AppleTalk",
+"Novell NetWare"
+],
+"a": 3,
+"e": "Novell made NetWare."
+},
+{
+"m": 3,
+"q": "TCP/IP protocols operate at which layers?",
+"o": [
+"Only the network access layer",
+"Physical and data link",
+"Session and presentation",
+"Application, transport and internet"
+],
+"a": 3,
+"e": "The most common network access layer LAN protocols are Ethernet and WLAN."
+},
+{
+"m": 3,
+"q": "What are the two most common network access layer LAN protocols?",
+"o": [
+"IP and ICMP",
+"DNS and DHCP",
+"HTTP and TCP",
+"Ethernet and WLAN"
+],
+"a": 3,
+"e": "Wired = Ethernet. Wireless = WLAN."
+},
+{
+"m": 3,
+"q": "TCP/IP is an open standard protocol suite. What does that mean?",
+"o": [
+"It only works on Windows computers",
+"Only Cisco is allowed to use it",
+"It is owned and sold by the IETF",
+"It is free to the public and any vendor can use it"
+],
+"a": 3,
+"e": "Also standards-based and endorsed by the industry."
+},
+{
+"m": 3,
+"q": "A web server sending a web page to a client encapsulates the data. What does the client do when it receives it?",
+"o": [
+"Discards the headers and ignores them",
+"Encapsulates it again",
+"De-encapsulates it for the web browser",
+"Sends it back unchanged"
+],
+"a": 2,
+"e": "Server encapsulates. Client de-encapsulates."
+},
+{
+"m": 3,
+"q": "Open standards encourage which three things?",
+"o": [
+"Cost, color and speed of cables",
+"Interoperability, competition and innovation",
+"Latency, bandwidth and jitter",
+"Secrecy, monopoly and vendor control"
+],
+"a": 1,
+"e": "Open = everyone can build on it."
+},
+{
+"m": 3,
+"q": "Standards organizations are...",
+"o": [
+"for-profit vendors that sell equipment",
+"vendor-neutral, non-profit organizations",
+"owned and run by Cisco",
+"government agencies only"
+],
+"a": 1,
+"e": "They develop and promote open standards."
+},
+{
+"m": 3,
+"q": "Which organization promotes the open development and evolution of the internet?",
+"o": [
+"ISOC",
+"IETF",
+"IRTF",
+"IANA"
+],
+"a": 0,
+"e": "ISOC = promotes."
+},
+{
+"m": 3,
+"q": "Which organization is responsible for the management and development of internet standards?",
+"o": [
+"ISOC",
+"IETF",
+"IRTF",
+"IAB"
+],
+"a": 3,
+"e": "IAB = overall management."
+},
+{
+"m": 3,
+"q": "Which organization develops, updates and maintains internet and TCP/IP technologies (RFCs)?",
+"o": [
+"IAB",
+"ICANN",
+"IETF",
+"ISOC"
+],
+"a": 2,
+"e": "IETF = Engineering. Think engineers writing RFCs."
+},
+{
+"m": 3,
+"q": "Which organization focuses on long-term research related to internet and TCP/IP protocols?",
+"o": [
+"ICANN",
+"IAB",
+"IRTF",
+"IETF"
+],
+"a": 2,
+"e": "R = Research. IETF = E for engineering."
+},
+{
+"m": 3,
+"q": "Which organization coordinates IP address allocation, domain name management and assignment of other information?",
+"o": [
+"IANA",
+"ICANN",
+"ISOC",
+"IEEE"
+],
+"a": 1,
+"e": "ICANN = names and numbers."
+},
+{
+"m": 3,
+"q": "Which organization oversees and manages IP address allocation, domain name management and protocol identifiers for ICANN?",
+"o": [
+"IANA",
+"IAB",
+"ICANN",
+"IRTF"
+],
+"a": 0,
+"e": "IANA does the managing for ICANN."
+},
+{
+"m": 3,
+"q": "Which organization creates standards in power and energy, healthcare, telecommunications and networking, including 802.3 and 802.11?",
+"o": [
+"IEEE",
+"ITU-T",
+"TIA",
+"EIA"
+],
+"a": 0,
+"e": "IEEE (I-triple-E). 802.3 = Ethernet, 802.11 = WLAN."
+},
+{
+"m": 3,
+"q": "Which IEEE standard is Ethernet?",
+"o": [
+"802.1Q",
+"802.15",
+"802.11",
+"802.3"
+],
+"a": 3,
+"e": "3 = wired Ethernet. 11 = wireless."
+},
+{
+"m": 3,
+"q": "Which IEEE standard is wireless Ethernet (WLAN)?",
+"o": [
+"802.16",
+"802.11",
+"802.5",
+"802.3"
+],
+"a": 1,
+"e": "11 = wireless."
+},
+{
+"m": 3,
+"q": "Which organization develops standards relating to electrical wiring, connectors and the 19-inch racks used to mount networking equipment?",
+"o": [
+"TIA",
+"ITU-T",
+"EIA",
+"IEEE"
+],
+"a": 2,
+"e": "EIA = Electronic Industries Alliance: wiring, connectors, racks."
+},
+{
+"m": 3,
+"q": "Which organization develops standards for radio equipment, cellular towers, VoIP devices and satellite communications?",
+"o": [
+"IEEE",
+"ICANN",
+"TIA",
+"EIA"
+],
+"a": 2,
+"e": "TIA = Telecommunications Industry Association."
+},
+{
+"m": 3,
+"q": "Which organization defines standards for video compression, IPTV and broadband such as DSL?",
+"o": [
+"ITU-T",
+"EIA",
+"TIA",
+"IEEE"
+],
+"a": 0,
+"e": "ITU-T = international telecom standards."
+},
+{
+"m": 3,
+"q": "Which are the two layered models that describe network operations?",
+"o": [
+"OSI and TCP/IP reference models",
+"IEEE and ISO reference models",
+"TCP/IP and Ethernet reference models",
+"OSI and DNS reference models"
+],
+"a": 0,
+"e": "7 layers and 4 layers."
+},
+{
+"m": 3,
+"q": "Which layered-model benefit relates to products from different vendors?",
+"o": [
+"It removes the need for any protocols",
+"Products from different vendors work together",
+"All layers must change together as one",
+"Only one vendor can build products for it"
+],
+"a": 1,
+"e": "Also: helps protocol design, changes in one layer don't affect others, common language."
+},
+{
+"m": 3,
+"q": "Which layered-model benefit relates to technology changes in one layer?",
+"o": [
+"A change in one layer forces changes in all",
+"It makes the network run faster",
+"Changes in one layer do not affect others",
+"It removes the need for standards"
+],
+"a": 2,
+"e": "Defined interfaces between layers."
+},
+{
+"m": 3,
+"q": "How many layers does the OSI model have?",
+"o": [
+"4",
+"5",
+"6",
+"7"
+],
+"a": 3,
+"e": "OSI = 7, TCP/IP = 4."
+},
+{
+"m": 3,
+"q": "How many layers does the TCP/IP model have?",
+"o": [
+"5",
+"7",
+"4",
+"3"
+],
+"a": 2,
+"e": "Application, transport, internet, network access."
+},
+{
+"m": 3,
+"q": "Which OSI layer is layer 7?",
+"o": [
+"Transport",
+"Application",
+"Session",
+"Presentation"
+],
+"a": 1,
+"e": "7 = Application."
+},
+{
+"m": 3,
+"q": "Which OSI layer provides common representation of data transferred between application layer services (formatting, translation, encryption)?",
+"o": [
+"Transport (layer 4)",
+"Application (layer 7)",
+"Presentation (layer 6)",
+"Session (layer 5)"
+],
+"a": 2,
+"e": "Presentation formats."
+},
+{
+"m": 3,
+"q": "Which OSI layer manages data exchange (sessions) and provides services to the presentation layer?",
+"o": [
+"Application",
+"Transport",
+"Session (layer 5)",
+"Presentation"
+],
+"a": 2,
+"e": "Session = conversations."
+},
+{
+"m": 3,
+"q": "Which OSI layer defines services to segment, transfer and reassemble data for individual communications?",
+"o": [
+"Data link (layer 2)",
+"Transport (layer 4)",
+"Session (layer 5)",
+"Network (layer 3)"
+],
+"a": 1,
+"e": "Transport: segments, ports, TCP/UDP."
+},
+{
+"m": 3,
+"q": "Which OSI layer provides services to exchange individual pieces of data over the network?",
+"o": [
+"Transport",
+"Data link",
+"Physical",
+"Network (layer 3)"
+],
+"a": 3,
+"e": "Network: IP addresses and routing."
+},
+{
+"m": 3,
+"q": "Which OSI layer describes methods for exchanging data frames over a common media?",
+"o": [
+"Data link (layer 2)",
+"Network (layer 3)",
+"Physical (layer 1)",
+"Transport (layer 4)"
+],
+"a": 0,
+"e": "Data link: MAC addresses and frames."
+},
+{
+"m": 3,
+"q": "Which OSI layer describes the means to activate, maintain and de-activate physical connections?",
+"o": [
+"Network (layer 3)",
+"Transport (layer 4)",
+"Physical (layer 1)",
+"Data link (layer 2)"
+],
+"a": 2,
+"e": "Physical: bits and signals."
+},
+{
+"m": 3,
+"q": "Which mnemonic helps you remember the OSI layers from top (7) to bottom (1)?",
+"o": [
+"Please Do Not Throw Pizza Away",
+"Hot Tea Is Eternal",
+"All People Seem To Need Diet Pepsi",
+"A Really Fast Server Eats Apps"
+],
+"a": 2,
+"e": "Application, Presentation, Session, Transport, Network, Data link, Physical."
+},
+{
+"m": 3,
+"q": "In the mnemonic 'All People Seem To Need Diet Pepsi', which layer does 'Need' stand for?",
+"o": [
+"Data link",
+"Transport",
+"Network",
+"Session"
+],
+"a": 2,
+"e": "A-P-S-T-N-D-P: N = Network (layer 3)."
+},
+{
+"m": 3,
+"q": "Which TCP/IP layer represents data to the user plus encoding and dialog control?",
+"o": [
+"Internet",
+"Network access",
+"Transport",
+"Application"
+],
+"a": 3,
+"e": "Top layer."
+},
+{
+"m": 3,
+"q": "Which TCP/IP layer supports communication between various devices across diverse networks?",
+"o": [
+"Application",
+"Network access",
+"Internet",
+"Transport"
+],
+"a": 3,
+"e": "Transport = TCP/UDP."
+},
+{
+"m": 3,
+"q": "Which TCP/IP layer determines the best path through the network?",
+"o": [
+"Network access",
+"Transport",
+"Internet",
+"Application"
+],
+"a": 2,
+"e": "Internet = IP, path selection."
+},
+{
+"m": 3,
+"q": "Which TCP/IP layer controls the hardware devices and media that make up the network?",
+"o": [
+"Network access",
+"Application",
+"Transport",
+"Internet"
+],
+"a": 0,
+"e": "Matches OSI layers 1 and 2."
+},
+{
+"m": 3,
+"q": "How does the OSI model compare with the TCP/IP model?",
+"o": [
+"OSI splits the TCP/IP network access and application layers into more layers",
+"OSI merges the transport and network layers",
+"They have exactly the same number of layers",
+"OSI has fewer layers than TCP/IP does"
+],
+"a": 0,
+"e": "OSI layers 1-2 = network access. OSI layers 5-7 = application."
+},
+{
+"m": 3,
+"q": "Which OSI layers correspond to the TCP/IP network access layer?",
+"o": [
+"Layers 5, 6 and 7 (session to application)",
+"Layers 3 and 4 (network and transport)",
+"Layer 4 (transport) only",
+"Layers 1 and 2 (physical and data link)"
+],
+"a": 3,
+"e": "Physical + data link."
+},
+{
+"m": 3,
+"q": "Which OSI layers correspond to the TCP/IP application layer?",
+"o": [
+"Layers 1 and 2",
+"Layers 5, 6 and 7",
+"Layers 3 and 4",
+"Layer 4 only"
+],
+"a": 1,
+"e": "Session + presentation + application."
+},
+{
+"m": 3,
+"q": "Which TCP/IP layer corresponds to OSI layer 3?",
+"o": [
+"Transport",
+"Internet",
+"Network access",
+"Application"
+],
+"a": 1,
+"e": "Network layer = Internet layer."
+},
+{
+"m": 3,
+"q": "What is segmenting?",
+"o": [
+"Removing headers",
+"Interleaving multiple streams of data",
+"Numbering the segments",
+"Breaking up messages into smaller units"
+],
+"a": 3,
+"e": "Multiplexing is interleaving streams."
+},
+{
+"m": 3,
+"q": "What is multiplexing?",
+"o": [
+"Interleaving multiple streams of segmented data",
+"Breaking a large message into smaller units",
+"Numbering segments so they can be reassembled",
+"Encrypting a message before it is sent"
+],
+"a": 0,
+"e": "Segmenting splits; multiplexing mixes."
+},
+{
+"m": 3,
+"q": "What are the two primary benefits of segmenting messages?",
+"o": [
+"It increases speed and increases efficiency",
+"It encrypts data and compresses it",
+"It removes collisions and adds addressing",
+"It increases security and reduces cost"
+],
+"a": 0,
+"e": "Speed: link not tied up. Efficiency: only failed segments are resent."
+},
+{
+"m": 3,
+"q": "What is sequencing?",
+"o": [
+"Splitting a message into smaller segments",
+"Numbering segments so they can be reassembled",
+"Interleaving multiple streams of data",
+"Choosing the delivery method for a message"
+],
+"a": 1,
+"e": "TCP is responsible for sequencing."
+},
+{
+"m": 3,
+"q": "Which protocol is responsible for sequencing the individual segments?",
+"o": [
+"HTTP",
+"Ethernet",
+"IP",
+"TCP"
+],
+"a": 3,
+"e": "Transport layer."
+},
+{
+"m": 3,
+"q": "What is encapsulation?",
+"o": [
+"Deleting the data at each layer",
+"Removing headers as the data moves up",
+"Protocols adding their information to the data",
+"Splitting the data into segments only"
+],
+"a": 2,
+"e": "Top-down process."
+},
+{
+"m": 3,
+"q": "What is de-encapsulation?",
+"o": [
+"Encrypting the data at each layer",
+"Splitting the data into smaller frames",
+"Adding headers as the data goes down",
+"Stripping off each layer's header going up the stack"
+],
+"a": 3,
+"e": "Bottom-up process."
+},
+{
+"m": 3,
+"q": "What does PDU stand for?",
+"o": [
+"Packet delivery unit",
+"Protocol data unit",
+"Physical data unit",
+"Protocol delivery utility"
+],
+"a": 1,
+"e": "The form data takes at any layer."
+},
+{
+"m": 3,
+"q": "In the encapsulation process, what are the five PDUs from top to bottom?",
+"o": [
+"Data, segment, frame, packet, bits",
+"Segment, data, packet, frame, bits",
+"Data, packet, segment, frame, bits",
+"Data, segment, packet, frame, bits"
+],
+"a": 3,
+"e": "Do Some People Fear Bugs: Data, Segment, Packet, Frame, Bits."
+},
+{
+"m": 3,
+"q": "Which PDU is used at the transport layer?",
+"o": [
+"Packet",
+"Frame",
+"Segment",
+"Bits"
+],
+"a": 2,
+"e": "Transport = segment."
+},
+{
+"m": 3,
+"q": "Which PDU is used at the network (internet) layer?",
+"o": [
+"Frame",
+"Data",
+"Segment",
+"Packet"
+],
+"a": 3,
+"e": "Network = packet."
+},
+{
+"m": 3,
+"q": "Which PDU is used at the data link layer?",
+"o": [
+"Frame",
+"Bits",
+"Packet",
+"Segment"
+],
+"a": 0,
+"e": "Data link = frame."
+},
+{
+"m": 3,
+"q": "Which PDU is used at the physical layer?",
+"o": [
+"Packet",
+"Frame",
+"Segment",
+"Bits"
+],
+"a": 3,
+"e": "Physical = bit stream."
+},
+{
+"m": 3,
+"q": "Which PDU is used at the application layer?",
+"o": [
+"Packet",
+"Frame",
+"Data",
+"Segment"
+],
+"a": 2,
+"e": "Data (data stream)."
+},
+{
+"m": 3,
+"q": "Which information is associated with the segment (transport layer)?",
+"o": [
+"Port numbers",
+"Source and destination IP addresses",
+"Source and destination MAC addresses",
+"Application data only"
+],
+"a": 0,
+"e": "Segment = ports. Packet = IP. Frame = MAC."
+},
+{
+"m": 3,
+"q": "Which information is associated with the packet (network layer)?",
+"o": [
+"Signals",
+"Source and destination MAC addresses",
+"Source and destination IP addresses",
+"Port numbers"
+],
+"a": 2,
+"e": "Packet = IP."
+},
+{
+"m": 3,
+"q": "Which information is associated with the frame (data link layer)?",
+"o": [
+"Bit patterns",
+"Source and destination IP addresses",
+"Port numbers",
+"Source and destination MAC addresses"
+],
+"a": 3,
+"e": "Frame = MAC."
+},
+{
+"m": 3,
+"q": "Network layer addresses are responsible for delivering the IP packet...",
+"o": [
+"from one router to another only",
+"to the default gateway only",
+"from the original source to the final destination",
+"from one NIC to another NIC on the same network"
+],
+"a": 2,
+"e": "Layer 3 = end to end."
+},
+{
+"m": 3,
+"q": "Data link layer addresses are responsible for delivering the frame...",
+"o": [
+"to the DNS server",
+"across the internet",
+"from one NIC to another NIC on the same network",
+"from the original source to the final destination"
+],
+"a": 2,
+"e": "Layer 2 = local hop."
+},
+{
+"m": 3,
+"q": "Which statement about an IP address is true?",
+"o": [
+"A MAC portion and a port portion",
+"Only a host portion with no network part",
+"No internal structure at all",
+"A network portion (prefix) and a host portion (interface ID)"
+],
+"a": 3,
+"e": "IPv4: network + host. IPv6: prefix + interface ID."
+},
+{
+"m": 3,
+"q": "Which part of an IPv4 address indicates the network group?",
+"o": [
+"The right-most part (host portion)",
+"The entire address",
+"The subnet mask only",
+"The left-most part (network portion)"
+],
+"a": 3,
+"e": "Left = network."
+},
+{
+"m": 3,
+"q": "The host portion of an IPv4 address is...",
+"o": [
+"the same for every device on the network",
+"the same as the device's MAC address",
+"unique for each device on the network",
+"used only by routers and switches"
+],
+"a": 2,
+"e": "Interface ID in IPv6."
+},
+{
+"m": 3,
+"q": "PC1 is 192.168.1.110 and the FTP server is 192.168.1.9. What is true of them?",
+"o": [
+"The same network, because the network portions match",
+"They must use the default gateway to talk",
+"The same host portion on both devices",
+"Different networks, so a router is needed"
+],
+"a": 0,
+"e": "Same network portion = same LAN."
+},
+{
+"m": 3,
+"q": "When two devices are on the same Ethernet network, which destination MAC address does the frame use?",
+"o": [
+"The broadcast MAC address, always",
+"The actual MAC address of the destination NIC",
+"The MAC address of the default gateway",
+"The IP address of the destination"
+],
+"a": 1,
+"e": "Local delivery uses the real destination MAC."
+},
+{
+"m": 3,
+"q": "When the destination is on a remote network, what destination MAC address does the frame use?",
+"o": [
+"The IP address of the router",
+"A broadcast MAC address",
+"The MAC address of the remote server",
+"The MAC address of the default gateway"
+],
+"a": 3,
+"e": "The frame always goes to something on the same link."
+},
+{
+"m": 3,
+"q": "When the destination is remote, which address does Layer 3 hand to Layer 2?",
+"o": [
+"The IP address of the DNS server",
+"The IP address of the local default gateway",
+"The MAC address of the local switch",
+"The MAC address of the remote web server"
+],
+"a": 1,
+"e": "The gateway (router) interface is the door off the LAN. The frame goes to it; the packet keeps the remote IP."
+},
+{
+"m": 3,
+"q": "What happens if a host is not configured with a default gateway?",
+"o": [
+"It uses the broadcast address",
+"It cannot use IP at all",
+"Its traffic is confined to the LAN",
+"It can reach the internet normally"
+],
+"a": 2,
+"e": "No gateway = no way out."
+},
+{
+"m": 3,
+"q": "When a packet crosses multiple routers, which addresses stay the SAME from hop to hop?",
+"o": [
+"Both IP and MAC addresses",
+"Layer 3 IP addresses",
+"Neither",
+"Layer 2 MAC addresses"
+],
+"a": 1,
+"e": "The packet is not modified. The frame is replaced at each hop."
+},
+{
+"m": 3,
+"q": "When a packet crosses multiple routers, which addresses CHANGE from hop to hop?",
+"o": [
+"Layer 2 MAC addresses",
+"Port numbers",
+"Neither",
+"Layer 3 IP addresses"
+],
+"a": 0,
+"e": "Layer 2 = local; new frame each link."
+},
+{
+"m": 3,
+"q": "Why do the L3 addresses not change from hop to hop?",
+"o": [
+"They are local addresses that change per link",
+"They are global; the final destination is unchanged",
+"They are always broadcast addresses",
+"They are physically embedded in the NIC"
+],
+"a": 1,
+"e": "IP = original source and final destination."
+},
+{
+"m": 3,
+"q": "MAC addresses are...",
+"o": [
+"the same thing as IP addresses",
+"logical addresses used across the internet",
+"assigned by ICANN to routers only",
+"burned into the Ethernet NIC and used for local addressing"
+],
+"a": 3,
+"e": "MAC = local, physical."
+},
+{
+"m": 3,
+"q": "Which statement correctly compares IP and MAC addresses?",
+"o": [
+"IP is logical Layer 3 (packets); MAC is physical Layer 2 (frames)",
+"Both IP and MAC are Layer 3 addresses",
+"IP is physical and used in frames; MAC is logical",
+"IP is used in frames; MAC is used in packets"
+],
+"a": 0,
+"e": "IP = logical, packet, any distance. MAC = physical, frame, local."
+},
+{
+"m": 3,
+"q": "Which statement describes the Layer 3 source IP address in a packet?",
+"o": [
+"The MAC address of the sending device",
+"The IP address of the original sender of the packet",
+"The IP address of the default gateway",
+"The IP address of the last router on the path"
+],
+"a": 1,
+"e": "Original source."
+},
+{
+"m": 3,
+"q": "In the first hop from PC1 to a remote web server, the destination MAC is that of...",
+"o": [
+"The ISP's gateway router",
+"The router's default gateway interface",
+"PC1's own NIC",
+"The web server's NIC on the remote network"
+],
+"a": 1,
+"e": "Then the router builds a new frame for the next link."
+},
+{
+"m": 3,
+"q": "Which statement about TCP/IP protocols is true?",
+"o": [
+"TCP/IP only works over Ethernet networks",
+"TCP/IP specifies all the protocols for physical media",
+"TCP/IP replaces OSI layers 1 and 2 with its own",
+"TCP/IP does not say which protocols to use over the physical medium"
+],
+"a": 3,
+"e": "OSI layers 1 and 2 cover access to the media."
+},
+{
+"m": 3,
+"q": "Which are protocol examples in the New Terms list for routing?",
+"o": [
+"TCP and UDP",
+"OSPF and EIGRP",
+"HTTP and SMTP",
+"FTP and TFTP"
+],
+"a": 1,
+"e": "Open Shortest Path First and Enhanced Interior Gateway Routing Protocol."
+},
+{
+"m": 3,
+"q": "Which protocol is used to send email, which is received using POP or IMAP?",
+"o": [
+"DHCP",
+"FTP",
+"ARP",
+"SMTP"
+],
+"a": 3,
+"e": "SMTP sends. POP/IMAP retrieve."
+},
+{
+"m": 3,
+"q": "Which protocol resolves IPv4 addresses to MAC addresses?",
+"o": [
+"NAT",
+"ICMP",
+"ARP",
+"DHCP"
+],
+"a": 2,
+"e": "Address Resolution Protocol."
+},
+{
+"m": 3,
+"q": "Which protocol provides feedback and error messages such as those used by ping?",
+"o": [
+"TFTP",
+"ICMP",
+"ARP",
+"NAT"
+],
+"a": 1,
+"e": "Internet Control Message Protocol."
+},
 {
 "m": 4,
 "q": "What does the physical layer actually send across the network media?",

@@ -8,7 +8,7 @@ Free, self-contained practice quizzes for finals review. No sign-up, no install,
 
 | Quiz | Covers | Format |
 |---|---|---|
-| [Networking](networking-quiz.html) | Modules 4–10: physical layer through basic router configuration | Multiple choice, plus typed binary / decimal / hex conversions (scrap paper only, no calculator) |
+| [Networking](networking-quiz.html) | Modules 1–10: networking today through basic router configuration | Multiple choice, plus typed binary / decimal / hex conversions (scrap paper only, no calculator) |
 | [Hardware](hardware-quiz.html) | CompTIA A+ Core 1 (220-1101), Modules 1–8 | Multiple choice |
 | [PowerShell & CLI](powershell-quiz.html) | CP3126, Modules 1–17: Command Prompt first, then PowerShell | Multiple choice, plus a terminal-practice mode |
 | [Math](math-quiz.html) | Math 1521, Units 1–4: number systems, set theory, Boolean algebra, normal distribution | Multiple choice |
