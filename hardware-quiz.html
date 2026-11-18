@@ -299,90 +299,6 @@ const BANK = [
 },
 {
 "m": 1,
-"q": "What is the first safety step before opening a desktop computer?",
-"o": [
-"Clip the ESD strap to the monitor",
-"Remove the CMOS battery",
-"Power down the system and unplug it",
-"Open the case and then unplug it"
-],
-"a": 2,
-"e": "Power down and unplug first, then hold the power button about 3 seconds to drain leftover power."
-},
-{
-"m": 1,
-"q": "How long should you press and hold the power button after unplugging to drain power?",
-"o": [
-"About 1 second",
-"About 1 minute",
-"About 30 seconds",
-"About 3 seconds"
-],
-"a": 3,
-"e": "Hold for 3 seconds. Memory trick: 3 seconds to drain."
-},
-{
-"m": 1,
-"q": "Where should you clip an ESD strap while working inside a desktop?",
-"o": [
-"To the power cord so that the current is drained",
-"To the side of the computer case",
-"To the CPU cooler so that the heat is drawn away",
-"To the monitor so that the display is grounded"
-],
-"a": 1,
-"e": "The strap goes on the case (bare metal) so you and the case are at the same electrical level."
-},
-{
-"m": 1,
-"q": "If no ESD strap is available, what else can protect components from static?",
-"o": [
-"A paper towel",
-"A rubber glove",
-"A ground mat",
-"A plastic cup"
-],
-"a": 2,
-"e": "Use an ESD strap, or a ground mat if no strap is available. Store parts in antistatic bags."
-},
-{
-"m": 1,
-"q": "Where should you store a loose component, such as a card, while working?",
-"o": [
-"In a paper bag",
-"In a plastic cup",
-"On the carpet",
-"In an antistatic bag"
-],
-"a": 3,
-"e": "Antistatic bags block static. A plastic bag or cup is only for holding screws."
-},
-{
-"m": 1,
-"q": "You should NEVER put your hands inside which two things?",
-"o": [
-"The power supply and the case fan",
-"The drive bay and the monitor",
-"The monitor and the power supply",
-"The case and the monitor"
-],
-"a": 2,
-"e": "Never remove the cover of, or put your hands inside, a monitor or power supply (they can hold dangerous charge)."
-},
-{
-"m": 1,
-"q": "Which screwdriver size is listed in the slides as part of an essential technician toolkit?",
-"o": [
-"Hex 3/8",
-"Square 2",
-"Torx T15",
-"Torx T5"
-],
-"a": 2,
-"e": "Toolkit: ESD strap, flat-head, Phillips, Torx T15 set and insulated tweezers."
-},
-{
-"m": 1,
 "q": "What is a loopback plug used for?",
 "o": [
 "Testing a power supply",
@@ -468,30 +384,6 @@ const BANK = [
 },
 {
 "m": 1,
-"q": "How many pins does the main P1 connector on an ATX power supply have?",
-"o": [
-"8",
-"40",
-"24 (or 20+4)",
-"6"
-],
-"a": 2,
-"e": "24-pin or 20+4-pin P1. The older 20-pin P1 still worked in it."
-},
-{
-"m": 1,
-"q": "What is the purpose of the 4-pin and 8-pin auxiliary power connectors?",
-"o": [
-"Provide an additional 12 V for the CPU",
-"Power the video card that is in the expansion slot",
-"Power only the case fans that are on the front",
-"Power the SATA drives that are inside the case"
-],
-"a": 0,
-"e": "4/8-pin = extra 12 V for the CPU. 6/8-pin PCIe connectors go to the video card."
-},
-{
-"m": 1,
 "q": "What do the 6-pin and 8-pin PCIe power connectors connect to?",
 "o": [
 "The motherboard P1 slot",
@@ -501,42 +393,6 @@ const BANK = [
 ],
 "a": 3,
 "e": "Video cards draw the most power in a system, so they get their own PCIe power connectors."
-},
-{
-"m": 1,
-"q": "Which component draws the most power in a system?",
-"o": [
-"Optical drive",
-"Hard drive",
-"Motherboard",
-"Video card"
-],
-"a": 3,
-"e": "The slides state video cards draw the most power."
-},
-{
-"m": 1,
-"q": "When removing an expansion card, where should you NOT put your fingers?",
-"o": [
-"On the case",
-"On the edge connectors or chips",
-"On the card's metal bracket",
-"On the screw"
-],
-"a": 1,
-"e": "Edge connectors and chips are easily damaged. Hold the card by its edges."
-},
-{
-"m": 1,
-"q": "How should you remove an expansion card from its slot?",
-"o": [
-"Pull on the cable that is attached to it",
-"Slide it out the back of the case once it is loose",
-"Lift straight up, rocking slightly end to end if needed",
-"Twist it sideways until it comes free of the slot"
-],
-"a": 2,
-"e": "Remove cables and screw first, then lift straight up with both hands."
 },
 {
 "m": 1,
@@ -564,31 +420,6 @@ const BANK = [
 },
 {
 "m": 1,
-"q": "In which order should components be installed when putting a desktop back together?",
-"o": [
-"Power supply, drives, motherboard, cards",
-"Cards, motherboard, drives, power supply",
-"Drives, cards, motherboard, power supply",
-"Motherboard, cards, power supply, drives"
-],
-"a": 0,
-"e": "Memory trick: P-D-M-C (Please Don't Make Chaos).",
-"h": "Power first, cards last."
-},
-{
-"m": 1,
-"q": "Why connect cables to a drive BEFORE sliding it into the bay?",
-"o": [
-"It is required by the POST before it will start",
-"It speeds up the booting of the computer",
-"It prevents static from damaging the drive",
-"It can be easier to reach the connectors"
-],
-"a": 3,
-"e": "The slides note it may be easier to connect cables to drives before sliding them into the bay."
-},
-{
-"m": 1,
 "q": "When you first turn on a rebuilt desktop and see no lights, hear no sounds and get no display, what is the most likely cause?",
 "o": [
 "A memory module is not seated",
@@ -598,18 +429,6 @@ const BANK = [
 ],
 "a": 2,
 "e": "With no power to the motherboard the boot never starts. The other causes still let the boot begin."
-},
-{
-"m": 1,
-"q": "After the build is complete and the PC does not work, what is most likely the problem?",
-"o": [
-"A dead optical drive",
-"A failed motherboard",
-"A loose connection",
-"A bad CPU"
-],
-"a": 2,
-"e": "The slides say a loose connection is most likely. Double-check each connection."
 },
 {
 "m": 1,
@@ -698,151 +517,6 @@ const BANK = [
 },
 {
 "m": 1,
-"q": "Where do laptop replacement parts usually have to be ordered from?",
-"o": [
-"The laptop manufacturer or an authorized source",
-"Any computer store that sells parts for desktops",
-"A desktop parts retailer that sells in bulk",
-"Only the CPU maker, since it supplies the board"
-],
-"a": 0,
-"e": "Laptop parts are often proprietary, so order from the manufacturer or an authorized source."
-},
-{
-"m": 1,
-"q": "What does an OEM warranty come from?",
-"o": [
-"The original equipment manufacturer",
-"The battery maker only",
-"The store you bought it from",
-"The operating system vendor"
-],
-"a": 0,
-"e": "OEM = original equipment manufacturer."
-},
-{
-"m": 1,
-"q": "Which items should you have ready when contacting tech support about a laptop?",
-"o": [
-"The BIOS password and the Windows product key",
-"Only the serial number of the laptop",
-"Only the Windows product key and the name of the OS",
-"Model and serial number, and purchaser name, phone and address"
-],
-"a": 3,
-"e": "Have the model, serial number and purchaser information ready."
-},
-{
-"m": 1,
-"q": "What do laptop service manuals provide?",
-"o": [
-"Safe disassembly steps and parts information",
-"Free replacement parts that are sent by the maker",
-"BIOS passwords for the locked laptops",
-"Warranty extensions for the laptops"
-],
-"a": 0,
-"e": "Service manuals save time and enable safe disassembly."
-},
-{
-"m": 1,
-"q": "Where can you find manufacturer diagnostic software for a laptop?",
-"o": [
-"Only in Windows Update after it is installed",
-"The manufacturer's website, a bundled CD, or the hard drive",
-"Only on the BIOS chip of the laptop",
-"Only from a store that sells the laptop"
-],
-"a": 1,
-"e": "Diagnostic software helps determine which component needs replacing."
-},
-{
-"m": 1,
-"q": "What tool is used to slide along the seal and pry open a laptop case?",
-"o": [
-"A multimeter",
-"A Torx T15 bit",
-"A plastic or metal spudger",
-"A flat hammer"
-],
-"a": 2,
-"e": "A spudger pries the case seal. A dental pick or screwdriver can pry plastic covers."
-},
-{
-"m": 1,
-"q": "What is a good way to keep laptop screws organized?",
-"o": [
-"Tape them to a piece of paper next to the manufacturer documentation",
-"Put them in a magnet cup on the motherboard",
-"Throw them in the case",
-"Keep them in a pocket"
-],
-"a": 0,
-"e": "Laptop screws are tiny. Tape them in order beside the documentation."
-},
-{
-"m": 1,
-"q": "What is true about the plastic screws used in laptops?",
-"o": [
-"They can be replaced with metal screws",
-"They hold the battery",
-"They may be used only once",
-"They are always reusable"
-],
-"a": 2,
-"e": "Plastic screws are single-use."
-},
-{
-"m": 1,
-"q": "When disassembling a laptop, which should be removed or disabled FIRST?",
-"o": [
-"The battery pack",
-"The keyboard bezel",
-"The hard drive",
-"The wireless card"
-],
-"a": 0,
-"e": "Order: battery, hard drive, memory, wireless card, optical drive, crack the case, keyboard bezel.",
-"h": "Battery first, bezel last."
-},
-{
-"m": 1,
-"q": "In the laptop removal order, which comes immediately after the hard drive?",
-"o": [
-"Optical drive",
-"Keyboard bezel",
-"Wireless card",
-"Memory"
-],
-"a": 3,
-"e": "Battery, hard drive, memory, wireless card, optical drive, crack the case, keyboard bezel."
-},
-{
-"m": 1,
-"q": "What should you NOT do when maintaining a laptop?",
-"o": [
-"Use a carrying case",
-"Pick it up or hold it by the lid",
-"Use only recommended battery packs",
-"Use a password"
-],
-"a": 1,
-"e": "Don't hold a laptop by the lid, don't touch the LCD with sharp objects, and don't move it while the hard drive is being accessed."
-},
-{
-"m": 1,
-"q": "Why should you avoid moving a laptop while the hard drive is being accessed?",
-"o": [
-"It drains the battery",
-"It resets the BIOS",
-"The drive can be damaged",
-"It lowers the Wi-Fi signal"
-],
-"a": 2,
-"e": "Moving a spinning drive while it reads/writes can damage it."
-},
-{
-"m": 1,
 "q": "A 4-year-old laptop will not boot because the wireless card has failed. What should you do FIRST?",
 "o": [
 "Ask if the laptop is still under warranty",
@@ -852,30 +526,6 @@ const BANK = [
 ],
 "a": 0,
 "e": "All are good steps, but check warranty first (the slides' knowledge check)."
-},
-{
-"m": 1,
-"q": "What is the main purpose of an ESD strap?",
-"o": [
-"Measure the voltage on the components",
-"Hold the screws while you work on the computer",
-"Protect components from electrostatic discharge",
-"Ground the monitor so that it does not shock the user"
-],
-"a": 2,
-"e": "ESD = electrostatic discharge. The strap equalizes charge between you and the case."
-},
-{
-"m": 2,
-"q": "Which of these is NOT something to consider when purchasing a motherboard?",
-"o": [
-"Chipset",
-"Monitor resolution",
-"Processor socket",
-"Form factor"
-],
-"a": 1,
-"e": "Consider form factor, processor socket, chipset, expansion slots, and other connectors, slots and ports."
 },
 {
 "m": 2,
@@ -924,78 +574,6 @@ const BANK = [
 ],
 "a": 0,
 "e": "The socket must match the processor."
-},
-{
-"m": 2,
-"q": "Which two companies make the major chipsets and processors?",
-"o": [
-"AMD and Dell",
-"Microsoft and Intel",
-"Intel and AMD",
-"Intel and Nvidia"
-],
-"a": 2,
-"e": "Intel and AMD."
-},
-{
-"m": 2,
-"q": "Which of these is an Intel processor socket?",
-"o": [
-"TR4",
-"LGA1700",
-"AM4",
-"sTRX4"
-],
-"a": 1,
-"e": "Intel: LGA1700, LGA1200, LGA1151. AMD: AM4, AM3+, TR4, sTRX4. Memory trick: LGA = Intel, AM = AMD."
-},
-{
-"m": 2,
-"q": "Which AMD socket is used with Ryzen and Athlon processors?",
-"o": [
-"AM4",
-"TR4",
-"AM3+",
-"LGA1200"
-],
-"a": 0,
-"e": "AM4 = Ryzen and Athlon. AM3+ = Piledriver and Bulldozer."
-},
-{
-"m": 2,
-"q": "Which AMD socket is used with Piledriver and Bulldozer processors?",
-"o": [
-"sTRX4",
-"LGA1151",
-"AM3+",
-"AM4"
-],
-"a": 2,
-"e": "AM3+ is the older one for Piledriver and Bulldozer."
-},
-{
-"m": 2,
-"q": "Which AMD socket uses the TRX40 chipset?",
-"o": [
-"AM3+",
-"AM4",
-"sTRX4",
-"TR4"
-],
-"a": 2,
-"e": "sTRX4 + TRX40. TR4 uses the X399."
-},
-{
-"m": 2,
-"q": "How can you confirm that a processor fits a motherboard's socket?",
-"o": [
-"Check the motherboard manufacturer's website or user guide, or the Intel or AMD site for the processor",
-"Match the form factor of the case to the processor",
-"Check the wattage of the power supply against the CPU",
-"Compare the color of the CPU to the color of the socket"
-],
-"a": 0,
-"e": "Use the supported processor list from the manufacturer."
 },
 {
 "m": 2,
@@ -1068,18 +646,6 @@ const BANK = [
 ],
 "a": 1,
 "e": "Graphics cards use x16. Slot sizes: x1, x4, x8, x16."
-},
-{
-"m": 2,
-"q": "How many connectors might a power-hungry PCIe card have for extra power?",
-"o": [
-"Four to six",
-"One, two or three",
-"None, PCIe slots supply all power",
-"Always exactly one"
-],
-"a": 1,
-"e": "Cards that need extra wattage can have one, two or three power connectors."
 },
 {
 "m": 2,
@@ -1275,18 +841,6 @@ const BANK = [
 },
 {
 "m": 2,
-"q": "Which keys are most commonly pressed during boot to enter BIOS/UEFI setup?",
-"o": [
-"Esc and Shift",
-"F12 or Del",
-"Ctrl+Alt+Del",
-"Tab"
-],
-"a": 1,
-"e": "For most boards: F12 or Del. Check your documentation or the boot screen."
-},
-{
-"m": 2,
 "q": "What does USB power share do?",
 "o": [
 "Shares a USB device between two computers at once",
@@ -1383,18 +937,6 @@ const BANK = [
 },
 {
 "m": 2,
-"q": "What does Load Optimized Defaults do?",
-"o": [
-"Resets BIOS/UEFI settings to recommended values, often fixing bad changes",
-"Updates the firmware to the newest version from the maker",
-"Clears the Windows password so that you can sign in",
-"Erases the hard drive so that Windows can be reinstalled"
-],
-"a": 0,
-"e": "Useful after inappropriate changes or when recovering from a failed firmware update."
-},
-{
-"m": 2,
 "q": "Which is the most secure boot authentication option?",
 "o": [
 "Full disk encryption",
@@ -1479,18 +1021,6 @@ const BANK = [
 },
 {
 "m": 2,
-"q": "What is a field replaceable unit?",
-"o": [
-"A type of software that updates the firmware",
-"A component, like a motherboard, that a technician can replace on site",
-"A memory card that is used in a laptop",
-"A part that only the factory is allowed to swap out"
-],
-"a": 1,
-"e": "The motherboard is considered a field replaceable unit."
-},
-{
-"m": 2,
 "q": "A coworker cannot align a motherboard's screw holes with the case standoffs. What is the most likely cause?",
 "o": [
 "Too many screws",
@@ -1500,210 +1030,6 @@ const BANK = [
 ],
 "a": 2,
 "e": "When form factors match, the screw holes align with the standoffs."
-},
-{
-"m": 2,
-"q": "When replacing a motherboard, which step comes first after you remove components to reach the old board?",
-"o": [
-"Install the I/O shield",
-"Boot into BIOS/UEFI",
-"Install the video card",
-"Install RAM"
-],
-"a": 0,
-"e": "Order: I/O shield, motherboard, CPU and cooler, RAM, wires and cables, video card, power, boot to setup, check POST."
-},
-{
-"m": 2,
-"q": "When replacing a motherboard, which comes before installing the RAM?",
-"o": [
-"Install the drivers for the motherboard",
-"Install the processor and processor cooler",
-"Plug in the power source to the motherboard",
-"Install the video card in the expansion slot"
-],
-"a": 1,
-"e": "Order: motherboard, processor and cooler, RAM, cabling, video card."
-},
-{
-"m": 2,
-"q": "After installing a replacement motherboard, what do you do right after booting into BIOS/UEFI setup?",
-"o": [
-"Install expansion cards",
-"Format the drive",
-"Install Windows drivers",
-"Observe POST and verify no errors"
-],
-"a": 3,
-"e": "Boot, enter setup, observe POST, verify Windows starts, install drivers, then other cards."
-},
-{
-"m": 2,
-"q": "Which question is NOT one to ask when selecting a desktop motherboard?",
-"o": [
-"What brand is the monitor?",
-"What form factor does it use?",
-"Does it fit the case?",
-"Which processors does it support?"
-],
-"a": 0,
-"e": "Consider use, form factor, processor and chipset, memory type and speed, case fit, price, warranty and documentation."
-},
-{
-"m": 3,
-"q": "What does the processor determine in a system?",
-"o": [
-"Display resolution",
-"Network speed",
-"Computing power",
-"Storage capacity"
-],
-"a": 2,
-"e": "The processor is installed on the motherboard and determines the system's computing power."
-},
-{
-"m": 3,
-"q": "Which two companies are the major processor manufacturers?",
-"o": [
-"Intel and ARM",
-"Apple and Qualcomm",
-"AMD and Nvidia",
-"Intel and AMD"
-],
-"a": 3,
-"e": "Intel and AMD make the major desktop processors."
-},
-{
-"m": 3,
-"q": "Which of these is NOT a feature that affects processor performance and motherboard compatibility?",
-"o": [
-"Case color",
-"Processor speed",
-"Socket and chipset",
-"Memory cache"
-],
-"a": 0,
-"e": "Features: speed, lithography, socket/chipset, multiprocessing, cache, supported memory, virtualization, overclocking."
-},
-{
-"m": 3,
-"q": "What is multicore processing?",
-"o": [
-"Running a single core at twice its normal speed",
-"Using two separate motherboards in one case",
-"Using two power supplies for one processor",
-"Putting more than one processing core in a single processor"
-],
-"a": 3,
-"e": "Multiprocessing abilities include multithreading, multicore processing and dual processors."
-},
-{
-"m": 3,
-"q": "Which Intel family is aimed at the most powerful high-end desktops?",
-"o": [
-"Core i3",
-"Atom",
-"Celeron",
-"Core X-series"
-],
-"a": 3,
-"e": "Core X = most powerful. i9/i7 = high-end. i5 = mainstream. i3 = entry-level."
-},
-{
-"m": 3,
-"q": "Which Intel Core family is the mainstream choice for desktops and laptops?",
-"o": [
-"Core X-series",
-"Core i3",
-"Core i9",
-"Core i5"
-],
-"a": 3,
-"e": "i5 is mainstream. Memory trick: 3 (entry), 5 (middle), 7/9 (high)."
-},
-{
-"m": 3,
-"q": "Which Intel Core family is entry-level?",
-"o": [
-"Core i5",
-"Core i7",
-"Core i9",
-"Core i3"
-],
-"a": 3,
-"e": "i3 is entry-level."
-},
-{
-"m": 3,
-"q": "Which Intel processors are made for low-end netbooks and laptops?",
-"o": [
-"Core i9",
-"Core X-series",
-"Xeon",
-"Celeron"
-],
-"a": 3,
-"e": "Celeron = low-end netbooks and laptops. Atom = low-end desktops, notebooks and laptops. Pentium = entry-level."
-},
-{
-"m": 3,
-"q": "Which AMD processor family is built for servers and can have up to 64 cores?",
-"o": [
-"Threadripper",
-"Athlon",
-"Ryzen",
-"EPYC"
-],
-"a": 3,
-"e": "EPYC is for servers."
-},
-{
-"m": 3,
-"q": "Which markets are AMD processors popular in, and how are they priced?",
-"o": [
-"Gaming and hobbyist, generally cheaper than comparable Intel",
-"Servers only, more expensive than Intel",
-"Phones only, same price as Intel",
-"Business desktops only, more expensive than Intel"
-],
-"a": 0,
-"e": "AMD is popular with gamers and hobbyists and generally costs less."
-},
-{
-"m": 3,
-"q": "What does ARM stand for?",
-"o": [
-"Automatic Register Memory",
-"Applied RISC Microprocessor",
-"Advanced RISC Machine",
-"Advanced Resource Module"
-],
-"a": 2,
-"e": "ARM simplifies the instruction set."
-},
-{
-"m": 3,
-"q": "ARM processors are used mostly in which kind of device, and why?",
-"o": [
-"Mobile devices, because they are low cost, low power and low heat",
-"Servers, because they are the fastest processors",
-"Monitors, because their chips are very small",
-"Desktops, because they overclock the best"
-],
-"a": 0,
-"e": "ARM = low cost, low power, low heat."
-},
-{
-"m": 3,
-"q": "What is the first requirement when selecting a processor?",
-"o": [
-"It must be a type the motherboard is designed to support",
-"It should have the most cores that you can afford",
-"It should match the color of the case and cooler",
-"It should be the cheapest one that you can find"
-],
-"a": 0,
-"e": "The processor must match the board's socket and chipset."
 },
 {
 "m": 3,
@@ -1719,102 +1045,6 @@ const BANK = [
 },
 {
 "m": 3,
-"q": "Before installing an Intel processor, what should you do first?",
-"o": [
-"Apply thermal compound",
-"Remove the CMOS battery",
-"Lift the load plate",
-"Use an ESD strap or antistatic gloves"
-],
-"a": 3,
-"e": "Protect against ESD first, then open the socket."
-},
-{
-"m": 3,
-"q": "How do you align an Intel processor with its socket?",
-"o": [
-"Line up four empty pin positions with the socket holes",
-"Line up the gold triangle with the lever on the socket",
-"Line up the arrow on the cooler with the arrow on the socket",
-"Line up the two notches on the processor edge with the posts in the socket"
-],
-"a": 3,
-"e": "Intel (LGA): notches on the edge line up with posts in the socket. AMD (PGA): empty pin positions line up with filled holes."
-},
-{
-"m": 3,
-"q": "How do you align an AMD Ryzen or Athlon processor with its socket?",
-"o": [
-"Line up the arrow with the socket lever",
-"Line up two notches on the edge with posts in the socket",
-"Orient the four empty pin positions with the four filled holes in the socket",
-"Slide it in sideways until it clicks into place"
-],
-"a": 2,
-"e": "AMD has pins on the processor. Match the empty pin positions to the filled holes."
-},
-{
-"m": 3,
-"q": "What happens to the socket load plate when you lift the socket lever on an Intel board?",
-"o": [
-"It is removed completely",
-"It locks down",
-"It heats up",
-"It is raised"
-],
-"a": 3,
-"e": "As you lift the lever, the load plate lifts so you can seat the processor."
-},
-{
-"m": 3,
-"q": "After seating the processor, what do you do with the lever?",
-"o": [
-"Push it down and return it to the locked position",
-"Leave it up so that the cooler can be seated",
-"Replace it with a screw that holds the processor",
-"Remove it so that the processor can be seated"
-],
-"a": 0,
-"e": "Lower the lever to lock the processor."
-},
-{
-"m": 3,
-"q": "Where does the cooler fan power cord connect?",
-"o": [
-"A SATA port",
-"The power supply P1 connector",
-"A 4-pin CPU fan header on the motherboard",
-"The video card"
-],
-"a": 2,
-"e": "Connect the cooler's fan cord to the CPU fan header."
-},
-{
-"m": 3,
-"q": "Heavy CPU coolers may use what under the motherboard?",
-"o": [
-"A power adapter that sits under the board",
-"A second heat sink that sits under the processor",
-"A rubber pad that sits between the board and the case",
-"A backplate that fits underneath the board"
-],
-"a": 3,
-"e": "Install the plate first, then the cooler on top of the processor."
-},
-{
-"m": 3,
-"q": "After installing a processor, how can you verify the system recognizes it?",
-"o": [
-"Check the case fan",
-"Check the power supply",
-"Check Device Manager only",
-"Check BIOS/UEFI setup"
-],
-"a": 3,
-"e": "Enter BIOS/UEFI setup to verify the processor."
-},
-{
-"m": 3,
 "q": "Which new parts do you need to replace a failing processor?",
 "o": [
 "The processor and a new cooler",
@@ -1824,30 +1054,6 @@ const BANK = [
 ],
 "a": 1,
 "e": "The power cable and cooling assembly can be reused."
-},
-{
-"m": 3,
-"q": "What is RAM?",
-"o": [
-"The CPU's cache that sits inside the processor",
-"A type of hard drive that uses a magnetic platter",
-"Permanent storage that holds programs when the power is off",
-"Memory that temporarily holds data and instructions used by the CPU"
-],
-"a": 3,
-"e": "RAM = Random Access Memory, temporary."
-},
-{
-"m": 3,
-"q": "What does DRAM require to keep its data?",
-"o": [
-"Refreshing several thousand times a second by the memory controller",
-"Formatting by the operating system at boot time",
-"Constant power only, since it does not need any other help",
-"Cooling from a fan so that it does not lose its data"
-],
-"a": 0,
-"e": "Dynamic RAM loses data rapidly and must be refreshed."
 },
 {
 "m": 3,
@@ -2199,114 +1405,6 @@ const BANK = [
 },
 {
 "m": 3,
-"q": "What is virtual RAM (virtual memory)?",
-"o": [
-"Windows using hard drive space to extend the amount of RAM",
-"A faster form of DRAM that is used on servers",
-"RAM that keeps its data after a reboot",
-"RAM that sits on a video card and is used for graphics"
-],
-"a": 0,
-"e": "Windows stores it in pagefile.sys."
-},
-{
-"m": 3,
-"q": "Where does Windows normally store virtual memory?",
-"o": [
-"hiberfil.sys in Program Files",
-"The Windows folder",
-"The Recycle Bin",
-"pagefile.sys, a hidden file in the root of C:"
-],
-"a": 3,
-"e": "pagefile.sys in C:\\."
-},
-{
-"m": 3,
-"q": "What can cause a low-memory warning related to virtual memory?",
-"o": [
-"Not enough free space on drive C: for pagefile.sys",
-"A missing sound driver that was not installed",
-"A full USB drive that is used for ReadyBoost",
-"A dead CMOS battery that has lost its time"
-],
-"a": 0,
-"e": "If C: lacks free space, pagefile.sys can be too small."
-},
-{
-"m": 3,
-"q": "Which problem might adding more RAM solve?",
-"o": [
-"A broken keyboard and a sticking mouse",
-"A cracked screen and flickering colors",
-"A dead network port and a missing driver",
-"Slow performance, applications refusing to load, unstable system, or insufficient-memory errors"
-],
-"a": 3,
-"e": "More RAM can fix those symptoms."
-},
-{
-"m": 3,
-"q": "What is the minimum RAM Windows requires for a 64-bit installation?",
-"o": [
-"512 MB",
-"2 GB",
-"1 GB",
-"4 GB"
-],
-"a": 1,
-"e": "1 GB for 32-bit, 2 GB for 64-bit."
-},
-{
-"m": 3,
-"q": "How much memory can a 32-bit Windows installation support at most?",
-"o": [
-"16 GB",
-"2 GB",
-"4 GB",
-"8 GB"
-],
-"a": 2,
-"e": "32-bit = 4 GB maximum."
-},
-{
-"m": 3,
-"q": "How much memory can a 64-bit Windows 10 Pro support?",
-"o": [
-"Up to 4 GB",
-"Up to 64 GB",
-"Up to 128 GB",
-"Up to 2 TB"
-],
-"a": 3,
-"e": "64-bit Windows 10 Pro = 2 TB."
-},
-{
-"m": 3,
-"q": "If you mix memory modules of different speeds, how will they all run?",
-"o": [
-"At the slowest speed",
-"At the average speed",
-"They won't boot",
-"At the fastest speed"
-],
-"a": 0,
-"e": "The slowest module sets the speed."
-},
-{
-"m": 3,
-"q": "What precaution applies when handling memory modules?",
-"o": [
-"Handle them by the chips so that the edge stays clean",
-"Don't touch the edge connectors, and don't stack modules",
-"Always touch the gold contacts so that you are grounded",
-"Stack the modules to save space on the bench"
-],
-"a": 1,
-"e": "Also use an ESD strap, power off and unplug."
-},
-{
-"m": 3,
 "q": "What do you do first when installing a DIMM?",
 "o": [
 "Insert the DIMM at an angle and then push it down",
@@ -2331,42 +1429,6 @@ const BANK = [
 },
 {
 "m": 3,
-"q": "How can you check that new memory is recognized?",
-"o": [
-"Run Disk Cleanup from within Windows",
-"Enter BIOS/UEFI setup (the computer also counts memory at power-up)",
-"Check that the cooler fan spins when the power is on",
-"Check the LEDs on the case when the system starts"
-],
-"a": 1,
-"e": "The system counts memory at startup; setup shows it."
-},
-{
-"m": 3,
-"q": "Before upgrading laptop memory, what should you make sure of?",
-"o": [
-"That the battery is full",
-"That the screen is off",
-"That the warranty is not being voided",
-"That Wi-Fi is on"
-],
-"a": 2,
-"e": "Also match the memory type to the laptop."
-},
-{
-"m": 3,
-"q": "What does lithography refer to in a processor?",
-"o": [
-"The type of cooler that the processor needs",
-"The type of socket that the processor uses",
-"The size of the processor's cache that is built in",
-"The process size used to make the chip (the size of its transistors)"
-],
-"a": 3,
-"e": "Smaller lithography = more transistors, usually better efficiency."
-},
-{
-"m": 3,
 "q": "x86-64 processors are also known as what?",
 "o": [
 "RISC-only processors that cannot run 32-bit software",
@@ -2388,18 +1450,6 @@ const BANK = [
 ],
 "a": 1,
 "e": "Cooling devices: fans, coolers, heat sinks and liquid cooling."
-},
-{
-"m": 4,
-"q": "Which is a general rule for cooling the inside of a computer case?",
-"o": [
-"Cover the vents",
-"Keep the case closed",
-"Remove the fans",
-"Leave the case open"
-],
-"a": 1,
-"e": "Keep the case closed, clean the inside, and move the computer to a spot with airflow."
 },
 {
 "m": 4,
@@ -2437,18 +1487,6 @@ const BANK = [
 ],
 "a": 1,
 "e": "90-110 F (32-43 C)."
-},
-{
-"m": 4,
-"q": "How does a CPU cooler fan get power?",
-"o": [
-"From a 4-pin fan header on the motherboard",
-"From a SATA data cable",
-"From the video card",
-"From the case's front panel"
-],
-"a": 0,
-"e": "A 4-pin CPU fan header on the board."
 },
 {
 "m": 4,
@@ -2509,30 +1547,6 @@ const BANK = [
 ],
 "a": 3,
 "e": "RAM coolers clip over memory modules."
-},
-{
-"m": 4,
-"q": "A fan card for a graphics card must match what?",
-"o": [
-"The speed of the memory modules in the computer",
-"The CPU socket that is on the motherboard",
-"The expansion slot you plan to use",
-"The color of the case that it will be installed in"
-],
-"a": 2,
-"e": "Be sure it fits the slot you plan to use."
-},
-{
-"m": 4,
-"q": "Which is a reason to replace a power supply?",
-"o": [
-"The monitor is too old",
-"The keyboard changed",
-"It fails or is not adequate for the system",
-"The case is a different color"
-],
-"a": 2,
-"e": "A failed or inadequate PSU needs replacing."
 },
 {
 "m": 4,
@@ -2606,42 +1620,6 @@ const BANK = [
 ],
 "a": 3,
 "e": "The slide's total is 470 W, plus 30% = 611 W, so 700 W."
-},
-{
-"m": 4,
-"q": "What is the first step of the troubleshooting process?",
-"o": [
-"Test your theory to find the cause of the problem",
-"Interview the user and back up data",
-"Document the results of the repair",
-"Fix the problem and then test your theory"
-],
-"a": 1,
-"e": "Steps: 1 interview and back up, 2 examine and guess, 3 test theory, 4 plan and fix, 5 verify, 6 document."
-},
-{
-"m": 4,
-"q": "What is the last step of the troubleshooting process?",
-"o": [
-"Plan the solution and then carry it out",
-"Document activities, outcomes and what you learned",
-"Interview the user and back up the data",
-"Reboot the system and test the repair"
-],
-"a": 1,
-"e": "Step 6 = document."
-},
-{
-"m": 4,
-"q": "After you have a theory about the cause, what is the next step?",
-"o": [
-"Document it",
-"Verify full system function",
-"Back up data",
-"Test your theory"
-],
-"a": 3,
-"e": "Examine and guess, then test your theory, then plan and fix."
 },
 {
 "m": 4,
@@ -2850,54 +1828,6 @@ const BANK = [
 },
 {
 "m": 4,
-"q": "What is a good question to ask when interviewing a user?",
-"o": [
-"What is your Wi-Fi password and which sites do you visit?",
-"How old is the computer and who else uses it?",
-"What changes have been recently made to the system?",
-"What is your favorite game and how often do you play it?"
-],
-"a": 2,
-"e": "Also ask about error messages, when it started, programs in use, and recent storms or electrical problems."
-},
-{
-"m": 4,
-"q": "Why ask about a recent thunderstorm or electrical problem?",
-"o": [
-"It changes the BIOS password",
-"Storms slow the Internet",
-"Power surges can damage hardware",
-"It affects the monitor color"
-],
-"a": 2,
-"e": "Electrical events can damage components."
-},
-{
-"m": 4,
-"q": "Which of these is an option for backing up data before repairs?",
-"o": [
-"Reinstall Windows and restore the files later",
-"Delete temporary files and run Disk Cleanup",
-"Copy the data to another system, move the drive to another system, or hire a file recovery service",
-"Format the drive and then copy the data back"
-],
-"a": 2,
-"e": "Back up before you change anything."
-},
-{
-"m": 4,
-"q": "After fixing a problem, what question should you ask?",
-"o": [
-"Could this problem have been prevented?",
-"How much will this cost the customer?",
-"Who caused this problem on the computer?",
-"Can we skip the documentation this time?"
-],
-"a": 0,
-"e": "Step 5: verify and take preventative action."
-},
-{
-"m": 4,
 "q": "Which items belong in your documentation?",
 "o": [
 "Only the final cost and the technician's name",
@@ -2907,102 +1837,6 @@ const BANK = [
 ],
 "a": 3,
 "e": "Good documentation helps with future problems, training, preventative plans and audits."
-},
-{
-"m": 4,
-"q": "Which is a possible symptom of an electrical system problem?",
-"o": [
-"The computer appears dead with no lights, spinning drive or fan",
-"A browser tab freezes and then recovers",
-"The mouse pointer is too small and the wallpaper changes",
-"The monitor is too dim when the room is bright"
-],
-"a": 0,
-"e": "Other symptoms: random lock-ups on boot, beeps, burnt smell, unexpected shutdowns, PSU whine."
-},
-{
-"m": 4,
-"q": "What should you do if you smell burnt parts?",
-"o": [
-"Spray the parts with cleaner and then power on",
-"Ignore the smell, since it will go away",
-"Don't turn the system on; look for the fried component",
-"Turn the system on to test it and look for the problem"
-],
-"a": 2,
-"e": "Turn it off, unplug, and search for shorts and frayed or burnt wires."
-},
-{
-"m": 4,
-"q": "You hear a whine from the power supply when first plugging in power. What might it mean?",
-"o": [
-"The keyboard is dead and needs to be replaced",
-"The monitor is too bright and needs to be adjusted",
-"The hard drive is failing and about to crash",
-"The power supply is inadequate or there is a short"
-],
-"a": 3,
-"e": "A whine can mean an inadequate supply or a short."
-},
-{
-"m": 4,
-"q": "Which is a simple check for a dead computer?",
-"o": [
-"Is the keyboard connected and is the monitor turned on?",
-"Is the power cord plugged in, the outlet switched on, or the circuit breaker blown?",
-"Is the wallpaper correct and is the mouse wireless?",
-"Is the BIOS beep disabled and is the CMOS battery new?"
-],
-"a": 1,
-"e": "Check cord, wall switch, loose cables and breaker."
-},
-{
-"m": 4,
-"q": "How should you test a power supply you suspect is bad?",
-"o": [
-"With a POST card",
-"With a multimeter on the monitor",
-"With a power supply tester",
-"With a loopback plug"
-],
-"a": 2,
-"e": "PSU tester = power supply. Loopback plug = network port. POST card = POST errors."
-},
-{
-"m": 4,
-"q": "Which is a symptom of an intermittent electrical problem after the boot?",
-"o": [
-"The computer hangs for no reason, or the PSU overheats or its fan whines",
-"The browser is slow and the wallpaper changes",
-"The screen is too dim and the colors are off",
-"Bluetooth will not pair and the mouse is slow"
-],
-"a": 0,
-"e": "Other symptoms: memory errors, corrupted files, keyboard stops at odd times."
-},
-{
-"m": 4,
-"q": "What should you do if the power supply fan does not work?",
-"o": [
-"Add a second keyboard",
-"Do not operate the computer",
-"Lower the volume",
-"Keep using it"
-],
-"a": 1,
-"e": "A dead PSU fan means overheating risk."
-},
-{
-"m": 4,
-"q": "What most often causes a short on the motherboard from improper contact with the chassis?",
-"o": [
-"A full hard drive",
-"A loose keyboard",
-"A missing standoff",
-"An old monitor"
-],
-"a": 2,
-"e": "Check for missing standoffs and loose screws (shake the case gently)."
 },
 {
 "m": 4,
@@ -3027,18 +1861,6 @@ const BANK = [
 ],
 "a": 0,
 "e": "View temperature in BIOS/UEFI setup."
-},
-{
-"m": 4,
-"q": "What can you use to remove dust from a power supply and vents?",
-"o": [
-"Compressed air, a blower or an antistatic vacuum",
-"A household vacuum cleaner with a plastic hose",
-"A hair dryer set on its lowest heat",
-"A wet cloth and some cleaner"
-],
-"a": 0,
-"e": "Use antistatic tools only."
 },
 {
 "m": 4,
@@ -3078,18 +1900,6 @@ const BANK = [
 },
 {
 "m": 4,
-"q": "Which fix helps airflow inside a case?",
-"o": [
-"Remove the case fan so that air can move more freely",
-"Stack the cards together to save space",
-"Replace missing faceplates and expansion slot covers",
-"Add more cables to guide the air through the case"
-],
-"a": 2,
-"e": "Also leave an empty slot between cards, and a few inches of space around the case."
-},
-{
-"m": 4,
 "q": "What should you do if thermal compound has hardened?",
 "o": [
 "Replace it",
@@ -3111,30 +1921,6 @@ const BANK = [
 ],
 "a": 1,
 "e": "Lithium ion."
-},
-{
-"m": 4,
-"q": "A laptop's battery is not charging when plugged into AC. What might be the problem?",
-"o": [
-"The speakers or the sound card",
-"The battery or the motherboard",
-"The keyboard or the touchpad",
-"The monitor or the video card"
-],
-"a": 1,
-"e": "First check the outlet, the adapter connections and the DC jack."
-},
-{
-"m": 4,
-"q": "Which is a symptom of a failing motherboard, processor or RAM?",
-"o": [
-"The keyboard sticks and the mouse drifts",
-"The system reports less memory than installed",
-"Wi-Fi drops and the speakers crackle",
-"A printer jams and a web page loads slowly"
-],
-"a": 1,
-"e": "Others: boots then powers down, error at boot, hangs or freezes, intermittent Windows or drive errors."
 },
 {
 "m": 4,
@@ -3174,30 +1960,6 @@ const BANK = [
 },
 {
 "m": 4,
-"q": "Where can you check for a record of a hardware or application problem?",
-"o": [
-"Windows Explorer",
-"Event Viewer logs",
-"Paint",
-"Disk Defragmenter"
-],
-"a": 1,
-"e": "Also use Device Manager for hardware problems."
-},
-{
-"m": 4,
-"q": "How can you see how much RAM Windows has installed?",
-"o": [
-"The Windows About window",
-"The Task Scheduler",
-"Windows Update",
-"The Recycle Bin"
-],
-"a": 0,
-"e": "Consider upgrading if there isn't enough."
-},
-{
-"m": 4,
 "q": "An onboard port isn't working. Which tool can test the port itself?",
 "o": [
 "A loopback plug",
@@ -3219,18 +1981,6 @@ const BANK = [
 ],
 "a": 1,
 "e": "POST card = boot errors. Loopback plug = network ports. PSU tester = power supply."
-},
-{
-"m": 5,
-"q": "Which characteristics are used to rate a hard drive?",
-"o": [
-"Physical size, capacity, speed, internal technology and interface standard",
-"Resolution, refresh rate and screen size",
-"Voltage, wattage and the speed of the fan",
-"Color, brand name and weight of the drive"
-],
-"a": 0,
-"e": "HDDs are rated by size, capacity, speed, technology and interface."
 },
 {
 "m": 5,
@@ -3427,54 +2177,6 @@ const BANK = [
 },
 {
 "m": 5,
-"q": "What does logical block addressing (LBA) do?",
-"o": [
-"Lets firmware, BIOS/UEFI and the OS address all sectors on the drive",
-"Lets the firmware, BIOS/UEFI and OS address every sector",
-"Mirrors the data to a second drive for protection",
-"Encrypts the data stored on the drive so that it is protected"
-],
-"a": 0,
-"e": "Block size x number of blocks = capacity."
-},
-{
-"m": 5,
-"q": "What does S.M.A.R.T. do?",
-"o": [
-"Predicts when a drive is likely to fail",
-"Speeds up the drive by moving files to the outer tracks",
-"Repairs the bad sectors on the drive automatically",
-"Encrypts the data on the drive so that it is secure"
-],
-"a": 0,
-"e": "Self-Monitoring Analysis and Reporting Technology."
-},
-{
-"m": 5,
-"q": "What should you do if S.M.A.R.T. warns of a failing drive?",
-"o": [
-"Format the drive and then defragment it",
-"Back up the data and replace the drive as soon as possible",
-"Run a speed test and replace it only if the test fails",
-"Ignore the warning because the drive will repair itself"
-],
-"a": 1,
-"e": "S.M.A.R.T. errors mean back up and replace."
-},
-{
-"m": 5,
-"q": "Where can S.M.A.R.T. be enabled or disabled?",
-"o": [
-"Windows Update",
-"Task Manager",
-"BIOS/UEFI setup",
-"Disk Cleanup"
-],
-"a": 2,
-"e": "It is a BIOS/UEFI setting."
-},
-{
-"m": 5,
 "q": "What does IDE stand for?",
 "o": [
 "Integrated Disk Engine",
@@ -3558,78 +2260,6 @@ const BANK = [
 ],
 "a": 1,
 "e": "It used a PCIe slot."
-},
-{
-"m": 5,
-"q": "Which interface do most hard drives use today?",
-"o": [
-"eSATA",
-"SATA",
-"IDE",
-"SCSI"
-],
-"a": 1,
-"e": "SATA."
-},
-{
-"m": 5,
-"q": "How many SATA standards (revisions) are listed in the slides?",
-"o": [
-"Two: Revision 1.x and 2.x",
-"Three: Revision 1.x, 2.x and 3.x",
-"Five: Revision 1.x through 5.x",
-"Four: Revision 1.x through 4.x"
-],
-"a": 1,
-"e": "SATA 1.x, 2.x, 3.x."
-},
-{
-"m": 5,
-"q": "What data path does SATA use?",
-"o": [
-"Optical",
-"Wireless",
-"Serial",
-"Parallel"
-],
-"a": 2,
-"e": "SATA = Serial ATA."
-},
-{
-"m": 5,
-"q": "How many drives can one SATA data cable accommodate?",
-"o": [
-"One",
-"Two",
-"Seven",
-"Four"
-],
-"a": 0,
-"e": "One SATA drive per data cable."
-},
-{
-"m": 5,
-"q": "How many pins does a SATA data cable have?",
-"o": [
-"15",
-"52",
-"40",
-"7"
-],
-"a": 3,
-"e": "SATA data = 7. SATA power = 15."
-},
-{
-"m": 5,
-"q": "How many pins does a SATA power connector have?",
-"o": [
-"4",
-"15",
-"40",
-"7"
-],
-"a": 1,
-"e": "15-pin SATA power. A 4-pin Molex also works."
 },
 {
 "m": 5,
@@ -3717,18 +2347,6 @@ const BANK = [
 },
 {
 "m": 5,
-"q": "What is the data rate of the most common SATA standard, SATA 3?",
-"o": [
-"1.5 Gb/sec",
-"32 Gb/sec",
-"3 Gb/sec",
-"6 Gb/sec"
-],
-"a": 3,
-"e": "SATA 3 = 6 Gb/s. NVMe PCIe 3.0 = 8 Gb/s, PCIe 4.0 = 32 Gb/s."
-},
-{
-"m": 5,
 "q": "How may a PCIe NVMe drive be connected?",
 "o": [
 "Only an IDE connector on the motherboard",
@@ -3738,18 +2356,6 @@ const BANK = [
 ],
 "a": 1,
 "e": "Three ways: expansion card, U.2 or U.3, M.2."
-},
-{
-"m": 5,
-"q": "How can you tell which SATA standard a motherboard port supports?",
-"o": [
-"By the case",
-"By the power connector",
-"The ports are usually color-coded",
-"By the cable length"
-],
-"a": 2,
-"e": "Check the color coding and the manual."
 },
 {
 "m": 5,
@@ -3765,18 +2371,6 @@ const BANK = [
 },
 {
 "m": 5,
-"q": "What can happen when an M.2 card uses the SATA bus?",
-"o": [
-"The RAM might be disabled by the BIOS",
-"One of the SATA ports might be disabled",
-"The CPU might slow down to save power",
-"The USB ports might stop supplying power"
-],
-"a": 1,
-"e": "Check the motherboard manual."
-},
-{
-"m": 5,
 "q": "When selecting a magnetic hard drive, what factor affects performance?",
 "o": [
 "Case color",
@@ -3786,54 +2380,6 @@ const BANK = [
 ],
 "a": 3,
 "e": "Higher RPM is faster."
-},
-{
-"m": 5,
-"q": "Some SATA drives have two power connectors. What should you do?",
-"o": [
-"Use both power connectors for better performance",
-"Use only one, and never connect two power cords at once",
-"Use only one; never connect two power cords at the same time",
-"Use neither, because the data cable supplies the power"
-],
-"a": 2,
-"e": "Never install two power cords to a drive at once."
-},
-{
-"m": 5,
-"q": "What is the first step of the SATA drive installation process?",
-"o": [
-"Check BIOS",
-"Slide the drive into the bay",
-"Connect the data cable",
-"Protect the user's data by backing it up"
-],
-"a": 3,
-"e": "Steps: protect data, know starting point, read documentation, install drive."
-},
-{
-"m": 5,
-"q": "How should you secure a drive in a bay?",
-"o": [
-"Use two screws on each side",
-"No screws needed",
-"One screw on top",
-"Glue"
-],
-"a": 0,
-"e": "Two screws on both sides."
-},
-{
-"m": 5,
-"q": "How do you confirm a newly installed drive is recognized?",
-"o": [
-"Check the fan",
-"Check the case LEDs",
-"Listen for beeps only",
-"Check BIOS/UEFI setup"
-],
-"a": 3,
-"e": "Verify in BIOS/UEFI setup."
 },
 {
 "m": 5,
@@ -3858,54 +2404,6 @@ const BANK = [
 ],
 "a": 2,
 "e": "Choose the fastest interface the board supports, then the fastest RPM."
-},
-{
-"m": 5,
-"q": "How should an M.2 card be inserted into its slot?",
-"o": [
-"At an upward angle of about 30 degrees",
-"Vertically, and then swing it down flat",
-"Straight in, and not from an upward angle",
-"Straight in, not from an upward angle"
-],
-"a": 3,
-"e": "Then secure with one screw in the standoff and verify in BIOS/UEFI."
-},
-{
-"m": 5,
-"q": "How many screws secure an M.2 card?",
-"o": [
-"None, because the card clips in place",
-"Two, one at each end of the card",
-"One, in the standoff",
-"Four, one at each corner of the card"
-],
-"a": 2,
-"e": "One screw into the standoff."
-},
-{
-"m": 5,
-"q": "What is the first step to replace a laptop hard drive?",
-"o": [
-"Flash the BIOS and then remove the battery pack",
-"Power down, remove peripherals and remove the battery pack",
-"Power down, remove the peripherals and remove the battery pack",
-"Remove the keyboard first and then open the LCD"
-],
-"a": 1,
-"e": "Then remove the drive cover screw, lift out the drive, insert the new one."
-},
-{
-"m": 5,
-"q": "A new drive in a laptop has no OS. What do you do?",
-"o": [
-"Remove the drive because laptops cannot boot without an OS",
-"Flash the BIOS and then boot from the hard drive",
-"Format the drive with Task Manager and restart",
-"Boot from Windows setup or recovery media and install the OS"
-],
-"a": 3,
-"e": "Boot from DVD or USB."
 },
 {
 "m": 5,
@@ -4163,90 +2661,6 @@ const BANK = [
 },
 {
 "m": 5,
-"q": "How do optical discs store bits?",
-"o": [
-"Electrical charges in cells that are read by a controller",
-"Tiny lands and pits that are read by a laser beam",
-"Tiny lands and pits read by a laser beam",
-"Magnetic charges that are read by a read/write head"
-],
-"a": 2,
-"e": "Lands and pits."
-},
-{
-"m": 5,
-"q": "On which side(s) of a CD is data written?",
-"o": [
-"Both sides",
-"Three layers",
-"One side only",
-"Neither"
-],
-"a": 2,
-"e": "CDs: one side. DVDs and BDs: one or both sides, with two layers on each side."
-},
-{
-"m": 5,
-"q": "Which optical drive is backward compatible with DVD and CD?",
-"o": [
-"Floppy drive",
-"DVD drive",
-"Blu-ray drive",
-"CD drive"
-],
-"a": 2,
-"e": "BD reads DVD and CD. DVD reads CD."
-},
-{
-"m": 5,
-"q": "What is a drive that can write to discs commonly called?",
-"o": [
-"A burner",
-"A scanner",
-"A reader",
-"A platter"
-],
-"a": 0,
-"e": "Burner."
-},
-{
-"m": 5,
-"q": "Which interface do internal optical drives use today?",
-"o": [
-"Parallel",
-"SATA",
-"SCSI",
-"IDE"
-],
-"a": 1,
-"e": "External ones may use eSATA or USB."
-},
-{
-"m": 5,
-"q": "Does Windows need add-on drivers for optical drives?",
-"o": [
-"Only for Blu-ray",
-"No, it has embedded drivers",
-"Yes, always",
-"Only for burners"
-],
-"a": 1,
-"e": "Verify in Device Manager."
-},
-{
-"m": 5,
-"q": "Which are other names for USB flash drives?",
-"o": [
-"Pen drive, jump drive, thumb drive or key drive",
-"Pen drive, jump drive, thumb drive, key drive",
-"Platter drive, spindle drive or disk drive",
-"Floppy drive, tape drive or zip drive"
-],
-"a": 1,
-"e": "They may run at USB 2.0 or 3.0 speed."
-},
-{
-"m": 5,
 "q": "Which is the most popular type of memory card?",
 "o": [
 "Secure Digital (SD)",
@@ -4307,30 +2721,6 @@ const BANK = [
 },
 {
 "m": 5,
-"q": "Which tool can diagnose hard drive performance?",
-"o": [
-"Paint, which shows a drive's speed in a chart",
-"Notepad, which shows a drive's contents",
-"A speed test utility such as DISKSPD",
-"Task Manager, which shows a drive's sectors"
-],
-"a": 2,
-"e": "Windows also has Defrag and Optimization (dfrgui.exe)."
-},
-{
-"m": 5,
-"q": "Which Windows tool optimizes a hard drive?",
-"o": [
-"The Registry Editor, which can move files on a drive",
-"The Defrag and Optimization tool (dfrgui.exe)",
-"Defrag and Optimization tool (dfrgui.exe)",
-"The Event Viewer, which can repair a fragmented drive"
-],
-"a": 2,
-"e": "Defragmenting is for magnetic drives. Never defragment an SSD."
-},
-{
-"m": 5,
 "q": "How do you migrate data to a new SSD in a laptop?",
 "o": [
 "Use a floppy disk and flash the BIOS",
@@ -4340,54 +2730,6 @@ const BANK = [
 ],
 "a": 3,
 "e": "Clone, remove the old drive, install the new SSD."
-},
-{
-"m": 5,
-"q": "If BIOS/UEFI cannot access the drive, what could be the cause?",
-"o": [
-"The keyboard, mouse or the network cable",
-"The monitor, sound card or the printer driver",
-"The drive, data cable, electrical system, motherboard or a loose connection",
-"The drive, data cable, power, motherboard or a loose connection"
-],
-"a": 2,
-"e": "Check cables first."
-},
-{
-"m": 5,
-"q": "Hard drive hardware problems usually show up when?",
-"o": [
-"After a month",
-"After login",
-"Only in Windows",
-"At POST"
-],
-"a": 3,
-"e": "Check for numeric error codes during POST."
-},
-{
-"m": 5,
-"q": "How can you tell if a hard drive is spinning?",
-"o": [
-"Check the monitor",
-"Listen to it",
-"Check the keyboard",
-"Check the printer"
-],
-"a": 1,
-"e": "One of the simple checks, along with checking cables for frayed edges."
-},
-{
-"m": 6,
-"q": "Which of these is a basic principle for supporting I/O devices?",
-"o": [
-"Every device is controlled by software",
-"Devices are always faster than their port",
-"Install several devices at once",
-"Drivers are never needed"
-],
-"a": 0,
-"e": "Every device needs software (drivers)."
 },
 {
 "m": 6,
@@ -4403,66 +2745,6 @@ const BANK = [
 },
 {
 "m": 6,
-"q": "Which Windows account should you use when installing devices?",
-"o": [
-"An administrator account",
-"A guest account",
-"No account",
-"A standard user account"
-],
-"a": 0,
-"e": "Use administrator."
-},
-{
-"m": 6,
-"q": "How many devices should you install at a time?",
-"o": [
-"One",
-"Three",
-"Two",
-"All at once"
-],
-"a": 0,
-"e": "Install only one device at a time so you can spot problems."
-},
-{
-"m": 6,
-"q": "What is often the best guide for installing and supporting a device?",
-"o": [
-"The case manual",
-"A forum post",
-"A friend",
-"The manufacturer"
-],
-"a": 3,
-"e": "Follow the manufacturer's directions."
-},
-{
-"m": 6,
-"q": "How many USB devices can be daisy chained together?",
-"o": [
-"255",
-"127",
-"32",
-"16"
-],
-"a": 1,
-"e": "Up to 127."
-},
-{
-"m": 6,
-"q": "How many wires does a USB cable have?",
-"o": [
-"2: one for power and one for data",
-"6: all six are used for data only",
-"4: two for power, two for communication",
-"8: four for power and four for data"
-],
-"a": 2,
-"e": "Two power, two data."
-},
-{
-"m": 6,
 "q": "What does hot-swappable mean?",
 "o": [
 "It keeps working at a higher operating temperature",
@@ -4475,18 +2757,6 @@ const BANK = [
 },
 {
 "m": 6,
-"q": "USB uses which type of transmission?",
-"o": [
-"Analog",
-"Optical",
-"Parallel",
-"Serial"
-],
-"a": 3,
-"e": "USB = Universal Serial Bus."
-},
-{
-"m": 6,
 "q": "A USB 3.0 printer is connected to a USB 2.0 port. What speed does it run at?",
 "o": [
 "USB 1.1 speed",
@@ -4496,42 +2766,6 @@ const BANK = [
 ],
 "a": 3,
 "e": "The connection runs at the lowest speed in the chain."
-},
-{
-"m": 6,
-"q": "Which video ports are named in the slides?",
-"o": [
-"DVI, SCSI, IDE and HDMI",
-"VGA, DVI, DisplayPort and HDMI",
-"VGA, USB, SATA and PS/2",
-"HDMI, RJ-45, VGA and SATA"
-],
-"a": 1,
-"e": "Video ports come from a video card or the motherboard."
-},
-{
-"m": 6,
-"q": "Another name for a video card is what?",
-"o": [
-"Graphics card, video adapter, display card or graphic adapter",
-"Sound card, which handles audio output and input",
-"Capture card, which records video from a console",
-"Network card, which connects a computer to a LAN"
-],
-"a": 0,
-"e": "They all mean the same thing."
-},
-{
-"m": 6,
-"q": "Where can onboard ports be enabled or disabled?",
-"o": [
-"BIOS/UEFI setup",
-"Task Manager",
-"Device Manager only",
-"Control Panel only"
-],
-"a": 0,
-"e": "Use BIOS/UEFI setup."
 },
 {
 "m": 6,
@@ -4583,30 +2817,6 @@ const BANK = [
 },
 {
 "m": 6,
-"q": "What is the first step of the general procedure to install any peripheral?",
-"o": [
-"Plug in the device and wait for Windows to find it",
-"Read the manufacturer's directions",
-"Install the drivers before connecting the device",
-"Reboot the computer and then read the directions"
-],
-"a": 1,
-"e": "Directions, drivers for your OS, port enabled, install drivers or plug in, install application software."
-},
-{
-"m": 6,
-"q": "Before installing a peripheral, which should be true about its port?",
-"o": [
-"The motherboard port you are using must be enabled",
-"The port must be a PS/2 port on the back panel",
-"The port must have been newly installed on the board",
-"The port you plan to use must be disabled in BIOS/UEFI"
-],
-"a": 0,
-"e": "Make sure the port is enabled in BIOS/UEFI."
-},
-{
-"m": 6,
 "q": "What can control simple input devices like a mouse and keyboard?",
 "o": [
 "Only manufacturer drivers",
@@ -4619,19 +2829,6 @@ const BANK = [
 },
 {
 "m": 6,
-"q": "What must you do after plugging a mouse into a PS/2 port?",
-"o": [
-"Restart Windows",
-"Nothing",
-"Update BIOS",
-"Install a sound card"
-],
-"a": 0,
-"e": "PS/2 isn't hot-pluggable.",
-"h": "PS/2 = Please restart."
-},
-{
-"m": 6,
 "q": "What manages USB devices in Windows?",
 "o": [
 "The Apps and Features window",
@@ -4641,42 +2838,6 @@ const BANK = [
 ],
 "a": 0,
 "e": "Device Manager can uninstall, disable and enable most devices."
-},
-{
-"m": 6,
-"q": "What tool pries up a laptop keyboard bezel?",
-"o": [
-"A multimeter",
-"A magnet",
-"A hammer",
-"A spudger"
-],
-"a": 3,
-"e": "Replace the keyboard following the steps in reverse."
-},
-{
-"m": 6,
-"q": "When installing a webcam, what should you do first?",
-"o": [
-"Install the software, then plug in the webcam",
-"Plug it in, then install the software",
-"Restart the BIOS",
-"Disable the microphone port"
-],
-"a": 0,
-"e": "Software first."
-},
-{
-"m": 6,
-"q": "A webcam comes with what built-in feature?",
-"o": [
-"A speaker",
-"A battery",
-"A microphone",
-"A printer"
-],
-"a": 2,
-"e": "You can also use the computer's microphone port."
 },
 {
 "m": 6,
@@ -4704,78 +2865,6 @@ const BANK = [
 },
 {
 "m": 6,
-"q": "What does a GPU do?",
-"o": [
-"Cools the case with a dedicated fan on the card",
-"Accelerates graphics and other parallel processing work",
-"Controls the USB ports that are on the motherboard",
-"Stores files in nonvolatile memory for the system"
-],
-"a": 1,
-"e": "GPU = graphics processing unit, designed for parallel processing."
-},
-{
-"m": 6,
-"q": "What does a GPU do compared with a CPU?",
-"o": [
-"It complements the CPU; GPUs handle parallel work such as rendering 2D and 3D graphics",
-"It replaces the CPU for all of the computer's calculations",
-"It manages power for the video card and the monitor",
-"It only stores graphics data for the CPU to use later"
-],
-"a": 0,
-"e": "GPU evolved as a complement to the CPU."
-},
-{
-"m": 6,
-"q": "Before installing an adapter card, what should you verify?",
-"o": [
-"That the Wi-Fi is on and the card has been tested with a router",
-"That the card fits an empty slot and the case has the right color",
-"That the card fits an empty expansion slot and OS drivers are available",
-"That the CMOS battery is new and the BIOS is up to date"
-],
-"a": 2,
-"e": "Also back up data and know your starting point."
-},
-{
-"m": 6,
-"q": "If a card replaces an onboard port, what should you do first?",
-"o": [
-"Reinstall Windows so that it detects the card",
-"Disable the onboard port in BIOS/UEFI setup",
-"Format the drive that the card will use",
-"Remove the CMOS battery for ten minutes"
-],
-"a": 1,
-"e": "Disable the old port."
-},
-{
-"m": 6,
-"q": "What safety steps apply before installing a card?",
-"o": [
-"Leave the power on and work only on the card's edges",
-"Open the case while it is plugged in and wear an ESD strap",
-"Wear an ESD strap, shut down, unplug the power cords and drain power",
-"Wear rubber gloves only and leave the computer plugged in"
-],
-"a": 2,
-"e": "Standard safety steps."
-},
-{
-"m": 6,
-"q": "How do you anchor an adapter card?",
-"o": [
-"Glue it to the slot so that it cannot move",
-"Tape it to the case so that it does not shift",
-"Press it into the slot firmly and rely on the friction",
-"Anchor it to the top of the slot with screws"
-],
-"a": 3,
-"e": "Remove the faceplate cover, insert the card, screw it down."
-},
-{
-"m": 6,
 "q": "After installing a card and starting Windows, what should Windows do?",
 "o": [
 "Format the card and install the driver from the disc",
@@ -4788,18 +2877,6 @@ const BANK = [
 },
 {
 "m": 6,
-"q": "Which power connector does a card with extra wattage needs plug into?",
-"o": [
-"A fan header on the motherboard",
-"A PCIe power connector from the power supply",
-"A SATA data cable from the motherboard",
-"A USB header on the motherboard"
-],
-"a": 1,
-"e": "Connect a power cord to the PCIe power connector on the card."
-},
-{
-"m": 6,
 "q": "What does a sound card do?",
 "o": [
 "Plays and records sound and saves it in a file",
@@ -4809,30 +2886,6 @@ const BANK = [
 ],
 "a": 0,
 "e": "Color-coded ports connect speakers and a subwoofer."
-},
-{
-"m": 6,
-"q": "What does a capture card do?",
-"o": [
-"Adds extra RAM for gaming and streaming",
-"Charges devices connected to its ports",
-"Records and streams content from an external device such as a gaming console or webcam",
-"Cools the GPU while it records video"
-],
-"a": 2,
-"e": "It can use PCIe, or connect by USB, USB-C or Thunderbolt."
-},
-{
-"m": 6,
-"q": "How do you use a capture card after installing it?",
-"o": [
-"Use its proprietary software or third-party software",
-"Use only the settings in BIOS/UEFI",
-"Nothing is needed; it works as soon as it is installed",
-"Use only the built-in tools that come with Windows"
-],
-"a": 0,
-"e": "Either works."
 },
 {
 "m": 6,
@@ -4858,42 +2911,6 @@ const BANK = [
 "a": 1,
 "e": "52. Memory trick: Mini PCIe = 52 (IDE = 40).",
 "h": "M-I-N-I = 52."
-},
-{
-"m": 6,
-"q": "Before replacing a laptop card that has an antenna, what should you do?",
-"o": [
-"Turn up the volume so that the wires do not get hot",
-"Cut the black and gray wires so that the card can come out",
-"Remove the screen first and then pull out the card",
-"Remove the black and gray antenna wires"
-],
-"a": 3,
-"e": "Also remove the screw, then pull and lift the card out of the slot."
-},
-{
-"m": 6,
-"q": "How do you check a replaced laptop card is working?",
-"o": [
-"Use Paint",
-"Use Device Manager",
-"Use Notepad",
-"Use Excel"
-],
-"a": 1,
-"e": "Verify no errors."
-},
-{
-"m": 6,
-"q": "What are the two necessary components for video output?",
-"o": [
-"The monitor and a video card (or a video port on the motherboard)",
-"The monitor and a printer that is connected to the same port",
-"A video card and a pair of speakers",
-"The monitor and a video card or video port on the motherboard"
-],
-"a": 0,
-"e": "Video card = video adapter = graphics card."
 },
 {
 "m": 6,
@@ -4957,54 +2974,6 @@ const BANK = [
 },
 {
 "m": 6,
-"q": "What can you adjust with the monitor's buttons?",
-"o": [
-"Horizontal and vertical position, brightness and contrast",
-"The RAM speed and the CPU voltage",
-"The video card's clock speed and fan curve",
-"The BIOS settings and the boot order"
-],
-"a": 0,
-"e": "On laptops, function keys do this."
-},
-{
-"m": 6,
-"q": "How do you set up dual monitors in Windows?",
-"o": [
-"Use Device Manager to enable the second monitor",
-"Plug in both monitors and Windows extends them without any settings",
-"Right-click the desktop, choose Display settings, then Extend these displays",
-"Update the BIOS so that it supports two displays"
-],
-"a": 2,
-"e": "Connect the second monitor with VGA, DVI, HDMI or DisplayPort first."
-},
-{
-"m": 6,
-"q": "A user cannot sign in even with the correct password. What do you check?",
-"o": [
-"The monitor",
-"The BIOS",
-"The NumLock key",
-"The CMOS battery"
-],
-"a": 2,
-"e": "NumLock toggles keys between letters and numbers on laptops."
-},
-{
-"m": 6,
-"q": "Where is a good place to start troubleshooting a device?",
-"o": [
-"Device Manager",
-"Command Prompt",
-"The Recycle Bin",
-"The BIOS boot menu"
-],
-"a": 0,
-"e": "Right-click, then Properties."
-},
-{
-"m": 6,
 "q": "Where do you find Update Driver and Uninstall in Device Manager?",
 "o": [
 "The device's Properties (General or Driver tab)",
@@ -5026,90 +2995,6 @@ const BANK = [
 ],
 "a": 3,
 "e": "Roll back (undo) the update if the previous drivers worked."
-},
-{
-"m": 6,
-"q": "What are some steps for audio problems?",
-"o": [
-"Replace the CPU and reseat the video card",
-"Check the volume, cables and jacks, and update audio drivers",
-"Check the volume, cables and jacks and update the audio drivers",
-"Reflash the BIOS and defragment the hard drive"
-],
-"a": 1,
-"e": "Easy things first."
-},
-{
-"m": 6,
-"q": "What is the first thing to try for a blurry screen?",
-"o": [
-"Flash the BIOS and reinstall the video driver",
-"Replace the video card and update the BIOS",
-"Replace the power supply and reseat the RAM",
-"Clean the screen and set the monitor to its native resolution"
-],
-"a": 3,
-"e": "Also check the cable connections."
-},
-{
-"m": 6,
-"q": "You hear a whining sound when you first power up after installing a video card. What is the likely cause?",
-"o": [
-"The monitor is broken or the cable is loose",
-"The BIOS is old and needs to be flashed",
-"The video card is not getting enough power",
-"The card is not getting enough power"
-],
-"a": 3,
-"e": "The power supply might be inadequate."
-},
-{
-"m": 6,
-"q": "After installing a video card you see only a black screen. What is the most likely cause?",
-"o": [
-"The onboard video port is not disabled in BIOS/UEFI",
-"The monitor is the wrong size for the new card",
-"The keyboard is unplugged from the motherboard",
-"The RAM is too fast for the new card"
-],
-"a": 0,
-"e": "Disable the onboard video port."
-},
-{
-"m": 6,
-"q": "You hear a series of beeps when you first start the system with a new video card. What does it mean?",
-"o": [
-"The mouse is broken and needs to be replaced",
-"Windows is updating the video driver in the background",
-"The BIOS/UEFI can't detect the video card, so reseat it",
-"BIOS/UEFI can't detect the video card, so try reseating it"
-],
-"a": 3,
-"e": "Reseat the card."
-},
-{
-"m": 6,
-"q": "The monitor's indicator light is on but there is no image. What can you check?",
-"o": [
-"Check the input source, cable, voltage (110 vs 220), contrast and brightness",
-"Replace the RAM and reseat the CPU",
-"Reinstall Windows and then update the BIOS",
-"Video input source, cable, voltage (110 vs 220), contrast and brightness, or test a known-good monitor"
-],
-"a": 3,
-"e": "Try several easy things first."
-},
-{
-"m": 6,
-"q": "The monitor's indicator light is off and there is no image. What do you check first?",
-"o": [
-"Is the video card seated and its power cable connected?",
-"Is the RAM seated and the speed set correctly?",
-"Is the BIOS password correct and the CPU cool?",
-"Is the monitor power cable plugged in and the monitor turned on?"
-],
-"a": 3,
-"e": "Then the video cable, then a different monitor and cable."
 },
 {
 "m": 6,
@@ -5161,18 +3046,6 @@ const BANK = [
 },
 {
 "m": 6,
-"q": "What can cause a poor display?",
-"o": [
-"A dead mouse or a keyboard that is not working",
-"Inadequate video RAM or bad drivers or Windows display settings",
-"A full hard drive or a bad speaker",
-"Inadequate video RAM, bad drivers or Windows display settings"
-],
-"a": 1,
-"e": "Update video drivers and adjust Windows display settings (resolution, font size, ClearType)."
-},
-{
-"m": 6,
 "q": "You can't connect to an external monitor or projector from a laptop. What should you try?",
 "o": [
 "Replace the battery and then reseat the RAM",
@@ -5209,30 +3082,6 @@ const BANK = [
 },
 {
 "m": 6,
-"q": "What can cause a flickering laptop screen?",
-"o": [
-"Bad video drivers, a low refresh rate, a bad inverter or loose connections",
-"A full hard drive, a missing driver or a dead mouse",
-"A bad speaker, a wrong clock or a bad battery label",
-"A low battery, a loose keyboard or a bad fan"
-],
-"a": 0,
-"e": "Update drivers and check connections."
-},
-{
-"m": 6,
-"q": "A cursor drifts on a laptop screen when you aren't touching the mouse. What can you try?",
-"o": [
-"A different port, or replace the mouse batteries",
-"Replace the LCD and reflash the BIOS",
-"Try a different port, or replace the mouse batteries",
-"Reinstall Windows and then replace the RAM"
-],
-"a": 0,
-"e": "Simple fixes first."
-},
-{
-"m": 6,
 "q": "You plug a new scanner into a USB port on Windows. What should you expect to see?",
 "o": [
 "An automatic reboot",
@@ -5242,30 +3091,6 @@ const BANK = [
 ],
 "a": 3,
 "e": "Windows tries embedded drivers first."
-},
-{
-"m": 6,
-"q": "When troubleshooting peripheral devices, what should you try first?",
-"o": [
-"Replacing the power supply and then reinstalling Windows",
-"The least invasive and least expensive solutions",
-"Replacing the motherboard and then the RAM",
-"Replacing the video card and then the monitor"
-],
-"a": 1,
-"e": "Same idea as troubleshooting Rules 6 and 12."
-},
-{
-"m": 7,
-"q": "Most applications used on the Internet or a local network are what type?",
-"o": [
-"Peer-only applications",
-"Client/server applications",
-"Broadcast applications",
-"Stand-alone applications"
-],
-"a": 1,
-"e": "A client requests, a server answers."
 },
 {
 "m": 7,
@@ -5436,42 +3261,6 @@ const BANK = [
 ],
 "a": 3,
 "e": "HTTPS = secure = 443."
-},
-{
-"m": 7,
-"q": "Which port does SMTP use?",
-"o": [
-"110",
-"143",
-"80",
-"25"
-],
-"a": 3,
-"e": "SMTP sends mail (25). POP3 (110) and IMAP (143) receive."
-},
-{
-"m": 7,
-"q": "Which port does POP3 use?",
-"o": [
-"110",
-"143",
-"25",
-"443"
-],
-"a": 0,
-"e": "POP3 = 110."
-},
-{
-"m": 7,
-"q": "Which port does IMAP use?",
-"o": [
-"110",
-"143",
-"80",
-"25"
-],
-"a": 1,
-"e": "IMAP = 143."
 },
 {
 "m": 7,
@@ -6053,30 +3842,6 @@ const BANK = [
 },
 {
 "m": 7,
-"q": "What does Quality of Service (QoS) do?",
-"o": [
-"Controls which applications have priority on the network",
-"Blocks the ports that are not used by any application",
-"Encrypts traffic so that no other application can read it",
-"Assigns IP addresses to applications that need them"
-],
-"a": 0,
-"e": "Must be enabled on the router, the adapters and in Windows."
-},
-{
-"m": 7,
-"q": "Which topology do today's Ethernet networks use?",
-"o": [
-"Ring",
-"Bus",
-"Star bus",
-"Mesh"
-],
-"a": 2,
-"e": "Nodes connect to one or more central devices."
-},
-{
-"m": 7,
 "q": "What does an Ethernet hub do?",
 "o": [
 "Assigns IP addresses to devices that connect to it",
@@ -6110,30 +3875,6 @@ const BANK = [
 ],
 "a": 0,
 "e": "It floods."
-},
-{
-"m": 7,
-"q": "What does a cable modem do?",
-"o": [
-"Converts cable transmissions to Ethernet for the local network",
-"Assigns IP addresses to computers on the local network",
-"Encrypts the traffic that leaves the local network",
-"Switches frames between ports using a MAC address table"
-],
-"a": 0,
-"e": "It connects to the ISP."
-},
-{
-"m": 7,
-"q": "How do you set up a cable modem?",
-"o": [
-"Plug in the TV coax cable and the Ethernet cable, then turn it on",
-"Plug in the HDMI cable and the Ethernet cable, then turn it on",
-"Plug in the telephone line and the Ethernet cable, then turn it on",
-"Plug in only a USB cable to the computer, then turn it on"
-],
-"a": 0,
-"e": "Coax in, Ethernet out."
 },
 {
 "m": 7,
@@ -6448,6 +4189,42 @@ const BANK = [
 "e": "The provider you connect to first."
 },
 {
+"m": 7,
+"q": "Which port does SMTP use?",
+"o": [
+"110",
+"143",
+"80",
+"25"
+],
+"a": 3,
+"e": "SMTP sends mail (25). POP3 (110) and IMAP (143) receive."
+},
+{
+"m": 7,
+"q": "Which port does POP3 use?",
+"o": [
+"110",
+"143",
+"25",
+"443"
+],
+"a": 0,
+"e": "POP3 = 110."
+},
+{
+"m": 7,
+"q": "Which port does IMAP use?",
+"o": [
+"110",
+"143",
+"80",
+"25"
+],
+"a": 1,
+"e": "IMAP = 143."
+},
+{
 "m": 8,
 "q": "Which network type consists of personal devices such as a phone and laptop?",
 "o": [
@@ -6726,30 +4503,6 @@ const BANK = [
 },
 {
 "m": 8,
-"q": "Why add a switch to a network?",
-"o": [
-"To convert analog signals to digital and extend the phone line",
-"To add connections, regenerate the signal and manage traffic",
-"To assign IP addresses and translate private to public ones",
-"To remove the need for any cables on the network"
-],
-"a": 1,
-"e": "Three reasons."
-},
-{
-"m": 8,
-"q": "What is a bridge?",
-"o": [
-"A device between two segments that manages traffic between them",
-"A device that converts digital signals to analog for the cable line",
-"A wireless adapter that connects a laptop to a hotspot",
-"A device that converts a wired signal to a wireless one"
-],
-"a": 0,
-"e": "A WAP can also serve as a bridge."
-},
-{
-"m": 8,
 "q": "Which Ethernet standard is also called Fast Ethernet?",
 "o": [
 "10 Mbps",
@@ -6783,30 +4536,6 @@ const BANK = [
 ],
 "a": 2,
 "e": "A good choice for network backbones."
-},
-{
-"m": 8,
-"q": "What is a network backbone?",
-"o": [
-"A channel that connects local networks to WANs or to each other",
-"A cable color standard that identifies the type of twisted pair",
-"A type of switch that manages traffic inside one building",
-"A wiring closet where all of the cables in a building end"
-],
-"a": 0,
-"e": "Backbone."
-},
-{
-"m": 8,
-"q": "Why are twisted-pair wires twisted?",
-"o": [
-"To look better",
-"To save space",
-"To reduce crosstalk",
-"To increase voltage"
-],
-"a": 2,
-"e": "Crosstalk = interference that degrades a signal on a wire."
 },
 {
 "m": 8,
@@ -6870,18 +4599,6 @@ const BANK = [
 },
 {
 "m": 8,
-"q": "What are loose-tube cables designed for?",
-"o": [
-"Connecting a WAP to a switch over a short patch cable",
-"Outdoor use (tight-buffered works indoors or outdoors)",
-"Indoor use only, since the tubes are filled with fluid",
-"Short runs inside a server rack between two switches"
-],
-"a": 1,
-"e": "Loose-tube = outdoor."
-},
-{
-"m": 8,
 "q": "What does Power over Ethernet (PoE) do?",
 "o": [
 "Delivers power and data over the same Ethernet cable",
@@ -6906,66 +4623,6 @@ const BANK = [
 },
 {
 "m": 8,
-"q": "What is the Internet of Things (IoT)?",
-"o": [
-"A very large switch that connects many separate networks",
-"Physical devices connected to a network that talk to the Internet",
-"A cloud provider that rents out virtual servers",
-"A set of wireless protocols used only by smartphones"
-],
-"a": 1,
-"e": "Cameras, doorbells, baby monitors, wearables, appliances."
-},
-{
-"m": 8,
-"q": "What is an IoT concern?",
-"o": [
-"Slow boot times, since the devices lack a hard drive",
-"Too few ports on the router to connect them all",
-"Cable length limits that make long runs impossible",
-"Privacy and security, since the devices can be reached remotely"
-],
-"a": 3,
-"e": "IoT devices bring privacy and security questions."
-},
-{
-"m": 8,
-"q": "What is software-defined networking (SDN)?",
-"o": [
-"A modem that is configured by software downloads",
-"Using software applications to virtualize networking",
-"A faster version of Ethernet that runs over fiber only",
-"A cable standard that carries IP traffic over power lines"
-],
-"a": 1,
-"e": "SDN."
-},
-{
-"m": 8,
-"q": "What are SCADA systems?",
-"o": [
-"Embedded systems that monitor and control machinery from one location",
-"Firewall appliances that block traffic coming from the Internet",
-"Wi-Fi analyzers that find the best channel in a building",
-"Cloud storage systems that sync files across devices"
-],
-"a": 0,
-"e": "Protect them with a VLAN or dedicated subnet."
-},
-{
-"m": 8,
-"q": "What is a next-generation firewall (NGFW)?",
-"o": [
-"A firewall that only blocks ports and does nothing else",
-"A switch that blocks traffic using MAC address filtering",
-"A router that combines a modem and a wireless access point",
-"A firewall that also includes antivirus and other functions"
-],
-"a": 3,
-"e": "It can offer UTM services."
-},
-{
-"m": 8,
 "q": "What is a Unified Threat Management (UTM) appliance?",
 "o": [
 "A VoIP phone that combines voice, video and messaging",
@@ -6975,54 +4632,6 @@ const BANK = [
 ],
 "a": 3,
 "e": "UTM = all-in-one security."
-},
-{
-"m": 8,
-"q": "What does IDS stand for?",
-"o": [
-"Identity delivery system",
-"Intrusion detection system",
-"Internet data service",
-"Internal directory server"
-],
-"a": 1,
-"e": "IDS detects, IPS prevents."
-},
-{
-"m": 8,
-"q": "What is the recommended maximum length of a twisted-pair cable run?",
-"o": [
-"2 meters",
-"10 meters",
-"100 meters",
-"18 inches"
-],
-"a": 2,
-"e": "100 m."
-},
-{
-"m": 8,
-"q": "What cable category is recommended for a wired network design?",
-"o": [
-"CAT-3",
-"Coax",
-"CAT-5e or higher",
-"CAT-1"
-],
-"a": 2,
-"e": "CAT-5e or higher."
-},
-{
-"m": 8,
-"q": "For Gigabit speed on an entire network, what must be Gigabit?",
-"o": [
-"Only the switch, since it controls all of the traffic",
-"Only the cable, since the cable sets the speed",
-"Only the router, since the other devices adapt to it",
-"All switches, network adapters and routers on the network"
-],
-"a": 3,
-"e": "The slowest device sets the speed."
 },
 {
 "m": 8,
@@ -7051,18 +4660,6 @@ const BANK = [
 },
 {
 "m": 8,
-"q": "What is a Wi-Fi analyzer?",
-"o": [
-"A hardware tool that crimps connectors onto cable ends",
-"Software that finds Wi-Fi networks and shows their signal strength",
-"An appliance that combines a firewall and antivirus",
-"A hardware tool that finds cables inside walls"
-],
-"a": 1,
-"e": "It can also help identify security threats."
-},
-{
-"m": 8,
 "q": "What is a toner probe?",
 "o": [
 "A two-part kit (crimper and stripper) that builds patch cables",
@@ -7072,54 +4669,6 @@ const BANK = [
 ],
 "a": 1,
 "e": "The tone generator puts out a tone and the probe searches for it."
-},
-{
-"m": 8,
-"q": "What is a cable stripper used for?",
-"o": [
-"Finding the location of a cable inside a wall",
-"Cutting away the plastic jacket around wires when building a cable",
-"Attaching a connector to the end of a cable",
-"Punching individual wires into slots in a keystone jack"
-],
-"a": 1,
-"e": "Stripper = strip."
-},
-{
-"m": 8,
-"q": "What is a crimper used for?",
-"o": [
-"Testing whether a cable carries a signal from end to end",
-"Punching individual wires into slots in a wall jack",
-"Cutting away the plastic jacket around the wires",
-"Attaching a connector (terminator) to the end of a cable"
-],
-"a": 3,
-"e": "Crimper = crimps connectors."
-},
-{
-"m": 8,
-"q": "What is a punchdown tool used for?",
-"o": [
-"Finding the location of a cable inside a wall",
-"Cutting away the plastic jacket from a twisted-pair cable",
-"Punching individual wires into slots in a keystone RJ-45 jack",
-"Attaching a connector to the end of a patch cable"
-],
-"a": 2,
-"e": "Used for RJ-45 wall jacks."
-},
-{
-"m": 8,
-"q": "What is a network tap?",
-"o": [
-"A wireless access point that extends coverage to a far room",
-"A connection point where a monitoring device such as an IDS sits inline",
-"A cable that connects two switches that are far apart",
-"A modem that converts cable signals to Ethernet"
-],
-"a": 1,
-"e": "Network tap."
 },
 {
 "m": 8,
@@ -7147,18 +4696,6 @@ const BANK = [
 },
 {
 "m": 8,
-"q": "How many pins does an RJ-45 connector have, and how many do 10BaseT and 100BaseT use?",
-"o": [
-"Four pins; all four are used",
-"Eight pins; 10BaseT and 100BaseT use four",
-"Six pins; two are used",
-"Eight pins; all eight are used"
-],
-"a": 1,
-"e": "Gigabit Ethernet uses all eight."
-},
-{
-"m": 8,
 "q": "How is twisted-pair cabling color-coded?",
 "o": [
 "Four pairs, each wrapped in a layer of foil shielding",
@@ -7180,54 +4717,6 @@ const BANK = [
 ],
 "a": 1,
 "e": "A and B."
-},
-{
-"m": 8,
-"q": "What is a Wi-Fi channel?",
-"o": [
-"A name given to a group of devices that share one SSID",
-"A speed rating such as 100 Mbps or 1000 Mbps",
-"A type of cable used to connect a WAP to a switch",
-"A specific radio frequency within a broader frequency band"
-],
-"a": 3,
-"e": "Channel."
-},
-{
-"m": 8,
-"q": "How many channels are available in the 2.4 GHz band?",
-"o": [
-"3",
-"40",
-"24",
-"11"
-],
-"a": 3,
-"e": "11 channels, but only 3 do not overlap."
-},
-{
-"m": 8,
-"q": "Which 2.4 GHz channels do not overlap?",
-"o": [
-"1, 2 and 3",
-"2, 4 and 8",
-"1, 6 and 11",
-"3, 7 and 9"
-],
-"a": 2,
-"e": "Three nonoverlapping channels."
-},
-{
-"m": 8,
-"q": "How many nonoverlapping channels does the 5 GHz band offer?",
-"o": [
-"11",
-"1",
-"Up to 24",
-"3"
-],
-"a": 2,
-"e": "5 GHz has more room."
 },
 {
 "m": 8,
@@ -7267,18 +4756,6 @@ const BANK = [
 },
 {
 "m": 8,
-"q": "Which software captures and analyzes network traffic?",
-"o": [
-"Excel",
-"Wireshark",
-"Paint",
-"Notepad"
-],
-"a": 1,
-"e": "Network monitoring software."
-},
-{
-"m": 8,
 "q": "What is network jitter?",
 "o": [
 "Fluctuations in the latency on your network",
@@ -7300,18 +4777,6 @@ const BANK = [
 ],
 "a": 1,
 "e": "Ping."
-},
-{
-"m": 8,
-"q": "What does VoIP stand for?",
-"o": [
-"Video over Internet Protocol",
-"Voice over Intranet Port",
-"Voice over IP",
-"Virtual operating IP"
-],
-"a": 2,
-"e": "VoIP needs high throughput for good QoS."
 },
 {
 "m": 8,
@@ -7363,30 +4828,6 @@ const BANK = [
 },
 {
 "m": 8,
-"q": "What can virtualization be used for?",
-"o": [
-"Cross-platform virtualization, application virtualization and sandboxing",
-"Cooling a server, cabling a rack and balancing electrical loads",
-"Faster downloads, better cooling and longer battery life",
-"Printing to the cloud, scanning documents and faxing"
-],
-"a": 0,
-"e": "Three uses."
-},
-{
-"m": 8,
-"q": "What must be enabled in BIOS/UEFI for a virtualization workstation?",
-"o": [
-"Wake-on-LAN, so VMs can be started from the network",
-"Intel Turbo Boost, which raises the clock speed of the cores",
-"Secure Boot, so the hypervisor can verify the boot loader",
-"Hardware-assisted virtualization (HAV) in BIOS/UEFI"
-],
-"a": 3,
-"e": "Enable it in setup."
-},
-{
-"m": 8,
 "q": "Which hardware does a virtualization workstation need plenty of?",
 "o": [
 "Plenty of CPU cores, RAM and storage, plus a Gigabit NIC",
@@ -7399,18 +4840,6 @@ const BANK = [
 },
 {
 "m": 8,
-"q": "How should you secure a virtual machine?",
-"o": [
-"Disable the NIC and remove the hypervisor after each use",
-"Leave it open on the network so the host can monitor it",
-"Share the host's user account with every VM for easy access",
-"Secure inside the VM, isolate VMs, secure the VM files and the host"
-],
-"a": 3,
-"e": "Four points."
-},
-{
-"m": 8,
 "q": "Which resources are shared between the host and a VM?",
 "o": [
 "The applications only",
@@ -7420,18 +4849,6 @@ const BANK = [
 ],
 "a": 1,
 "e": "NIC = network access; hard drive stores the virtual hard disk image."
-},
-{
-"m": 8,
-"q": "What is cloud computing?",
-"o": [
-"A type of software that runs only on a local server",
-"A vendor making computer resources available over the Internet",
-"A local network that connects computers inside one building",
-"A service that replaces the ISP for home customers"
-],
-"a": 1,
-"e": "Applications, network services, websites, databases, developer tools, virtual desktops."
 },
 {
 "m": 8,
@@ -7480,18 +4897,6 @@ const BANK = [
 ],
 "a": 3,
 "e": "Hybrid = mix."
-},
-{
-"m": 8,
-"q": "Which is a characteristic of all cloud service models?",
-"o": [
-"Dedicated hardware, no sharing, local storage only and manual backup",
-"Elastic, metered, shared resources, high availability and file sync",
-"Fixed hardware, flat pricing, one user and no Internet needed",
-"Local storage, no sharing, one user and manual backups"
-],
-"a": 1,
-"e": "Five elements."
 },
 {
 "m": 8,
