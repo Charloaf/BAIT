@@ -2,7 +2,7 @@
 
 Free, self-contained practice quizzes for finals review. No sign-up, no install, no server: open a quiz in your browser and start practicing.
 
-**Live site:** https://charloaf.github.io/NetworkingQuiz/
+**Live site:** https://charloaf.github.io/BAIT/
 
 ## The quizzes
 
